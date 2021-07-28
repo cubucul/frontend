@@ -9,6 +9,7 @@ import './search.css';
 
 const Search = () => {
   const [showResults, setShowResults] = useState(false);
+  const [focusedId, setFocusedId] = useState(-1);
   const term = useSelector(selectors.searchTermSelector);
   const loading = useSelector(selectors.searchLoadingSelector);
   const error = useSelector(selectors.searchErrorSelector);
@@ -37,6 +38,7 @@ const Search = () => {
   const handleClose = (event) => {
     if (!popup.current.contains(event.target)) {
       setShowResults(false);
+      setFocusedId(-1);
     }
   };
 
@@ -44,6 +46,24 @@ const Search = () => {
     setShowResults(false);
     handleClear();
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowDown' && focusedId < results.length - 1) {
+        setFocusedId((prev) => prev + 1);
+      }
+
+      if (event.key === 'ArrowUp' && focusedId > 0) {
+        setFocusedId((prev) => prev - 1);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [focusedId, results.length]);
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClose);
@@ -72,6 +92,7 @@ const Search = () => {
             { results.length > 0 &&
               <SearchList
                 results={results}
+                focusedId={focusedId}
                 onItemClick={handleItemClick}
               />
             }

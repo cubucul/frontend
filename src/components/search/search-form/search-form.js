@@ -5,7 +5,8 @@ import { ReactComponent as SpinnerIcon } from './spinner.svg';
 import { ReactComponent as CloseIcon } from './close.svg';
 import './search-form.css';
 
-const SearchForm = ({ term, loading, onSubmit, onChange, onFocus, onClear }) => {
+const SearchForm = ({
+  term, loading, onSubmit, onChange, onFocus, onClear, onKeyDown }) => {
   return (
     <form className="search-form" onSubmit={onSubmit}>
       <div className="search-form__field">
@@ -17,6 +18,7 @@ const SearchForm = ({ term, loading, onSubmit, onChange, onFocus, onClear }) => 
           value={term}
           onChange={onChange}
           onFocus={onFocus}
+          onKeyDown={onKeyDown}
           placeholder="Find podcasts"
         />
         { !loading &&
@@ -61,7 +63,8 @@ SearchForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   onFocus: PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired
+  onClear: PropTypes.func.isRequired,
+  onKeyDown: PropTypes.func
 };
 
 export default SearchForm;
