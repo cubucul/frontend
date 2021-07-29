@@ -101,18 +101,22 @@ const Search = () => {
       />
       <div ref={popup}>
         { showResults && term.length > 0 &&
-          <div className="search__popup">
+          <>
             { error &&
-              <SearchError />
+              <div className="search__popup">
+                <SearchError />
+              </div>
             }
             { results.length > 0 &&
-              <SearchList
-                results={results}
-                focusedId={focusedId}
-                onItemClick={handleItemClick}
-              />
+              <div className="search__popup">
+                <SearchList
+                  results={results}
+                  focusedId={focusedId}
+                  onItemClick={handleItemClick}
+                />
+              </div>
             }
-          </div>
+          </>
         }
       </div>
     </div>
