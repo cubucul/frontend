@@ -5,10 +5,10 @@ import { ReactComponent as SpinnerIcon } from './spinner.svg';
 import { ReactComponent as CloseIcon } from './close.svg';
 import './search-form.css';
 
-const SearchForm = ({
-  term, loading, onSubmit, onChange, onFocus, onClear, onKeyDown }) => {
+const SearchForm = React.forwardRef(({
+  term, loading, onSubmit, onChange, onFocus, onClear, onKeyDown }, ref) => {
   return (
-    <form className="search-form" onSubmit={onSubmit}>
+    <form ref={ref} className="search-form" onSubmit={onSubmit}>
       <div className="search-form__field">
         <label className="visually-hidden" htmlFor="search">Find podcasts</label>
         <input
@@ -55,7 +55,7 @@ const SearchForm = ({
       </div>
     </form>
   );
-};
+});
 
 SearchForm.propTypes = {
   term: PropTypes.string.isRequired,

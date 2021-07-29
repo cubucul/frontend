@@ -16,6 +16,7 @@ const Search = () => {
   const results = useSelector(selectors.searchResultsSelector);
   const dispatch = useDispatch();
   const popup = useRef();
+  const form = useRef();
 
   const getPodcasts = useCallback((term, options) => {
     if (term !== '') {
@@ -38,7 +39,10 @@ const Search = () => {
   };
 
   const handleClose = (event) => {
-    if (!popup.current.contains(event.target)) {
+    if (
+      !popup.current.contains(event.target) &&
+      !form.current.contains(event.target)
+    ) {
       setShowResults(false);
       setFocusedId(-1);
     }
@@ -87,6 +91,7 @@ const Search = () => {
   return (
     <div className="search">
       <SearchForm
+        ref={form}
         term={term}
         loading={loading}
         onSubmit={handleSubmit}
