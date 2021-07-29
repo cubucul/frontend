@@ -36,6 +36,7 @@ const Search = () => {
 
   const handleClear = () => {
     dispatch(clearSearchTerm());
+    setFocusedId(-1);
   };
 
   const handleClose = (event) => {
