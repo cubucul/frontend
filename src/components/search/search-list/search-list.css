@@ -23,7 +23,12 @@
   text-decoration: none;
 }
 
-.search-list__link:hover {
+.search-list__link:focus {
+  outline: none;
+}
+
+.search-list__link:hover,
+.search-list__link:focus {
   background-color: var(--gray-400);
 }
 
