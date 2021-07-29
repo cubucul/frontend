@@ -1,9 +1,8 @@
 import { fetchPodcasts } from '../services/search';
 import * as types from '../types/search';
 
-const searchRequested = (term) => ({
-  type: types.FETCH_SEARCH_REQUEST,
-  term
+const searchRequested = () => ({
+  type: types.FETCH_SEARCH_REQUEST
 });
 
 const searchError = (error) => ({
@@ -16,13 +15,18 @@ const searchLoaded = (data) => ({
   data
 });
 
+export const changeSearchTerm = (term) => ({
+  type: types.CHANGE_SEARCH_TERM,
+  term
+});
+
 export const clearSearchTerm = () => ({
   type: types.CLEAR_SEARCH_TERM
 });
 
-export const findPodcasts = (term) => (dispatch) => {
-  dispatch(searchRequested(term));
-  fetchPodcasts(term)
+export const findPodcasts = (term, options) => (dispatch) => {
+  dispatch(searchRequested());
+  fetchPodcasts(term, options)
     .then(data => dispatch(searchLoaded(data)))
     .catch(error => dispatch(searchError(error)));
 };

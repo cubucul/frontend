@@ -14,7 +14,6 @@ export const search = (state = initialState, action) => {
         ...state,
         loading: true,
         error: null,
-        term: action.term,
         results: []
       };
     case types.FETCH_SEARCH_FAILURE:
@@ -30,6 +29,11 @@ export const search = (state = initialState, action) => {
         loading: false,
         error: null,
         results: action.data
+      };
+    case types.CHANGE_SEARCH_TERM:
+      return {
+        ...state,
+        term: action.term
       };
     case types.CLEAR_SEARCH_TERM:
       return initialState;

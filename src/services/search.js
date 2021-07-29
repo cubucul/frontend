@@ -16,8 +16,8 @@ const transformFeedData = (podcast) => {
   };
 };
 
-const fetchData = async (url) => {
-  const response = await fetch(url);
+const fetchData = async (url, options) => {
+  const response = await fetch(url, options);
   const data = await response.json();
 
   if (data.resultCount === 0) {
@@ -32,7 +32,7 @@ export const fetchDataById = async (podcastId) => {
   return transformFeedData(data[0]);
 };
 
-export const fetchPodcasts = async (term) => {
-  const podcasts = await fetchData(`${baseUrl}/search?term=${term}`);
+export const fetchPodcasts = async (term, options) => {
+  const podcasts = await fetchData(`${baseUrl}/search?term=${term}`, options);
   return podcasts.map(transformPodcastData);
 };

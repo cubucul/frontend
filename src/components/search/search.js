@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { findPodcasts, clearSearchTerm } from '../../actions/search';
+import { findPodcasts, changeSearchTerm, clearSearchTerm } from '../../actions/search';
 import * as selectors from '../../selectors/search';
 import SearchForm from './search-form';
 import SearchList from './search-list';
@@ -17,9 +17,11 @@ const Search = () => {
   const dispatch = useDispatch();
   const popup = useRef();
 
-  const getPodcasts = (term) => {
-    dispatch(findPodcasts(term));
-  };
+  const getPodcasts = useCallback((term, options) => {
+    if (term !== '') {
+      dispatch(findPodcasts(term, options));
+    }
+  }, [dispatch]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,7 +30,7 @@ const Search = () => {
 
   const handleChange = (event) => {
     const inputValue = event.target.value;
-    getPodcasts(inputValue);
+    dispatch(changeSearchTerm(inputValue));
   };
 
   const handleClear = () => {
@@ -46,6 +48,15 @@ const Search = () => {
     setShowResults(false);
     handleClear();
   };
+
+  useEffect(() => {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
+    getPodcasts(term, { signal });
+
+    return () => abortController.abort();
+  }, [term, getPodcasts]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
