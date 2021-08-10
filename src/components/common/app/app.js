@@ -16,7 +16,7 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-      <main className="app__main">
+      <main>
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/podcast/:podcastId" exact component={PodcastPage} />
