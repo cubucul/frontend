@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { ReactTitle } from 'react-meta-tags';
 import { historySelector } from '../selectors/history';
 import Subhead from '../components/ui/subhead';
 import Heading from '../components/ui/heading';
@@ -10,17 +11,23 @@ import EpisodeCard from '../components/episodes/episode-card';
 const ListeningHistoryPage = () => {
   const history = useSelector(historySelector);
 
+  const pageTitle = <ReactTitle title="Listening History" />;
+
   if (history.length === 0) {
     return (
-      <Blankslate
-        title="Once upon a time..."
-        text="All your played episodes will appear here."
-      />
+      <>
+        {pageTitle}
+        <Blankslate
+          title="Once upon a time..."
+          text="All your played episodes will appear here."
+        />
+      </>
     );
   }
 
   return (
     <section>
+      {pageTitle}
       <Subhead>
         <Heading size="h4">Listening History</Heading>
       </Subhead>

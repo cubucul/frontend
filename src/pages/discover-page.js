@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { ReactTitle } from 'react-meta-tags';
 import { getDiscoverPageData } from '../actions/discover-page';
 import * as selectors from '../selectors/discover-page';
 import Subhead from '../components/ui/subhead';
@@ -14,6 +15,8 @@ const DiscoverPage = () => {
   const error = useSelector(selectors.discoverErrorSelector);
   const podcasts = useSelector(selectors.discoverPodcastsSelector);
 
+  const pageTitle = <ReactTitle title="Discover" />;
+
   useEffect(() => {
     if (podcasts.length === 0) {
       dispatch(getDiscoverPageData('all', 18));
@@ -22,21 +25,28 @@ const DiscoverPage = () => {
 
   if (error) {
     return (
-      <Blankslate
-        title="Oops... something went wrong"
-        text="There was a problem loading the podcasts."
-      />
+      <>
+        {pageTitle}
+        <Blankslate
+          title="Oops... something went wrong"
+          text="There was a problem loading the podcasts."
+        />
+      </>
     );
   }
 
   if (loading) {
     return (
-      <Loader />
+      <>
+        {pageTitle}
+        <Loader />
+      </>
     );
   }
 
   return (
     <section>
+      {pageTitle}
       <Subhead>
         <Heading as="h2" size="h4">
           Top Podcasts in Russia

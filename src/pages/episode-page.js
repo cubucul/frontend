@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { ReactTitle } from 'react-meta-tags';
 import { getPodcastPageData } from '../actions/podcast-page';
 import * as selectors from '../selectors/podcast-page';
 import Loader from '../components/ui/loader';
@@ -26,21 +27,28 @@ const EpisodePage = () => {
 
   if (error) {
     return (
-      <Blankslate
-        title="Oops... something went wrong"
-        text="There was a problem loading the podcasts."
-      />
+      <>
+        <ReactTitle title="Error!" />
+        <Blankslate
+          title="Oops... something went wrong"
+          text="There was a problem loading the podcasts."
+        />
+      </>
     );
   }
 
   if (loading) {
     return (
-      <Loader />
+      <>
+        <ReactTitle title="Loading..." />
+        <Loader />
+      </>
     );
   }
 
   return (
-    <div>
+    <>
+      <ReactTitle title={title} />
       <EpisodeHead
         podcastId={podcastId}
         episodeId={episodeId}
@@ -53,7 +61,7 @@ const EpisodePage = () => {
         author={author}
       />
       <EpisodeNotes description={description} />
-    </div>
+    </>
   );
 };
 
