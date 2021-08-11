@@ -3,7 +3,7 @@ import * as types from '../types/player';
 const initialState = {
   show: false,
   loading: false,
-  canPlayThrough: false,
+  canPlay: false,
   playing: false,
   url: '',
   muted: false,
@@ -26,7 +26,7 @@ export const player = (state = initialState, action) => {
         ...state,
         show: true,
         loading: true,
-        canPlayThrough: false,
+        canPlay: false,
         playing: false,
         ...action.data
       };
@@ -34,7 +34,7 @@ export const player = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        canPlayThrough: true
+        canPlay: true
       };
     case types.PLAYER_PLAY:
       return {

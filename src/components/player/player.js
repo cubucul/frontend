@@ -25,6 +25,7 @@ const Player = () => {
   const podcastId = useSelector(selectors.playerPodcastIdSelector);
   const podcastTitle = useSelector(selectors.playerPodcastTitleSelector);
   const episodeId = useSelector(selectors.playerEpisodeIdSelector);
+  const canPlay = useSelector(selectors.playerCanPlaySelector);
 
   const playerClass = classNames('player', 'player--mini');
 
@@ -33,13 +34,13 @@ const Player = () => {
   };
 
   const onPlay = () => {
-    if (!playing) {
-      setCurrentTime(currentTime);
-    }
     dispatch(actions.playerPlay());
   };
 
   const onCanPlay = () => {
+    if (!canPlay) {
+      setCurrentTime(currentTime);
+    }
     dispatch(actions.playerCanPlay());
     onPlay();
   };
@@ -49,7 +50,7 @@ const Player = () => {
   };
 
   const onTimeUpdate = () => {
-    if (!loading) {
+    if (canPlay) {
       const time = Math.round(audio.current.currentTime);
       dispatch(actions.playerUpdateTime(episodeId, time));
     }
@@ -75,14 +76,21 @@ const Player = () => {
   };
 
   useEffect(() => {
-    if (show && !loading) {
+    if (show && canPlay) {
       if (playing) {
         audio.current.play();
       } else {
         audio.current.pause();
       }
     }
-  }, [show, loading, playing]);
+  }, [show, canPlay, playing]);
+
+  useEffect(() => {
+    if (url) {
+      // Safari fix
+      audio.current.play();
+    }
+  }, [url]);
 
   if (!show) {
     return null;
@@ -100,6 +108,8 @@ const Player = () => {
         onVolumeChange={onVolumeChange}
         onRateChange={onRateChange}
         onEnded={onEnded}
+        preload="metadata"
+        autoPlay={false}
       />
       { loading ?
         <p className="player__spinner">Loading...</p>

@@ -12,3 +12,4 @@ export const playerMutedSelector = (state) => state.player.muted;
 export const playerDurationSelector = (state) => state.player.duration;
 export const playerPlaybackRateSelector = (state) => state.player.playbackRate;
 export const playerVolumeSelector = (state) => state.player.volume;
+export const playerCanPlaySelector = (state) => state.player.canPlay;
