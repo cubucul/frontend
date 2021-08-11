@@ -44,7 +44,8 @@ const EpisodeCard = ({ episodeData, noImage, noPodcastLink }) => {
 
   const episodeIndex = getEpisodeIndex();
   const episodeCardClass = classNames('episode-card', {
-    'episode-card--noindex': noImage && !episodeIndex
+    'episode-card--noindex': noImage && !episodeIndex,
+    'episode-cart--with-image': !noImage
   });
 
   return (
@@ -61,7 +62,7 @@ const EpisodeCard = ({ episodeData, noImage, noPodcastLink }) => {
       { noImage && episodeIndex &&
         <span className="episode-card__index">{episodeIndex}</span>
       }
-      <div>
+      <div className="episode-card__heading">
         <h3 className={titleClass}>
           <Link
             className="episode-card__link"
@@ -81,18 +82,20 @@ const EpisodeCard = ({ episodeData, noImage, noPodcastLink }) => {
       <span className="episode-card__duration">
         {secondsToString(duration)}
       </span>
-      <PlayControl
-        selectedEpisodeData={{
-          episodeId,
-          title,
-          duration,
-          published,
-          url,
-          podcastId,
-          podcastTitle,
-          coverUrl600
-        }}
-      />
+      <div className="episode-card__control">
+        <PlayControl
+          selectedEpisodeData={{
+            episodeId,
+            title,
+            duration,
+            published,
+            url,
+            podcastId,
+            podcastTitle,
+            coverUrl600
+          }}
+        />
+      </div>
     </div>
   );
 };

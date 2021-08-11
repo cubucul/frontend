@@ -1,19 +1,57 @@
 /* Episode Card */
 
-.episode-card {
-  display: grid;
-  grid-template-columns: min-content 1fr 120px 60px min-content;
-  grid-auto-flow: column;
-  align-items: center;
-  column-gap: 24px;
-  width: 100%;
+@media (max-width: 953px) {
+  .episode-card {
+    display: grid;
+    grid-template-areas:
+      'index published control'
+      'heading heading control'
+      'duration duration control'
+    ;
+    grid-template-columns: min-content 1fr min-content;
+    column-gap: 16px;
+  }
+
+  .episode-card--noindex {
+    grid-template-areas:
+      'published published control'
+      'heading heading control'
+      'duration duration control'
+    ;
+  }
+
+  .episode-cart--with-image {
+    grid-template-areas:
+      'image published published control'
+      'image heading heading control'
+      'image duration duration control'
+    ;
+    grid-template-columns: min-content min-content 1fr min-content;
+  }
 }
 
-.episode-card--noindex {
-  grid-template-columns: 1fr 120px 60px min-content;
+@media (min-width: 954px) {
+  .episode-card {
+    display: grid;
+    grid-template-columns: min-content 1fr 120px 60px min-content;
+    grid-auto-flow: column;
+    align-items: center;
+    column-gap: 24px;
+    width: 100%;
+  }
+
+  .episode-card--noindex {
+    grid-template-columns: 1fr 120px 60px min-content;
+  }
 }
 
 /* Image */
+
+@media (max-width: 953px) {
+  .episode-card__image {
+    grid-area: image;
+  }
+}
 
 .episode-card__image {
   display: block;
@@ -28,6 +66,20 @@
   font-size: 15px;
   line-height: 24px;
   color: var(--gray-800);
+}
+
+@media (max-width: 953px) {
+  .episode-card__index {
+    grid-area: index;
+  }
+}
+
+/* Heading */
+
+@media (max-width: 953px) {
+  .episode-card__heading {
+    grid-area: heading;
+  }
 }
 
 /* Title */
@@ -74,12 +126,39 @@
   color: var(--gray-800);
 }
 
+@media (max-width: 953px) {
+  .episode-card__published {
+    grid-area: published;
+  }
+}
+
 /* Duration */
 
 .episode-card__duration {
   margin: 0;
   font-size: 15px;
   line-height: 24px;
-  text-align: right;
   color: var(--gray-800);
+}
+
+@media (max-width: 953px) {
+  .episode-card__duration {
+    grid-area: duration;
+  }
+}
+
+@media (min-width: 954px) {
+  .episode-card__duration {
+    text-align: right;
+  }
+}
+
+/* Control */
+
+@media (max-width: 953px) {
+  .episode-card__control {
+    grid-area: control;
+    align-self: center;
+    justify-self: end;
+  }
 }
