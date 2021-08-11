@@ -1,10 +1,20 @@
 /* Podcast Head */
 
-.podcast-head {
-  display: grid;
-  grid-template-columns: 210px 1fr;
-  column-gap: 32px;
-  padding-bottom: 32px;
+@media (max-width: 953px) {
+  .podcast-head {
+    display: grid;
+    row-gap: 24px;
+    padding-bottom: 24px;
+  }
+}
+
+@media (min-width: 954px) {
+  .podcast-head {
+    display: grid;
+    grid-template-columns: 210px 1fr;
+    column-gap: 32px;
+    padding-bottom: 32px;
+  }
 }
 
 /* Image */
