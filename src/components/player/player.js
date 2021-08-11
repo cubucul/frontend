@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import * as actions from '../../actions/player';
 import * as selectors from '../../selectors/player';
 import SkipControl from './skip-control';
@@ -24,6 +25,8 @@ const Player = () => {
   const podcastId = useSelector(selectors.playerPodcastIdSelector);
   const podcastTitle = useSelector(selectors.playerPodcastTitleSelector);
   const episodeId = useSelector(selectors.playerEpisodeIdSelector);
+
+  const playerClass = classNames('player', 'player--mini');
 
   const onCanPlayThrough = () => {
     dispatch(actions.playerCanPlayThrough());
@@ -76,7 +79,7 @@ const Player = () => {
   }
 
   return (
-    <div className="player">
+    <div className={playerClass}>
       <audio
         ref={audio}
         src={url}
@@ -128,7 +131,9 @@ const Player = () => {
             </div>
             <ProgressControl ref={audio} />
           </div>
-          <SpeedControl ref={audio} />
+          <div className="player__speed">
+            <SpeedControl ref={audio} />
+          </div>
           <div className="player__volume">
             <VolumeControl ref={audio} />
           </div>
