@@ -30,7 +30,7 @@ export const player = (state = initialState, action) => {
         playing: false,
         ...action.data
       };
-    case types.PLAYER_CAN_PLAY_THROUGH:
+    case types.PLAYER_CAN_PLAY:
       return {
         ...state,
         loading: false,

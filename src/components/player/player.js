@@ -28,13 +28,20 @@ const Player = () => {
 
   const playerClass = classNames('player', 'player--mini');
 
-  const onCanPlayThrough = () => {
-    dispatch(actions.playerCanPlayThrough());
-    dispatch(actions.playerPlay());
+  const setCurrentTime = (value) => {
+    audio.current.currentTime = value;
   };
 
   const onPlay = () => {
-    audio.current.currentTime = currentTime;
+    if (!playing) {
+      setCurrentTime(currentTime);
+    }
+    dispatch(actions.playerPlay());
+  };
+
+  const onCanPlay = () => {
+    dispatch(actions.playerCanPlay());
+    onPlay();
   };
 
   const onPause = () => {
@@ -85,16 +92,15 @@ const Player = () => {
     <div className={playerClass}>
       <audio
         ref={audio}
-        onCanPlayThrough={onCanPlayThrough}
+        src={url}
+        onCanPlay={onCanPlay}
         onPlay={onPlay}
         onPause={onPause}
         onTimeUpdate={onTimeUpdate}
         onVolumeChange={onVolumeChange}
         onRateChange={onRateChange}
         onEnded={onEnded}
-      >
-        <source src={url} />
-      </audio>
+      />
       { loading ?
         <p className="player__spinner">Loading...</p>
         :

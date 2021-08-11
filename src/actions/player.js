@@ -14,8 +14,8 @@ export const playerPause = () => ({
   type: types.PLAYER_PAUSE
 });
 
-export const playerCanPlayThrough = () => ({
-  type: types.PLAYER_CAN_PLAY_THROUGH
+export const playerCanPlay = () => ({
+  type: types.PLAYER_CAN_PLAY
 });
 
 export const playerUpdateTime = (episodeId, currentTime) => (dispatch) => {
