@@ -4,6 +4,14 @@
   text-decoration: none;
 }
 
+@media (max-width: 953px) {
+  .podcast-card {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    column-gap: 16px;
+  }
+}
+
 /* Image */
 
 .podcast-card__image {

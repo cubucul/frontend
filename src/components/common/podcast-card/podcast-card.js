@@ -14,8 +14,10 @@ const PodcastCard = ({ id, title, author, coverUrl100, coverUrl600 }) => {
         src={coverUrl100 || coverUrl600}
         alt={title}
       />
-      <h3 className="podcast-card__title">{title}</h3>
-      <p className="podcast-card__author">{author}</p>
+      <div>
+        <h3 className="podcast-card__title">{title}</h3>
+        <p className="podcast-card__author">{author}</p>
+      </div>
     </Link>
   );
 };
