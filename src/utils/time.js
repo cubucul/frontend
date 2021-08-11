@@ -8,6 +8,10 @@ export const secondsToString = (secondsString) => {
     return `${hours}h ${minutes}m`;
   }
 
+  if (minutes === 0) {
+    return `${totalSeconds} secs`;
+  }
+
   return `${minutes} mins`;
 };
 
