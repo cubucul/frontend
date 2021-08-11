@@ -34,8 +34,7 @@ export const player = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        canPlayThrough: true,
-        playing: true
+        canPlayThrough: true
       };
     case types.PLAYER_PLAY:
       return {

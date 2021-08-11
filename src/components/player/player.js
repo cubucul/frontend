@@ -30,6 +30,7 @@ const Player = () => {
 
   const onCanPlayThrough = () => {
     dispatch(actions.playerCanPlayThrough());
+    dispatch(actions.playerPlay());
   };
 
   const onPlay = () => {
@@ -67,10 +68,12 @@ const Player = () => {
   };
 
   useEffect(() => {
-    if (show && !loading && playing) {
-      audio.current.play();
-    } else if (show && !loading && !playing) {
-      audio.current.pause();
+    if (show && !loading) {
+      if (playing) {
+        audio.current.play();
+      } else {
+        audio.current.pause();
+      }
     }
   }, [show, loading, playing]);
 
@@ -82,7 +85,6 @@ const Player = () => {
     <div className={playerClass}>
       <audio
         ref={audio}
-        src={url}
         onCanPlayThrough={onCanPlayThrough}
         onPlay={onPlay}
         onPause={onPause}
@@ -90,7 +92,9 @@ const Player = () => {
         onVolumeChange={onVolumeChange}
         onRateChange={onRateChange}
         onEnded={onEnded}
-      />
+      >
+        <source src={url} />
+      </audio>
       { loading ?
         <p className="player__spinner">Loading...</p>
         :

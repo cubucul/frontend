@@ -6,7 +6,7 @@ const loadEpisodeData = (data) => ({
   data
 });
 
-const playerPlay = () => ({
+export const playerPlay = () => ({
   type: types.PLAYER_PLAY
 });
 
