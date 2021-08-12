@@ -29,24 +29,26 @@ const EpisodeHead = (props) => {
 
   return (
     <div className="episode-head">
-      <div>
-        <img
-          className="episode-head__image"
-          src={coverUrl600}
-          width="210"
-          height="210"
-          alt={podcastTitle}
-        />
-        <Button onClick={handleClick}>{buttonText}</Button>
-      </div>
-      <div>
+      <img
+        className="episode-head__image"
+        src={coverUrl600}
+        width="210"
+        height="210"
+        alt={podcastTitle}
+      />
+      <Button
+        className="episode-head__play-button"
+        onClick={handleClick}
+      >{buttonText}</Button>
+      <div className="episode-head__content">
         <Link
           className="episode-head__author"
           to={`/podcast/${podcastId}`}
         >{podcastTitle}</Link>
-        <div className="episode-head__title">
-          <Heading size="h5">{episodeTitle}</Heading>
-        </div>
+        <Heading
+          className="episode-head__title"
+          size="h5"
+        >{episodeTitle}</Heading>
         <p className="episode-head__published">{published}</p>
       </div>
     </div>
