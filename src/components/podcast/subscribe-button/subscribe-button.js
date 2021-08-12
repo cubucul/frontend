@@ -4,11 +4,11 @@ import classNames from 'classnames';
 import Button from '../../ui/button';
 import './subscribe-button.css';
 
-const SubscribeButton = ({ subscribed, onSubscribe }) => {
+const SubscribeButton = ({ subscribed, onSubscribe, className }) => {
   const buttonText = subscribed ? 'Unsubscribe' : 'Subscribe';
   const buttonClass = classNames('subscribe-button', {
     'subscribe-button--subscribed': subscribed
-  });
+  }, className);
 
   return (
     <Button
@@ -20,6 +20,7 @@ const SubscribeButton = ({ subscribed, onSubscribe }) => {
 
 SubscribeButton.propTypes = {
   subscribed: PropTypes.bool.isRequired,
+  className: PropTypes.string,
   onSubscribe: PropTypes.func.isRequired
 };
 
