@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
@@ -9,9 +9,12 @@ import SpeedControl from './speed-control';
 import VolumeControl from './volume-control';
 import ProgressControl from './progress-control';
 import PlayControl from '../common/play-control';
+import { ReactComponent as PopoverClosedIcon } from './popover.svg'
+import { ReactComponent as PopoverExpandedIcon } from './popover-expanded.svg'
 import './player.css';
 
 const Player = () => {
+  const [expanded, setExpanded] = useState(false);
   const audio = useRef();
   const dispatch = useDispatch();
   const show = useSelector(selectors.playerShowSelector);
@@ -27,7 +30,16 @@ const Player = () => {
   const episodeId = useSelector(selectors.playerEpisodeIdSelector);
   const canPlay = useSelector(selectors.playerCanPlaySelector);
 
-  const playerClass = classNames('player', 'player--mini');
+  const popoverLabelText = expanded ? 'Minify player' : 'Expand player';
+  const PopoverIcon = expanded ? PopoverExpandedIcon : PopoverClosedIcon;
+
+  const playerClass = classNames('player', {
+    'player--full': expanded,
+    'player--mini': !expanded
+  });
+
+
+  const togglePlayerView = () => setExpanded(v => !v);
 
   const setCurrentTime = (value) => {
     audio.current.currentTime = value;
@@ -98,67 +110,82 @@ const Player = () => {
 
   return (
     <div className={playerClass}>
-      <audio
-        ref={audio}
-        src={url}
-        onCanPlay={onCanPlay}
-        onPlay={onPlay}
-        onPause={onPause}
-        onTimeUpdate={onTimeUpdate}
-        onVolumeChange={onVolumeChange}
-        onRateChange={onRateChange}
-        onEnded={onEnded}
-        preload="metadata"
-        autoPlay={false}
-      />
-      { loading ?
-        <p className="player__spinner">Loading...</p>
-        :
-        <div className="player__inner">
-          <img
-            className="player__image"
-            src={coverUrl600}
-            width="72"
-            height="72"
-            alt={`Podcast ${podcastTitle} cover`}
+      <div className="player__widget">
+        <button
+          className="player__popover"
+          type="button"
+          onClick={togglePlayerView}
+          aria-label={popoverLabelText}
+        >
+          <PopoverIcon
+            className="player__popover-icon"
+            width="38"
+            height="17"
+            aria-hidden="true"
           />
-          <div className="player__play-controls">
-            <SkipControl ref={audio} value={-15} />
-            <PlayControl
-              theme="fill"
-              selectedEpisodeData={{
-                episodeId
-              }}
+        </button>
+        <audio
+          ref={audio}
+          src={url}
+          onCanPlay={onCanPlay}
+          onPlay={onPlay}
+          onPause={onPause}
+          onTimeUpdate={onTimeUpdate}
+          onVolumeChange={onVolumeChange}
+          onRateChange={onRateChange}
+          onEnded={onEnded}
+          preload="metadata"
+          autoPlay={false}
+        />
+        { loading ?
+          <p className="player__spinner">Loading...</p>
+          :
+          <div className="player__inner">
+            <img
+              className="player__image"
+              src={coverUrl600}
+              width="72"
+              height="72"
+              alt={`Podcast ${podcastTitle} cover`}
             />
-            <SkipControl ref={audio} value={30} />
-          </div>
-          <div className="player__controls">
-            <div className="player__info">
-              <h3 className="player__title">
-                <Link
-                  className="player__title-link"
-                  to={`/podcast/${podcastId}/${episodeId}`}
-                >
-                  {title}
-                </Link>
-              </h3>
-              <Link
-                className="player__author"
-                to={`/podcast/${podcastId}`}
-              >
-                {podcastTitle}
-              </Link>
+            <div className="player__play-controls">
+              <SkipControl ref={audio} value={-15} />
+              <PlayControl
+                theme="fill"
+                selectedEpisodeData={{
+                  episodeId
+                }}
+              />
+              <SkipControl ref={audio} value={30} />
             </div>
-            <ProgressControl ref={audio} />
+            <div className="player__controls">
+              <div className="player__info">
+                <h3 className="player__title">
+                  <Link
+                    className="player__title-link"
+                    to={`/podcast/${podcastId}/${episodeId}`}
+                  >
+                    {title}
+                  </Link>
+                </h3>
+                <Link
+                  className="player__author"
+                  to={`/podcast/${podcastId}`}
+                >
+                  {podcastTitle}
+                </Link>
+              </div>
+              <ProgressControl ref={audio} />
+            </div>
+            <div className="player__speed">
+              <SpeedControl ref={audio} />
+            </div>
+            <div className="player__volume">
+              <VolumeControl ref={audio} />
+            </div>
           </div>
-          <div className="player__speed">
-            <SpeedControl ref={audio} />
-          </div>
-          <div className="player__volume">
-            <VolumeControl ref={audio} />
-          </div>
-        </div>
-      }
+        }
+      </div>
     </div>
   );
 };

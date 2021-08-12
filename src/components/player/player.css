@@ -7,14 +7,21 @@
   left: 0;
   z-index: 100;
   min-width: 320px;
-  background-color: rgba(0, 0, 0, 0.9);
   color: var(--white);
 }
 
 @media (max-width: 953px) {
   .player--mini {
-    height: 104px;
+    height: 145px;
     padding: 16px;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .player--full {
+    top: 0;
+    display: grid;
+    align-content: end;
+    background-color: rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -22,7 +29,55 @@
   .player {
     height: 120px;
     padding: 24px;
+    background-color: rgba(0, 0, 0, 0.9);
   }
+}
+
+/* Widget */
+
+@media (max-width: 953px) {
+  .player__widget {
+    display: grid;
+    row-gap: 24px;
+    justify-items: center;
+  }
+
+  .player--full .player__widget {
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
+    padding: 16px;
+    background-color: var(--black);
+  }
+}
+
+/* Popover */
+
+@media (max-width: 953px) {
+  .player__popover {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 954px) {
+  .player__popover {
+    display: none;
+  }
+}
+
+/* Popover Icon */
+
+.player__popover-icon {
+  vertical-align: top;
+  stroke: var(--gray-700);
+  stroke-width: 5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* Spinner */
@@ -43,6 +98,12 @@
     grid-template-columns: 72px 1fr 72px;
     column-gap: 24px;
     align-items: center;
+  }
+
+  .player--full .player__inner {
+    display: grid;
+    justify-items: center;
+    row-gap: 16px;
   }
 }
 
@@ -73,13 +134,18 @@
 /* Info */
 
 .player__info {
-  max-width: 888px;
   text-align: center;
 }
 
 @media (max-width: 953px) {
   .player--mini .player__info {
     display: none;
+  }
+}
+
+@media (min-width: 954px) {
+  .player__info {
+    max-width: 888px;
   }
 }
 
@@ -90,9 +156,14 @@
   font-weight: 700;
   font-size: 15px;
   line-height: 24px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+}
+
+@media (min-width: 954px) {
+  .player__title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 /* Title Link */
