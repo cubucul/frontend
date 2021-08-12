@@ -111,19 +111,22 @@ const Player = () => {
   return (
     <div className={playerClass}>
       <div className="player__widget">
-        <button
-          className="player__popover"
-          type="button"
-          onClick={togglePlayerView}
-          aria-label={popoverLabelText}
-        >
-          <PopoverIcon
-            className="player__popover-icon"
-            width="38"
-            height="17"
-            aria-hidden="true"
-          />
-        </button>
+        {
+          canPlay &&
+            <button
+              className="player__popover"
+              type="button"
+              onClick={togglePlayerView}
+              aria-label={popoverLabelText}
+            >
+              <PopoverIcon
+                className="player__popover-icon"
+                width="38"
+                height="17"
+                aria-hidden="true"
+              />
+            </button>
+        }
         <audio
           ref={audio}
           src={url}
