@@ -46,6 +46,7 @@
     border-top-right-radius: 16px;
     border-top-left-radius: 16px;
     padding: 16px;
+    padding-bottom: 80px;
     background-color: var(--black);
   }
 }
@@ -103,7 +104,7 @@
   .player--full .player__inner {
     display: grid;
     justify-items: center;
-    row-gap: 16px;
+    row-gap: 24px;
   }
 }
 
@@ -128,6 +129,11 @@
   .player--mini .player__image {
     width: 72px;
     height: 72px;
+  }
+
+  .player--full .player__image {
+    width: 210px;
+    height: 210px;
   }
 }
 
@@ -208,10 +214,20 @@
   column-gap: 24px;
 }
 
+@media (max-width: 953px) {
+  .player--full .player__play-controls {
+    order: 1;
+  }
+}
+
 /* Speed */
 
 @media (max-width: 953px) {
   .player--mini .player__speed {
+    display: none;
+  }
+
+  .player--full .player__speed {
     display: none;
   }
 }
@@ -225,6 +241,10 @@
 
 @media (max-width: 953px) {
   .player--mini .player__volume {
+    display: none;
+  }
+
+  .player--full .player__volume {
     display: none;
   }
 }
