@@ -3,7 +3,15 @@
 @media (max-width: 953px) {
   .podcast-head {
     display: grid;
-    row-gap: 24px;
+    grid-template-areas:
+      'image'
+      'title'
+      'author'
+      'button'
+      'link'
+      'description'
+    ;
+    row-gap: 16px;
     padding-bottom: 24px;
   }
 }
@@ -11,8 +19,17 @@
 @media (min-width: 954px) {
   .podcast-head {
     display: grid;
+    grid-template-areas:
+      'image title'
+      'image author'
+      'image link'
+      'image description'
+      'button description'
+    ;
     grid-template-columns: 210px 1fr;
+    grid-template-rows: min-content min-content min-content min-content 1fr;
     column-gap: 32px;
+    row-gap: 16px;
     padding-bottom: 32px;
   }
 }
@@ -20,34 +37,71 @@
 /* Image */
 
 .podcast-head__image {
+  grid-area: image;
   display: block;
   max-width: 100%;
   height: auto;
-  margin-bottom: 16px;
   border-radius: 4px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 953px) {
+  .podcast-head__image {
+    justify-self: center;
+  }
+}
+
+/* Subscribe Button */
+
+.podcast-head__subscribe-button {
+  grid-area: button;
+}
+
+@media (max-width: 953px) {
+  .podcast-head__subscribe-button {
+    justify-self: center;
+    max-width: 210px;
+  }
+}
+
+@media (min-width: 954px) {
+  .podcast-head__subscribe-button {
+    align-self: start;
+  }
 }
 
 /* Title */
 
 .podcast-head__title {
-  margin-bottom: 16px;
+  grid-area: title;
+}
+
+@media (max-width: 953px) {
+  .podcast-head__title {
+    text-align: center;
+  }
 }
 
 /* Author */
 
 .podcast-head__author {
+  grid-area: author;
   margin: 0;
-  margin-bottom: 16px;
   color: var(--gray-800);
+}
+
+@media (max-width: 953px) {
+  .podcast-head__author {
+    text-align: center;
+  }
 }
 
 /* Link */
 
 .podcast-head__link {
+  grid-area: link;
   display: inline-block;
   vertical-align: top;
-  margin-bottom: 16px;
   color: var(--primary);
   text-decoration: none;
 }
@@ -55,6 +109,7 @@
 /* Description */
 
 .podcast-head__description {
+  grid-area: description;
   margin: 0;
   font-size: 15px;
   line-height: 24px;
