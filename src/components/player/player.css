@@ -50,8 +50,8 @@
     border-top-right-radius: 16px;
     border-top-left-radius: 16px;
     padding: 16px;
-    padding-bottom: 80px;
     background-color: var(--black);
+    overflow-y: auto;
   }
 }
 
@@ -106,8 +106,9 @@
 
   .player--full .player__inner {
     display: grid;
-    justify-items: center;
     row-gap: 24px;
+    width: 288px;
+    padding-bottom: 80px;
   }
 }
 
@@ -137,6 +138,7 @@
   .player--full .player__image {
     width: 210px;
     height: 210px;
+    justify-self: center;
   }
 }
 
