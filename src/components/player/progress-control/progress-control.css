@@ -1,10 +1,30 @@
 /* Progress */
 
-.progress-control {
-  display: grid;
-  grid-template-columns: min-content 1fr min-content;
-  align-items: center;
-  column-gap: 16px;
+@media (max-width: 953px) {
+  .progress-control {
+    display: grid;
+    grid-template-areas:
+      'range range'
+      'left right'
+    ;
+  }
+}
+
+@media (min-width: 954px) {
+  .progress-control {
+    display: grid;
+    grid-template-columns: min-content 1fr min-content;
+    align-items: center;
+    column-gap: 16px;
+  }
+}
+
+/* Range */
+
+@media (max-width: 953px) {
+  .progress-control__range {
+    grid-area: range;
+  }
 }
 
 /* Time */
@@ -16,6 +36,19 @@
   color: var(--gray-800);
 }
 
-.progress-control__time--left {
-  text-align: right;
+@media (max-width: 953px) {
+  .progress-control__time--left {
+    grid-area: left;
+  }
+
+  .progress-control__time--right {
+    grid-area: right;
+    text-align: right;
+  }
+}
+
+@media (min-width: 954px) {
+  .progress-control__time--left {
+    text-align: right;
+  }
 }
