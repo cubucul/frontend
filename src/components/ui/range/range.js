@@ -1,11 +1,14 @@
 import React from 'react';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import './range.css';
 
-const Range = ({ min, max, step, value, onChange }) => {
+const Range = ({ min, max, step, value, onChange, className }) => {
+  const rangeClass = classNames('range', className);
+
   return (
     <input
-      className="range"
+      className={rangeClass}
       type="range"
       min={min}
       max={max}
@@ -21,6 +24,7 @@ Range.propTypes = {
   max: PropTypes.number.isRequired,
   step: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
+  className: PropTypes.string,
   onChange: PropTypes.func.isRequired
 };
 
