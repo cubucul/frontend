@@ -6,7 +6,7 @@ const fetchData = async (url) => {
   return data;
 };
 
-export const fetchPodcastPageData = async (feedUrl) => {
-  const data = await fetchData(`${baseUrl}?feed=${feedUrl}`);
+export const fetchPodcastPageData = async (podcastId) => {
+  const data = await fetchData(`${baseUrl}?podcastId=${podcastId}`);
   return data;
 };

@@ -1,4 +1,3 @@
-import { fetchDataById } from '../services/search';
 import { fetchPodcastPageData } from '../services/rss';
 import * as types from '../types/podcast-page';
 
@@ -17,17 +16,8 @@ const podcastPageSuccess = (data) => ({
 });
 
 export const getPodcastPageData = (podcastId) => (dispatch) => {
-  let podcastData = { id: podcastId };
-
   dispatch(podcastPageRequested());
-  fetchDataById(podcastId)
-    .then(({ feed, ...rest }) => {
-      podcastData = { ...podcastData, ...rest };
-      return fetchPodcastPageData(feed);
-    })
-    .then(data => {
-      podcastData = { ...podcastData, ...data };
-      dispatch(podcastPageSuccess(podcastData));
-    })
-    .catch(error => dispatch(podcastPageError(error)));
+  fetchPodcastPageData(podcastId)
+    .then((data) => dispatch(podcastPageSuccess(data)))
+    .catch((error) => dispatch(podcastPageError(error)));
 };
