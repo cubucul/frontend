@@ -21,6 +21,14 @@
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
+/* Info */
+
+@media (min-width: 954px) {
+  .podcast-card__info--without-info {
+    display: none;
+  }
+}
+
 /* Title */
 
 .podcast-card__title {

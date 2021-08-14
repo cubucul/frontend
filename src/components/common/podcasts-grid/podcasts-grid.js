@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import PodcastCard from '../podcast-card';
 import './podcasts-grid.css';
 
-const PodcastsGrid = ({ podcasts }) => {
+const PodcastsGrid = ({ podcasts, withoutInfo }) => {
   return (
     <ul className="podcasts-grid">
       {
         podcasts.map((podcast) => {
           return (
             <li key={podcast.id}>
-              <PodcastCard {...podcast} />
+              <PodcastCard {...podcast} withoutInfo={withoutInfo} />
             </li>
           );
         })
@@ -28,7 +28,8 @@ PodcastsGrid.propTypes = {
       coverUrl100: PropTypes.string,
       coverUrl600: PropTypes.string
     })
-  )
+  ),
+  withoutInfo: PropTypes.bool
 };
 
 export default PodcastsGrid;

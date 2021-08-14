@@ -25,7 +25,10 @@ const HomePage = () => {
   return (
     <>
       {pageTitle}
-      <PodcastsGrid podcasts={subscriptions} />
+      <PodcastsGrid
+        podcasts={subscriptions}
+        withoutInfo
+      />
     </>
   );
 };
