@@ -69,14 +69,6 @@ const EpisodeCard = ({ episodeData, noImage, noPodcastLink }) => {
             to={`/podcast/${podcastId}/${episodeId}`}
           >{title}</Link>
         </h3>
-        { !noPodcastLink &&
-          <p className="episode-card__author">
-            <Link
-              className="episode-card__link"
-              to={`/podcast/${podcastId}`}
-            >{podcastTitle}</Link>
-          </p>
-        }
       </div>
       <p className="episode-card__published">{published}</p>
       <span className="episode-card__duration">

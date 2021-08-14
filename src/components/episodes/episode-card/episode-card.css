@@ -107,16 +107,6 @@
   color: var(--primary);
 }
 
-/* Author */
-
-.episode-card__author {
-  margin: 0;
-  margin-top: -3px;
-  font-size: 14px;
-  line-height: 22px;
-  color: var(--gray-800);
-}
-
 /* Published */
 
 .episode-card__published {
