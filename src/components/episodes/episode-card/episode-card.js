@@ -104,8 +104,8 @@ EpisodeCard.propTypes = {
     duration: PropTypes.number,
     published: PropTypes.string,
     url: PropTypes.string,
-    season: PropTypes.string,
-    number: PropTypes.string,
+    season: PropTypes.number,
+    number: PropTypes.number,
     episodeType: PropTypes.string
   })
 };
