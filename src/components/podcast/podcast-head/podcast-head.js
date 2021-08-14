@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Heading from '../../ui/heading';
 import SubscribeButton from '../subscribe-button';
 import './podcast-head.css';
 
 const PodcastHead = (props) => {
   const { coverUrl600, title, author, summary, link, subscribed, onSubscribe } = props;
+  const descriptionClass = classNames('podcast-head__description', {
+    'podcast-head__description--full-space': !link
+  });
 
   return (
     <div className="podcast-head">
@@ -25,13 +29,16 @@ const PodcastHead = (props) => {
         <Heading size="h4">{title}</Heading>
       </div>
       <p className="podcast-head__author">{author}</p>
-      <a
-        className="podcast-head__link"
-        href={link}
-        target="_blank"
-        rel="noreferrer"
-      >{link}</a>
-      <p className="podcast-head__description">{summary}</p>
+      {
+        link &&
+          <a
+            className="podcast-head__link"
+            href={link}
+            target="_blank"
+            rel="noreferrer"
+          >{link}</a>
+      }
+      <p className={descriptionClass}>{summary}</p>
     </div>
   );
 };
@@ -39,7 +46,7 @@ const PodcastHead = (props) => {
 PodcastHead.propTypes = {
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
+  link: PropTypes.string,
   coverUrl600: PropTypes.string.isRequired,
   summary: PropTypes.string.isRequired,
   subscribed: PropTypes.bool.isRequired,
