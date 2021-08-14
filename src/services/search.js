@@ -1,17 +1,11 @@
-const baseUrl = process.env.REACT_APP_URL_API;
+import { fetchData } from './api';
 
-const fetchData = async (url, options) => {
-  const response = await fetch(url, options);
-  const data = await response.json();
+export const fetchPodcasts = async (term, options) => {
+  const data = await fetchData(`/search?term=${term}`, options);
 
   if (data.resultCount === 0) {
     throw new Error('Podcasts not found');
   }
 
   return data.results;
-};
-
-export const fetchPodcasts = async (term, options) => {
-  const podcasts = await fetchData(`${baseUrl}/search?term=${term}`, options);
-  return podcasts;
 };
