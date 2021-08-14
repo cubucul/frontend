@@ -12,6 +12,8 @@ const PodcastCard = ({ id, title, author, coverUrl100, coverUrl600 }) => {
       <img
         className="podcast-card__image"
         src={coverUrl100 || coverUrl600}
+        width="131"
+        height="131"
         alt={title}
       />
       <div>
