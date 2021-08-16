@@ -52,7 +52,7 @@ const DiscoverPage = () => {
           Top Podcasts in Russia
         </Heading>
       </Subhead>
-      <PodcastsGrid podcasts={podcasts} />
+      <PodcastsGrid podcasts={podcasts} showCounter />
     </section>
   );
 };
