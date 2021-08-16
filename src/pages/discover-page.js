@@ -8,6 +8,7 @@ import Heading from '../components/ui/heading';
 import Loader from '../components/ui/loader';
 import Blankslate from '../components/common/blankslate';
 import PodcastsGrid from '../components/common/podcasts-grid';
+import GenreGrid from '../components/common/genre-grid';
 
 const DiscoverPage = () => {
   const dispatch = useDispatch();
@@ -18,10 +19,8 @@ const DiscoverPage = () => {
   const pageTitle = <ReactTitle title="Discover" />;
 
   useEffect(() => {
-    if (podcasts.length === 0) {
-      dispatch(getDiscoverPageData('all', 18));
-    }
-  }, [dispatch, podcasts.length]);
+    dispatch(getDiscoverPageData('all', 36));
+  }, [dispatch]);
 
   if (error) {
     return (
@@ -53,6 +52,12 @@ const DiscoverPage = () => {
         </Heading>
       </Subhead>
       <PodcastsGrid podcasts={podcasts} showCounter />
+      <Subhead>
+        <Heading as="h2" size="h4">
+          Browse By Category
+        </Heading>
+      </Subhead>
+      <GenreGrid />
     </section>
   );
 };
