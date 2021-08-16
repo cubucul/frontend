@@ -7,9 +7,9 @@ const Header = () => {
   const links = [
     { label: 'Home', path: '/' },
     { label: 'Discover', path: '/discover' },
-    { label: 'New Releases', path: '/new-releases' },
-    { label: 'In Progress', path: '/in-progress' },
-    { label: 'Starred', path: '/starred' },
+    // { label: 'New Releases', path: '/new-releases' },
+    // { label: 'In Progress', path: '/in-progress' },
+    // { label: 'Starred', path: '/starred' },
     { label: 'Listening History', path: '/listening-history' }
   ];
 
