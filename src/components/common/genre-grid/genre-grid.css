@@ -1,0 +1,30 @@
+/* Genre Grid */
+
+.genre-grid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 953px) {
+  .genre-grid {
+    display: grid;
+    row-gap: 8px;
+  }
+}
+
+@media (min-width: 954px) {
+  .genre-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 24px;
+    row-gap: 16px;
+  }
+}
+
+/* Link */
+
+.genre-grid__link {
+  color: var(--primary);
+  text-decoration: none;
+}
