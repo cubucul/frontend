@@ -21,10 +21,12 @@ const SearchList = ({ results, focusedId, onItemClick }) => {
             <li key={id} className={styles.item}>
               <Link
                 href={`/podcast/${id}`}
-                onClick={onItemClick}
-                ref={index === focusedId ? focusedRef : null}
               >
-                <a className={styles.link}>
+                <a
+                  className={styles.link}
+                  onClick={onItemClick}
+                  ref={index === focusedId ? focusedRef : null}
+                >
                   <div className={styles.cover}>
                     <Image
                       src={coverUrl60}
