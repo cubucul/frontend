@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../header';
 import Player from '../../player';
-import styles from './app.module.css';
+import styles from './layout.module.css';
 
-const App = ({ children }) => {
+const Layout = ({ children }) => {
   return (
     <div className={styles.app}>
       <Header />
@@ -16,8 +16,8 @@ const App = ({ children }) => {
   );
 };
 
-App.propTypes = {
+Layout.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-export default App;
+export default Layout;
