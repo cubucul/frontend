@@ -29,7 +29,7 @@ const DiscoverPage = ({ podcasts }) => {
 };
 
 export async function getStaticProps() {
-  const podcasts = await getPodcastByGenre('all', 100);
+  const podcasts = await getPodcastByGenre('all', 36);
 
   return {
     props: {
