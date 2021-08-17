@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
+import Image from 'next/image';
 import classNames from 'classnames';
 import * as actions from '../../actions/player';
 import * as selectors from '../../selectors/player';
@@ -144,13 +145,14 @@ const Player = () => {
           <p className={styles.spinner}>Loading...</p>
           :
           <div className={styles.inner}>
-            <img
-              className={styles.image}
-              src={coverUrl600}
-              width="72"
-              height="72"
-              alt={`Podcast ${podcastTitle} cover`}
-            />
+            <div className={styles.cover}>
+              <Image
+                src={coverUrl600}
+                width="210"
+                height="210"
+                alt={`Podcast ${podcastTitle} cover`}
+              />
+            </div>
             <div className={styles.playControls}>
               <SkipControl ref={audio} value={-15} />
               <PlayControl

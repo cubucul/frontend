@@ -121,7 +121,7 @@
 @media (min-width: 954px) {
   .inner {
     display: grid;
-    grid-template-columns: min-content 144px 1fr 72px 144px;
+    grid-template-columns: 72px 144px 1fr 72px 144px;
     align-items: center;
     column-gap: 24px;
   }
@@ -129,19 +129,20 @@
 
 /* Image */
 
-.image {
-  display: block;
+.cover {
+  display: flex;
   border-radius: 2px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 @media (max-width: 953px) {
-  .mini .image {
+  .mini .cover {
     width: 72px;
     height: 72px;
   }
 
-  .full .image {
+  .full .cover {
     width: 210px;
     height: 210px;
     justify-self: center;
