@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { useSelector, useDispatch } from 'react-redux';
-import { getPodcastPageData } from '../../actions/podcast-page';
-import * as selectors from '../../selectors/podcast-page';
-import Loader from '../../components/ui/loader';
-import Blankslate from '../../components/common/blankslate';
-import EpisodeHead from '../../components/episodes/episode-head';
-import EpisodeNotes from '../../components/episodes/episode-notes';
+import { getPodcastPageData } from '../../../actions/podcast-page';
+import * as selectors from '../../../selectors/podcast-page';
+import Loader from '../../../components/ui/loader';
+import Blankslate from '../../../components/common/blankslate';
+import EpisodeHead from '../../../components/episodes/episode-head';
+import EpisodeNotes from '../../../components/episodes/episode-notes';
 
 const EpisodePage = () => {
   const { query: { podcastId, episodeId } } = useRouter();
