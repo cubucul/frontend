@@ -12,13 +12,13 @@
   }
 }
 
-/* Image */
+/* Cover */
 
-.image {
-  max-width: 100%;
-  height: auto;
+.cover {
+  display: flex;
   border-radius: 4px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 /* Info */

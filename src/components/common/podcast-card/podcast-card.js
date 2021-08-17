@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import Image from 'next/image';
 import classNames from 'classnames';
 import styles from './podcast-card.module.css';
 
@@ -12,13 +13,14 @@ const PodcastCard = ({ id, title, author, coverUrl100, coverUrl600, withoutInfo 
   return (
     <Link href={`/podcast/${id}`}>
       <a className={styles.card}>
-        <img
-          className={styles.image}
-          src={coverUrl100 || coverUrl600}
-          width="131"
-          height="131"
-          alt={title}
-        />
+        <div className={styles.cover}>
+          <Image
+            src={coverUrl100 || coverUrl600}
+            width="131"
+            height="131"
+            alt={title}
+          />
+        </div>
         <div className={infoClass}>
           <h3 className={styles.title}>{title}</h3>
           <p className={styles.author}>{author}</p>
