@@ -10,7 +10,7 @@ class MyDocument extends Document {
     return (
       <Html className="page" lang="en">
         <Head>
-          <meta charset="utf-8" />
+          <meta charSet="utf-8" />
           <link rel="icon" href="/favicon.ico" />
           <meta name="theme-color" content="#000000" />
           <meta
