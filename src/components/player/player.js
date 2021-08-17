@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'next/link';
+import Link from 'next/link';
 import classNames from 'classnames';
 import * as actions from '../../actions/player';
 import * as selectors from '../../selectors/player';

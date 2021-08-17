@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'next/link';
+import Link from 'next/link';
 import Heading from '../../ui/heading';
 import { genres } from '../../../utils/genres';
 import styles from './genre-grid.module.css';

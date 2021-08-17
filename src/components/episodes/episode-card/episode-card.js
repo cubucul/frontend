@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Link } from 'next/link';
+import Link from 'next/link';
 import { secondsToString } from '../../../utils/time';
 import PlayControl from '../../common/play-control';
 import styles from './episode-card.module.css';
