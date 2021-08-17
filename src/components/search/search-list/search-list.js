@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './search-list.module.css';
 
 const SearchList = ({ results, focusedId, onItemClick }) => {
@@ -24,7 +25,14 @@ const SearchList = ({ results, focusedId, onItemClick }) => {
                 ref={index === focusedId ? focusedRef : null}
               >
                 <a className={styles.link}>
-                  <img className={styles.cover} src={coverUrl60} alt={title}/>
+                  <div className={styles.cover}>
+                    <Image
+                      src={coverUrl60}
+                      width="40"
+                      height="40"
+                      alt={title}
+                    />
+                  </div>
                   <div>
                     <h4 className={styles.title}>{title}</h4>
                     <p className={styles.author}>{author}</p>
