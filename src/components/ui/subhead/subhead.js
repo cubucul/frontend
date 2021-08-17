@@ -6,7 +6,7 @@ import styles from './subhead.module.css';
 const Subhead = ({ children, topSpace = false, bottomSpace = true }) => {
   const subheadClass = classNames({
     [styles.topStace]: topSpace,
-    [style.bottomSpace]: bottomSpace
+    [styles.bottomSpace]: bottomSpace
   });
 
   return (
