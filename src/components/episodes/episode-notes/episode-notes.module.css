@@ -1,6 +1,6 @@
 /* Episode Notes */
 
-.episode-notes {
+.notes {
   display: grid;
   row-gap: 16px;
   margin: 0;
@@ -10,6 +10,6 @@
   white-space:pre-wrap;
 }
 
-.episode-notes * {
+.notes * {
   margin: 0;
 }

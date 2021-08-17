@@ -11,11 +11,11 @@ import NewReleasesPage from '../../../pages/new-releases-page';
 import InProgressPage from '../../../pages/in-progress-page';
 import StarredPage from '../../../pages/starred-page';
 import ListeningHistoryPage from '../../../pages/listening-history-page';
-import './app.css';
+import styles from './app.module.css';
 
 const App = () => {
   return (
-    <div className="app">
+    <div className={styles.app}>
       <Header />
       <main>
         <Switch>

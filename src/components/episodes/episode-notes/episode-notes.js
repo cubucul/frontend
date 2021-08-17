@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './episode-notes.css';
+import styles from './episode-notes.module.css';
 
 const EpisodeNotes = ({ description }) => {
   return (
     <pre
-      className="episode-notes"
+      className={styles.notes}
       dangerouslySetInnerHTML={{__html: description}}
     />
   );

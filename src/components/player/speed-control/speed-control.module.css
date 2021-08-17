@@ -1,6 +1,6 @@
 /* Speed Control */
 
-.speed-control {
+.control {
   display: grid;
   justify-content: center;
   justify-items: center;
@@ -11,7 +11,7 @@
 
 /* Button */
 
-.speed-control__button {
+.button {
   display: none;
   justify-content: center;
   align-items: center;
@@ -25,14 +25,14 @@
   cursor: pointer;
 }
 
-.speed-control:hover .speed-control__button,
-.speed-control:focus-within .speed-control__button {
+.control:hover .button,
+.control:focus-within .button {
   display: flex;
 }
 
 /* Icon */
 
-.speed-control__icon {
+.icon {
   fill: none;
   stroke: var(--black);
   stroke-width: 2px;
@@ -42,7 +42,7 @@
 
 /* Toggle */
 
-.speed-control__toggle {
+.toggle {
   display: grid;
   grid-auto-flow: column;
   justify-content: center;

@@ -8,7 +8,7 @@ import { historySelector } from '../../../selectors/history';
 import ProgressRing from '../../ui/progress-ring';
 import { ReactComponent as PlayIcon } from './play.svg';
 import { ReactComponent as PauseIcon } from './pause.svg';
-import './play-control.css';
+import styles from './play-control.module.css';
 
 const PlayControl = ({ selectedEpisodeData, theme }) => {
   const dispatch = useDispatch();
@@ -22,11 +22,11 @@ const PlayControl = ({ selectedEpisodeData, theme }) => {
   const type = playing && episodeId === selectedEpisodeId ? 'pause' : 'play';
   const Icon = type === 'play' ? PlayIcon : PauseIcon;
   const label = `${type === 'play' ? 'Play' : 'Pause'} episode`;
-  const playControlClass = classNames('play-control', {
-    'play-control--theme--fill': theme === 'fill'
+  const playControlClass = classNames(styles.control, {
+    [styles.themeFill]: theme === 'fill'
   });
-  const playControlIconClass = classNames('play-control__icon', {
-    'play-control__icon-play': type === 'play'
+  const playControlIconClass = classNames(styles.icon, {
+    [styles.iconPlay]: type === 'play'
   });
 
   const handleClick = () => dispatch(playerPlayControl(selectedEpisodeData));
@@ -38,7 +38,7 @@ const PlayControl = ({ selectedEpisodeData, theme }) => {
       onClick={handleClick}
       aria-label={label}
     >
-      <span className="play-control__progress">
+      <span className={styles.progress}>
         <ProgressRing percent={percent} />
       </span>
       <Icon

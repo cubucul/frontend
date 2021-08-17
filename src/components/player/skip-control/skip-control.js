@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ReactComponent as SkipNextIcon } from './skip-next.svg';
 import { ReactComponent as SkipPrevIcon } from './skip-prev.svg';
-import './skip-control.css';
+import styles from './skip-control.module.css';
 
 const SkipControl = React.forwardRef(({ value }, audio) => {
   const Icon = value < 0 ? SkipPrevIcon : SkipNextIcon;
@@ -14,13 +14,13 @@ const SkipControl = React.forwardRef(({ value }, audio) => {
 
   return (
     <button
-      className="skip-control"
+      className={styles.control}
       type="button"
       onClick={onSkip}
       aria-label={label}
     >
       <Icon
-        className="skip-control__icon"
+        className={styles.icon}
         width="24"
         height="24"
         aria-hidden="true"

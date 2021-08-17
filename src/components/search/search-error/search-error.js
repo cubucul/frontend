@@ -1,11 +1,11 @@
 import React from 'react';
-import './search-error.css';
+import styles from './search-error.module.css';
 
 const SearchError = () => {
   return (
-    <div className="search-error">
-      <h3 className="search-error__title">No podcasts found</h3>
-      <p className="search-error__text">Try more general, or different, keywords</p>
+    <div className={styles.error}>
+      <h3 className={styles.title}>No podcasts found</h3>
+      <p className={styles.text}>Try more general, or different, keywords</p>
     </div>
   );
 };

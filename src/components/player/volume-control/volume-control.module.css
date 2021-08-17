@@ -1,6 +1,6 @@
 /* Volume Control */
 
-.volume-control {
+.control {
   display: grid;
   grid-auto-flow: column;
   align-items: center;
@@ -9,7 +9,7 @@
 
 /* Button */
 
-.volume-control__button {
+.button {
   margin: 0;
   padding: 0;
   border: none;
@@ -20,7 +20,7 @@
 
 /* Icon */
 
-.volume-control__icon {
+.icon {
   fill: none;
   stroke: var(--white);
   stroke-width: 2px;

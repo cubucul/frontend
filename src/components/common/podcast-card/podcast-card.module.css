@@ -1,11 +1,11 @@
 /* Podcast Card */
 
-.podcast-card {
+.card {
   text-decoration: none;
 }
 
 @media (max-width: 953px) {
-  .podcast-card {
+  .card {
     display: grid;
     grid-template-columns: 60px 1fr;
     column-gap: 16px;
@@ -14,7 +14,7 @@
 
 /* Image */
 
-.podcast-card__image {
+.image {
   max-width: 100%;
   height: auto;
   border-radius: 4px;
@@ -24,14 +24,14 @@
 /* Info */
 
 @media (min-width: 954px) {
-  .podcast-card__info--without-info {
+  .withoutInfo {
     display: none;
   }
 }
 
 /* Title */
 
-.podcast-card__title {
+.title {
   margin: 0;
   font-weight: 700;
   font-size: 15px;
@@ -41,7 +41,7 @@
 
 /* Author */
 
-.podcast-card__author {
+.author {
   margin: 0;
   font-size: 14px;
   line-height: 22px;

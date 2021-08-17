@@ -4,7 +4,7 @@ import { playerPlaybackRateSelector } from '../../../selectors/player';
 import { ReactComponent as PlusIcon } from './plus.svg';
 import { ReactComponent as MinusIcon } from './minus.svg';
 import { ReactComponent as XIcon } from './x.svg';
-import './speed-control.css';
+import styles from './speed-control.module.css';
 
 const SpeedControl = React.forwardRef((_, audio) => {
   const playbackRate = useSelector(playerPlaybackRateSelector);
@@ -33,42 +33,42 @@ const SpeedControl = React.forwardRef((_, audio) => {
   };
 
   return (
-    <div className="speed-control">
+    <div className={styles.control}>
       <button
-        className="speed-control__button"
+        className={styles.button}
         type="button"
         onClick={() => onRateChange(0.1)}
         aria-label="Increase speed"
       >
         <PlusIcon
-          className="speed-control__icon"
+          className={styles.icon}
           width="12"
           height="12"
           aria-hidden="true"
         />
       </button>
       <button
-        className="speed-control__toggle"
+        className={styles.toggle}
         type="button"
         onClick={onToggleRateChange}
         aria-label="Change speed"
       >
         <span>{playbackRate}</span>
         <XIcon
-          className="speed-control__icon"
+          className={styles.icon}
           width="12"
           height="12"
           aria-hidden="true"
         />
       </button>
       <button
-        className="speed-control__button"
+        className={styles.button}
         type="button"
         onClick={() => onRateChange(-0.1)}
         aria-label="Decrease speed"
       >
         <MinusIcon
-          className="speed-control__icon"
+          className={styles.icon}
           width="12"
           height="12"
           aria-hidden="true"

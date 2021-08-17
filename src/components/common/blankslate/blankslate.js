@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Heading from '../../ui/heading';
-import './blankslate.css';
+import styles from './blankslate.module.css';
 
 const Blankslate = ({ title, text }) => {
   return (
-    <div className="blankslate">
-      <div className="blankslate__title">
+    <div className={styles.blankslate}>
+      <div className={styles.title}>
         <Heading size="h5">{title}</Heading>
       </div>
-      <p className="blankslate__text">{text}</p>
+      <p className={styles.text}>{text}</p>
     </div>
   );
 };

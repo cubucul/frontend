@@ -2,28 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import './podcast-card.css';
+import styles from './podcast-card.module.css';
 
 const PodcastCard = ({ id, title, author, coverUrl100, coverUrl600, withoutInfo }) => {
-  const infoClass = classNames('podcast-card__info', {
-    'podcast-card__info--without-info': withoutInfo
+  const infoClass = classNames({
+    [styles.withoutInfo]: withoutInfo
   });
 
   return (
     <Link
-      className="podcast-card"
+      className={styles.card}
       to={`/podcast/${id}`}
     >
       <img
-        className="podcast-card__image"
+        className={styles.image}
         src={coverUrl100 || coverUrl600}
         width="131"
         height="131"
         alt={title}
       />
       <div className={infoClass}>
-        <h3 className="podcast-card__title">{title}</h3>
-        <p className="podcast-card__author">{author}</p>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.author}>{author}</p>
       </div>
     </Link>
   );

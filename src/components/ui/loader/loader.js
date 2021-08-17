@@ -1,17 +1,17 @@
 import React from 'react';
 import { ReactComponent as LoaderIcon } from './loader.svg';
-import './loader.css';
+import styles from './loader.module.css';
 
 const Loader = () => {
   return (
-    <div className="loader">
+    <div className={styles.loader}>
       <LoaderIcon
-        className="loader__icon"
+        className={styles.icon}
         width="24"
         height="24"
         aria-hidden="true"
       />
-      <span className="loader__text">Loading...</span>
+      <span className={styles.text}>Loading...</span>
     </div>
   );
 };

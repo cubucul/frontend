@@ -3,36 +3,36 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Heading from '../../ui/heading';
 import SubscribeButton from '../subscribe-button';
-import './podcast-head.css';
+import styles from './podcast-head.module.css';
 
 const PodcastHead = (props) => {
   const { coverUrl600, title, author, summary, link, subscribed, onSubscribe } = props;
-  const descriptionClass = classNames('podcast-head__description', {
-    'podcast-head__description--full-space': !link
+  const descriptionClass = classNames(styles.description, {
+    [styles.fullSpace]: !link
   });
 
   return (
-    <div className="podcast-head">
+    <div className={styles.head}>
       <img
-        className="podcast-head__image"
+        className={styles.image}
         src={coverUrl600}
         width="210"
         height="210"
         alt={title}
       />
       <SubscribeButton
-        className="podcast-head__subscribe-button"
+        className={styles.button}
         subscribed={subscribed}
         onSubscribe={onSubscribe}
       />
-      <div className="podcast-head__title">
+      <div className={styles.title}>
         <Heading size="h4">{title}</Heading>
       </div>
-      <p className="podcast-head__author">{author}</p>
+      <p className={styles.author}>{author}</p>
       {
         link &&
           <a
-            className="podcast-head__link"
+            className={styles.link}
             href={link}
             target="_blank"
             rel="noreferrer"

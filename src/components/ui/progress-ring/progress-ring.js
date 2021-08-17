@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './progress-ring.css';
+import styles from './progress-ring.module.css';
 
 const ProgressRing = ({ percent }) => {
   const radius = 16;
@@ -11,13 +11,12 @@ const ProgressRing = ({ percent }) => {
 
   return (
     <svg
-      className="progress-ring"
       width={radius * 2}
       height={radius * 2}
       aria-hidden="true"
     >
       <circle
-        className="progress-ring__progress"
+        className={styles.progress}
         strokeWidth={stroke}
         strokeDasharray={`${circumference} ${circumference}`}
         strokeDashoffset={offset}

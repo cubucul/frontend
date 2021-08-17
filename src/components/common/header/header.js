@@ -1,7 +1,7 @@
 import React from 'react';
 import Search from '../../search';
 import Navigation from '../../ui/navigation';
-import './header.css';
+import styles from './header.module.css';
 
 const Header = () => {
   const links = [
@@ -14,7 +14,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="header">
+    <header className={styles.header}>
       <Search />
       <Navigation links={links} />
     </header>

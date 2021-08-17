@@ -1,10 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import './range.css';
+import styles from './range.module.css';
 
 const Range = ({ min, max, step, value, onChange, className }) => {
-  const rangeClass = classNames('range', className);
+  const rangeClass = classNames(styles.range, className);
 
   return (
     <input

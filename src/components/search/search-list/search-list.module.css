@@ -1,6 +1,6 @@
 /* List */
 
-.search-list {
+.list {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -8,13 +8,13 @@
 
 /* Item */
 
-.search-list__item:not(:first-child) {
+.item:not(:first-child) {
   margin-top: -1px;
 }
 
 /* Link */
 
-.search-list__link {
+.link {
   position: relative;
   display: grid;
   grid-template-columns: min-content 1fr;
@@ -23,16 +23,16 @@
   text-decoration: none;
 }
 
-.search-list__link:focus {
+.link:focus {
   outline: none;
 }
 
-.search-list__link:hover,
-.search-list__link:focus {
+.link:hover,
+.link:focus {
   background-color: var(--gray-400);
 }
 
-.search-list__item:not(:last-child) .search-list__link::after {
+.item:not(:last-child) .link::after {
   content: '';
   position: absolute;
   right: 16px;
@@ -43,14 +43,14 @@
 
 /* Cover */
 
-.search-list__cover {
+.cover {
   width: 40px;
   height: 40px;
 }
 
 /* Title */
 
-.search-list__title {
+.title {
   margin: 0;
   margin-top: -3px;
   font-weight: 700;
@@ -61,7 +61,7 @@
 
 /* Author */
 
-.search-list__author {
+.author {
   margin: 0;
   margin-top: -3px;
   font-size: 14px;

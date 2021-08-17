@@ -11,7 +11,7 @@ import ProgressControl from './progress-control';
 import PlayControl from '../common/play-control';
 import { ReactComponent as PopoverClosedIcon } from './popover.svg'
 import { ReactComponent as PopoverExpandedIcon } from './popover-expanded.svg'
-import './player.css';
+import styles from './player.module.css';
 
 const Player = () => {
   const [expanded, setExpanded] = useState(false);
@@ -33,9 +33,9 @@ const Player = () => {
   const popoverLabelText = expanded ? 'Minify player' : 'Expand player';
   const PopoverIcon = expanded ? PopoverExpandedIcon : PopoverClosedIcon;
 
-  const playerClass = classNames('player', {
-    'player--full': expanded,
-    'player--mini': !expanded
+  const playerClass = classNames(styles.player, {
+    [styles.full]: expanded,
+    [styles.mini]: !expanded
   });
 
 
@@ -110,17 +110,17 @@ const Player = () => {
 
   return (
     <div className={playerClass}>
-      <div className="player__widget">
+      <div className={styles.widget}>
         {
           canPlay &&
             <button
-              className="player__popover"
+              className={styles.popover}
               type="button"
               onClick={togglePlayerView}
               aria-label={popoverLabelText}
             >
               <PopoverIcon
-                className="player__popover-icon"
+                className={styles.popoverIcon}
                 width="38"
                 height="17"
                 aria-hidden="true"
@@ -141,17 +141,17 @@ const Player = () => {
           autoPlay={false}
         />
         { loading ?
-          <p className="player__spinner">Loading...</p>
+          <p className={styles.spinner}>Loading...</p>
           :
-          <div className="player__inner">
+          <div className={styles.inner}>
             <img
-              className="player__image"
+              className={styles.image}
               src={coverUrl600}
               width="72"
               height="72"
               alt={`Podcast ${podcastTitle} cover`}
             />
-            <div className="player__play-controls">
+            <div className={styles.playControls}>
               <SkipControl ref={audio} value={-15} />
               <PlayControl
                 theme="fill"
@@ -161,18 +161,18 @@ const Player = () => {
               />
               <SkipControl ref={audio} value={30} />
             </div>
-            <div className="player__controls">
-              <div className="player__info">
-                <h3 className="player__title">
+            <div className={styles.controls}>
+              <div className={styles.info}>
+                <h3 className={styles.title}>
                   <Link
-                    className="player__title-link"
+                    className={styles.titleLink}
                     to={`/podcast/${podcastId}/${episodeId}`}
                   >
                     {title}
                   </Link>
                 </h3>
                 <Link
-                  className="player__author"
+                  className={styles.author}
                   to={`/podcast/${podcastId}`}
                 >
                   {podcastTitle}
@@ -180,10 +180,10 @@ const Player = () => {
               </div>
               <ProgressControl ref={audio} />
             </div>
-            <div className="player__speed">
+            <div className={styles.speed}>
               <SpeedControl ref={audio} />
             </div>
-            <div className="player__volume">
+            <div className={styles.volume}>
               <VolumeControl ref={audio} />
             </div>
           </div>

@@ -1,20 +1,20 @@
 /* Genre Grid */
 
-.genre-grid {
+.grid {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 @media (max-width: 953px) {
-  .genre-grid {
+  .grid {
     display: grid;
     row-gap: 8px;
   }
 }
 
 @media (min-width: 954px) {
-  .genre-grid {
+  .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 24px;
@@ -24,7 +24,7 @@
 
 /* Link */
 
-.genre-grid__link {
+.link {
   color: var(--primary);
   text-decoration: none;
 }

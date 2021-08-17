@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { secondsToString } from '../../../utils/time';
 import PlayControl from '../../common/play-control';
-import './episode-card.css';
+import styles from './episode-card.module.css';
 
 const EpisodeCard = ({ episodeData, noImage, noPodcastLink }) => {
   const {
@@ -20,8 +20,8 @@ const EpisodeCard = ({ episodeData, noImage, noPodcastLink }) => {
     number,
     episodeType
   } = episodeData;
-  const titleClass = classNames('episode-card__title', {
-    'episode-card__title--regular': noPodcastLink
+  const titleClass = classNames(styles.title, {
+    [styles.regular]: noPodcastLink
   });
 
   const getEpisodeIndex = () => {
@@ -43,16 +43,16 @@ const EpisodeCard = ({ episodeData, noImage, noPodcastLink }) => {
   };
 
   const episodeIndex = getEpisodeIndex();
-  const episodeCardClass = classNames('episode-card', {
-    'episode-card--noindex': noImage && !episodeIndex,
-    'episode-cart--with-image': !noImage
+  const episodeCardClass = classNames(styles.card, {
+    [styles.noIndex]: noImage && !episodeIndex,
+    [styles.withImage]: !noImage
   });
 
   return (
     <div className={episodeCardClass}>
       { !noImage &&
         <img
-          className="episode-card__image"
+          className={styles.image}
           src={coverUrl600}
           width="60"
           height="60"
@@ -60,21 +60,21 @@ const EpisodeCard = ({ episodeData, noImage, noPodcastLink }) => {
         />
       }
       { noImage && episodeIndex &&
-        <span className="episode-card__index">{episodeIndex}</span>
+        <span className={styles.index}>{episodeIndex}</span>
       }
-      <div className="episode-card__heading">
+      <div className={styles.heading}>
         <h3 className={titleClass}>
           <Link
-            className="episode-card__link"
+            className={styles.link}
             to={`/podcast/${podcastId}/${episodeId}`}
           >{title}</Link>
         </h3>
       </div>
-      <p className="episode-card__published">{published}</p>
-      <span className="episode-card__duration">
+      <p className={styles.published}>{published}</p>
+      <span className={styles.duration}>
         {secondsToString(duration)}
       </span>
-      <div className="episode-card__control">
+      <div className={styles.control}>
         <PlayControl
           selectedEpisodeData={{
             episodeId,

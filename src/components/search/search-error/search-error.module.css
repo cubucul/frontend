@@ -1,13 +1,13 @@
 /* Error */
 
-.search-error {
+.error {
   padding: 32px;
   text-align: center;
 }
 
 /* Title */
 
-.search-error__title {
+.title {
   margin: 0;
   margin-bottom: 16px;
   font-weight: 700;
@@ -18,7 +18,7 @@
 
 /* Text */
 
-.search-error__text {
+.text {
   margin: 0;
   font-size: 15px;
   line-height: 24px;

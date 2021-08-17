@@ -6,7 +6,7 @@ import { ReactComponent as Volume2Icon } from './volume-2.svg';
 import { ReactComponent as Volume1Icon } from './volume-1.svg';
 import { ReactComponent as VolumeIcon } from './volume.svg';
 import { ReactComponent as VolumeXIcon } from './volume-x.svg';
-import './volume-control.css';
+import styles from './volume-control.module.css';
 
 const VolumeControl = React.forwardRef((_, audio) => {
   const volume = useSelector(playerVolumeSelector);
@@ -25,15 +25,15 @@ const VolumeControl = React.forwardRef((_, audio) => {
   };
 
   return (
-    <div className="volume-control">
+    <div className={styles.control}>
       <button
-        className="volume-control__button"
+        className={styles.button}
         type="button"
         aria-label={muted ? 'Unmute' : 'Mute'}
         onClick={onMuteToggle}
       >
         <Icon
-          className="volume-control__icon"
+          className={styles.icon}
           width="24"
           height="24"
           aria-hidden="true"

@@ -20,7 +20,7 @@
 
 /* Icon */
 
-.loader__icon {
+.icon {
   fill: none;
   stroke: var(--primary);
   stroke-width: 4px;
@@ -29,7 +29,7 @@
 
 /* Text */
 
-.loader__text {
+.text {
   font-size: 14px;
   line-height: 22px;
 }

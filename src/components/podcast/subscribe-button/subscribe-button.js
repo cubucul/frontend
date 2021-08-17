@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Button from '../../ui/button';
-import './subscribe-button.css';
+import styles from './subscribe-button.module.css';
 
 const SubscribeButton = ({ subscribed, onSubscribe, className }) => {
   const buttonText = subscribed ? 'Unsubscribe' : 'Subscribe';
-  const buttonClass = classNames('subscribe-button', {
-    'subscribe-button--subscribed': subscribed
+  const buttonClass = classNames(styles.button, {
+    [styles.subscribed]: subscribed
   }, className);
 
   return (

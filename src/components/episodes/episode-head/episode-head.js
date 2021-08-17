@@ -6,7 +6,7 @@ import { playerPlayControl } from '../../../actions/player';
 import { playerPlayingSelector, playerEpisodeIdSelector } from '../../../selectors/player';
 import Heading from '../../ui/heading';
 import Button from '../../ui/button';
-import './episode-head.css';
+import styles from './episode-head.module.css';
 
 const EpisodeHead = (props) => {
   const { podcastId, episodeId, podcastTitle, episodeTitle, coverUrl600, published, url, duration } = props;
@@ -28,28 +28,27 @@ const EpisodeHead = (props) => {
   const handleClick = () => dispatch(playerPlayControl(selectedEpisodeData));
 
   return (
-    <div className="episode-head">
+    <div className={styles.head}>
       <img
-        className="episode-head__image"
+        className={styles.image}
         src={coverUrl600}
         width="210"
         height="210"
         alt={podcastTitle}
       />
       <Button
-        className="episode-head__play-button"
         onClick={handleClick}
       >{buttonText}</Button>
-      <div className="episode-head__content">
+      <div className={styles.content}>
         <Link
-          className="episode-head__author"
+          className={styles.author}
           to={`/podcast/${podcastId}`}
         >{podcastTitle}</Link>
         <Heading
-          className="episode-head__title"
+          className={styles.title}
           size="h5"
         >{episodeTitle}</Heading>
-        <p className="episode-head__published">{published}</p>
+        <p className={styles.published}>{published}</p>
       </div>
     </div>
   );

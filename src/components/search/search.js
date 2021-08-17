@@ -5,7 +5,7 @@ import * as selectors from '../../selectors/search';
 import SearchForm from './search-form';
 import SearchList from './search-list';
 import SearchError from './search-error';
-import './search.css';
+import styles from './search.module.css';
 
 const Search = () => {
   const [showResults, setShowResults] = useState(false);
@@ -90,7 +90,7 @@ const Search = () => {
   }, []);
 
   return (
-    <div className="search">
+    <div className={styles.search}>
       <SearchForm
         ref={form}
         term={term}
@@ -104,12 +104,12 @@ const Search = () => {
         { showResults && term.length > 0 &&
           <>
             { error &&
-              <div className="search__popup">
+              <div className={styles.popup}>
                 <SearchError />
               </div>
             }
             { results.length > 0 &&
-              <div className="search__popup">
+              <div className={styles.popup}>
                 <SearchList
                   results={results}
                   focusedId={focusedId}

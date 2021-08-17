@@ -1,6 +1,6 @@
 /* Play Control */
 
-.play-control {
+.control {
   position: relative;
   display: flex;
   justify-content: center;
@@ -15,13 +15,13 @@
   cursor: pointer;
 }
 
-.play-control:hover {
+.control:hover {
   background-color: var(--primary);
 }
 
 /* Icon */
 
-.play-control__icon {
+.icon {
   fill: var(--primary);
   stroke: var(--primary);
   stroke-width: 2px;
@@ -29,43 +29,43 @@
   stroke-linejoin: round;
 }
 
-.play-control:hover .play-control__icon {
+.control:hover .icon {
   fill: var(--white);
   stroke: var(--white);
 }
 
 /* Play Icon */
 
-.play-control__icon-play {
+.iconPlay {
   margin-left: 2px;
 }
 
 /* Progress */
 
-.play-control__progress {
+.progress {
   position: absolute;
   top: -2px;
   left: -2px;
 }
 
-.play-control:hover .play-control__progress {
+.control:hover .progress {
   display: none;
 }
 
 /* Theme Fill */
 
-.play-control--theme--fill,
-.play-control--theme--fill:hover {
+.themeFill,
+.themeFill:hover {
   border-color: var(--white);
   background-color: var(--white);
 }
 
-.play-control--theme--fill .play-control__icon,
-.play-control--theme--fill:hover .play-control__icon {
+.themeFill .icon,
+.themeFill:hover .icon {
   fill: var(--black);
   stroke: var(--black);
 }
 
-.play-control--theme--fill .play-control__progress {
+.themeFill .progress {
   display: none;
 }

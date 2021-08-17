@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import './search-list.css';
+import styles from './search-list.module.css';
 
 const SearchList = ({ results, focusedId, onItemClick }) => {
   const focusedRef = useRef();
@@ -13,21 +13,21 @@ const SearchList = ({ results, focusedId, onItemClick }) => {
   }, [focusedId]);
 
   return (
-    <ul className="search-list">
+    <ul className={styles.list}>
       {
         results.map(({ id, title, author, coverUrl60 }, index) => {
           return (
-            <li key={id} className="search-list__item">
+            <li key={id} className={styles.item}>
               <Link
-                className="search-list__link"
+                className={styles.link}
                 to={`/podcast/${id}`}
                 onClick={onItemClick}
                 ref={index === focusedId ? focusedRef : null}
               >
-                <img className="search-list__cover" src={coverUrl60} alt={title}/>
+                <img className={styles.cover} src={coverUrl60} alt={title}/>
                 <div>
-                  <h4 className="search-list__title">{title}</h4>
-                  <p className="search-list__author">{author}</p>
+                  <h4 className={styles.title}>{title}</h4>
+                  <p className={styles.author}>{author}</p>
                 </div>
               </Link>
             </li>

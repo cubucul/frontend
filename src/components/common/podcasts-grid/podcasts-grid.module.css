@@ -1,20 +1,20 @@
 /* Podcasts Grid */
 
-.podcasts-grid {
+.grid {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 @media (max-width: 953px) {
-  .podcasts-grid {
+  .grid {
     display: grid;
     row-gap: 16px;
   }
 }
 
 @media (min-width: 954px) {
-  .podcasts-grid {
+  .grid {
     display: grid;
     grid-template-columns: repeat(6, 131px);
     gap: 24px;
@@ -24,7 +24,7 @@
 /* Item */
 
 @media (max-width: 953px) {
-  .podcasts-grid__item--with-counter {
+  .withCounter {
     display: grid;
     grid-template-columns: 16px 1fr;
     column-gap: 8px;
@@ -33,7 +33,7 @@
 }
 
 @media (min-width: 954px) {
-  .podcasts-grid__item--with-counter {
+  .withCounter {
     display: grid;
     row-gap: 8px;
     align-content: start;
@@ -42,14 +42,14 @@
 
 /* Counter */
 
-.podcasts-grid__counter {
+.counter {
   font-size: 14px;
   line-height: 22px;
   color: var(--gray-800);
 }
 
 @media (min-width: 954px) {
-  .podcasts-grid__counter {
+  .counter {
     text-align: center;
   }
 }

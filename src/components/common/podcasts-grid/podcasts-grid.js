@@ -2,22 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import PodcastCard from '../podcast-card';
-import './podcasts-grid.css';
+import styles from './podcasts-grid.module.css';
 
 const PodcastsGrid = ({ podcasts, withoutInfo, showCounter }) => {
-  const itemClass = classNames('podcasts-grid__item', {
-    'podcasts-grid__item--with-counter': showCounter
+  const itemClass = classNames({
+    [styles.withCounter]: showCounter
   });
 
   return (
-    <ul className="podcasts-grid">
+    <ul className={styles.grid}>
       {
         podcasts.map((podcast, index) => {
           return (
             <li key={podcast.id} className={itemClass}>
               {
                 showCounter &&
-                  <span className="podcasts-grid__counter">{index + 1}</span>
+                  <span className={styles.counter}>{index + 1}</span>
                 }
               <PodcastCard {...podcast} withoutInfo={withoutInfo} />
             </li>

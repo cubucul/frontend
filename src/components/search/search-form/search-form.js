@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import { ReactComponent as SearchIcon } from './search.svg';
 import { ReactComponent as SpinnerIcon } from './spinner.svg';
 import { ReactComponent as CloseIcon } from './close.svg';
-import './search-form.css';
+import styles from './search-form.module.css';
 
 const SearchForm = React.forwardRef(({
   term, loading, onSubmit, onChange, onFocus, onClear, onKeyDown }, ref) => {
   return (
-    <form ref={ref} className="search-form" onSubmit={onSubmit}>
-      <div className="search-form__field">
+    <form ref={ref} onSubmit={onSubmit}>
+      <div className={styles.field}>
         <label className="visually-hidden" htmlFor="search">Find podcasts</label>
         <input
-          className="search-form__input"
+          className={styles.input}
           id="search"
           type="text"
           value={term}
@@ -23,7 +23,7 @@ const SearchForm = React.forwardRef(({
         />
         { !loading &&
           <SearchIcon
-            className="search-form__icon search-form__icon-search"
+            className={styles.iconSearch}
             width="18"
             height="18"
             aria-hidden="true"
@@ -31,7 +31,7 @@ const SearchForm = React.forwardRef(({
         }
         { loading &&
           <SpinnerIcon
-            className="search-form__icon search-form__icon-spinner"
+            className={styles.iconSpinner}
             width="18"
             height="18"
             aria-hidden="true"
@@ -39,13 +39,13 @@ const SearchForm = React.forwardRef(({
         }
         { term.length > 0 &&
           <button
-            className="search-form__clear"
+            className={styles.clear}
             type="button"
             aria-label="Clear field"
             onClick={onClear}
           >
             <CloseIcon
-              className="search-form__icon search-form__icon-close"
+              className={styles.iconClose}
               width="18"
               height="18"
               aria-hidden="true"

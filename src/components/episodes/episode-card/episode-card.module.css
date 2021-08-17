@@ -1,7 +1,7 @@
 /* Episode Card */
 
 @media (max-width: 953px) {
-  .episode-card {
+  .card {
     display: grid;
     grid-template-areas:
       'index published control'
@@ -12,7 +12,7 @@
     column-gap: 16px;
   }
 
-  .episode-card--noindex {
+  .noIndex {
     grid-template-areas:
       'published published control'
       'heading heading control'
@@ -20,7 +20,7 @@
     ;
   }
 
-  .episode-cart--with-image {
+  .withImage {
     grid-template-areas:
       'image published published control'
       'image heading heading control'
@@ -31,7 +31,7 @@
 }
 
 @media (min-width: 954px) {
-  .episode-card {
+  .card {
     display: grid;
     grid-template-columns: min-content 1fr 120px 60px min-content;
     grid-auto-flow: column;
@@ -40,7 +40,7 @@
     width: 100%;
   }
 
-  .episode-card--noindex {
+  .noIndex {
     grid-template-columns: 1fr 120px 60px min-content;
   }
 }
@@ -48,12 +48,12 @@
 /* Image */
 
 @media (max-width: 953px) {
-  .episode-card__image {
+  .image {
     grid-area: image;
   }
 }
 
-.episode-card__image {
+.image {
   display: block;
   border-radius: 2px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
@@ -61,7 +61,7 @@
 
 /* Index */
 
-.episode-card__index {
+.index {
   white-space: nowrap;
   font-size: 15px;
   line-height: 24px;
@@ -69,7 +69,7 @@
 }
 
 @media (max-width: 953px) {
-  .episode-card__index {
+  .index {
     grid-area: index;
   }
 }
@@ -77,14 +77,14 @@
 /* Heading */
 
 @media (max-width: 953px) {
-  .episode-card__heading {
+  .heading {
     grid-area: heading;
   }
 }
 
 /* Title */
 
-.episode-card__title {
+.title {
   margin: 0;
   font-weight: 700;
   font-size: 15px;
@@ -92,24 +92,24 @@
   color: var(--black);
 }
 
-.episode-card__title--regular {
+.regular {
   font-weight: 400;
 }
 
 /* Link */
 
-.episode-card__link {
+.link {
   text-decoration: none;
   color: inherit;
 }
 
-.episode-card__link:hover {
+.link:hover {
   color: var(--primary);
 }
 
 /* Published */
 
-.episode-card__published {
+.published {
   margin: 0;
   font-size: 15px;
   line-height: 24px;
@@ -117,14 +117,14 @@
 }
 
 @media (max-width: 953px) {
-  .episode-card__published {
+  .published {
     grid-area: published;
   }
 }
 
 /* Duration */
 
-.episode-card__duration {
+.duration {
   margin: 0;
   font-size: 15px;
   line-height: 24px;
@@ -132,13 +132,13 @@
 }
 
 @media (max-width: 953px) {
-  .episode-card__duration {
+  .duration {
     grid-area: duration;
   }
 }
 
 @media (min-width: 954px) {
-  .episode-card__duration {
+  .duration {
     text-align: right;
   }
 }
@@ -146,7 +146,7 @@
 /* Control */
 
 @media (max-width: 953px) {
-  .episode-card__control {
+  .control {
     grid-area: control;
     align-self: center;
     justify-self: end;

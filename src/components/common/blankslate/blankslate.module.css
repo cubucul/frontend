@@ -11,13 +11,13 @@
 
 /* Title */
 
-.blankslate__title {
+.title {
   margin-bottom: 24px;
 }
 
 /* Text */
 
-.blankslate__text {
+.text {
   margin: 0;
   font-size: 18px;
   line-height: 26px;

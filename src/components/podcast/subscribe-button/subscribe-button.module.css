@@ -1,17 +1,17 @@
 /* Subscribe Button */
 
-.subscribe-button {
+.button {
   background-color: var(--success);
 }
 
 /* Subscribed */
 
-.subscribe-button--subscribed {
+.subscribed {
   background-color: var(--gray-500);
   color: var(--gray-800);
 }
 
-.subscribe-button--subscribed:hover {
+.subscribed:hover {
   background-color: var(--cta);
   color: var(--white);
 }

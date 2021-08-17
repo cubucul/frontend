@@ -11,20 +11,20 @@
 /* Limiter */
 
 @media (max-width: 953px) {
-  .navigation__limiter {
+  .limiter {
     width: 100%;
     overflow-x: auto;
     scrollbar-width: none;
   }
 
-  .navigation__limiter::-webkit-scrollbar {
+  .limiter::-webkit-scrollbar {
     display: none;
   }
 }
 
 /* List */
 
-.navigation__list {
+.list {
   display: grid;
   grid-auto-flow: column;
   margin: 0;
@@ -33,7 +33,7 @@
 }
 
 @media (max-width: 953px) {
-  .navigation__list {
+  .list {
     width: max-content;
     column-gap: 24px;
     margin-right: auto;
@@ -44,7 +44,7 @@
 }
 
 @media (min-width: 954px) {
-  .navigation__list {
+  .list {
     column-gap: 32px;
     justify-content: center;
   }
@@ -52,13 +52,13 @@
 
 /* Link */
 
-.navigation__link {
+.link {
   color: var(--black);
   text-decoration: none;
 }
 
 /* Active Link */
 
-.navigation__link--active {
+.active {
   color: var(--primary);
 }

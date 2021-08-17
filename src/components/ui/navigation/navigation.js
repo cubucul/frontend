@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import './navigation.css';
+import styles from './navigation.module.css';
 
 const Navigation = ({ links }) => {
   return (
-    <nav className="navigation">
-      <div className="navigation__limiter">
-        <ul className="navigation__list">
+    <nav className={styles.navigation}>
+      <div className={styles.limiter}>
+        <ul className={styles.list}>
           {
             links.map(({ label, path }) => {
               return (
                 <li key={path}>
                   <NavLink
-                    className="navigation__link"
-                    activeClassName="navigation__link--active"
+                    className={styles.link}
+                    activeClassName={styles.active}
                     to={path}
                     exact
                   >{label}</NavLink>

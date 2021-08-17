@@ -1,7 +1,7 @@
 /* Progress */
 
 @media (max-width: 953px) {
-  .progress-control {
+  .control {
     display: grid;
     grid-template-areas:
       'range range'
@@ -11,7 +11,7 @@
 }
 
 @media (min-width: 954px) {
-  .progress-control {
+  .control {
     display: grid;
     grid-template-columns: min-content 1fr min-content;
     align-items: center;
@@ -22,14 +22,14 @@
 /* Range */
 
 @media (max-width: 953px) {
-  .progress-control__range {
+  .range {
     grid-area: range;
   }
 }
 
 /* Time */
 
-.progress-control__time {
+.time {
   min-width: 64px;
   font-size: 14px;
   line-height: 20px;
@@ -37,18 +37,18 @@
 }
 
 @media (max-width: 953px) {
-  .progress-control__time--left {
+  .timeLeft {
     grid-area: left;
   }
 
-  .progress-control__time--right {
+  .timeRight {
     grid-area: right;
     text-align: right;
   }
 }
 
 @media (min-width: 954px) {
-  .progress-control__time--left {
+  .timeLeft {
     text-align: right;
   }
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import './heading.css';
+import styles from './heading.module.css';
 
 const Heading = ({ as = 'h1', size = 'h1', children, className }) => {
   const TagName = as;
-  const headingClass = classNames('heading', `heading--size--${size}`, className);
+  const headingClass = classNames(styles.heading, styles[size], className);
 
   return (
     <TagName className={headingClass}>{children}</TagName>

@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './episode-list.css';
+import styles from './episode-list.module.css';
 
 export const EpisodeList = ({ children }) => (
-  <ul className="episode-list">{children}</ul>
+  <ul className={styles.list}>{children}</ul>
 );
 
 export const EpisodeListItem = ({ children }) => (
-  <li className="episode-list__item">{children}</li>
+  <li className={styles.item}>{children}</li>
 );
 
 EpisodeList.propTypes = {

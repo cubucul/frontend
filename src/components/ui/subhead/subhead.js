@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import './subhead.css';
+import styles from './subhead.module.css';
 
 const Subhead = ({ children, topSpace = false, bottomSpace = true }) => {
-  const subheadClass = classNames('subhead', {
-    'subhead--top-space': topSpace,
-    'subhead--bottom-space': bottomSpace
+  const subheadClass = classNames({
+    [styles.topStace]: topSpace,
+    [style.bottomSpace]: bottomSpace
   });
 
   return (

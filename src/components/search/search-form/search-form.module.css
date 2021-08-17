@@ -1,12 +1,12 @@
 /* Field */
 
-.search-form__field {
+.field {
   position: relative;
 }
 
 /* Input */
 
-.search-form__input {
+.input {
   width: 100%;
   margin: 0;
   padding: 8px 22px;
@@ -22,26 +22,26 @@
 
 /* Placeholder */
 
-.search-form__input::placeholder {
+.input::placeholder {
   color: var(--gray-800);
 }
 
 /* Focus */
 
-.search-form__input:focus {
+.input:focus {
   outline: none;
 }
 
 /* Icon */
 
-.search-form__icon {
+.icon {
   stroke-width: 2px;
   fill: none;
 }
 
 /* Icon Search */
 
-.search-form__icon-search {
+.iconSearch {
   position: absolute;
   top: 12px;
   left: 0;
@@ -49,13 +49,13 @@
   stroke: var(--gray-800);
 }
 
-.search-form__input:focus + .search-form__icon-search {
+.input:focus + .iconSearch {
   stroke: var(--black);
 }
 
 /* Clear */
 
-.search-form__clear {
+.clear {
   position: absolute;
   top: 0;
   right: -11px;
@@ -74,12 +74,12 @@
 
 /* Icon Close */
 
-.search-form__icon-close {
+.iconClose {
   display: block;
   stroke: var(--black);
 }
 
-.search-form__clear:hover .search-form__icon-close {
+.clear:hover .iconClose {
   stroke: var(--gray-800);
 }
 
@@ -97,7 +97,7 @@
 
 /* Icon Spinner */
 
-.search-form__icon-spinner {
+.iconSpinner {
   position: absolute;
   top: 12px;
   left: 0;
