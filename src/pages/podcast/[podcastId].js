@@ -1,60 +1,22 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
-import { getPodcastPageData } from '../../actions/podcast-page';
+import { fetchPodcastPageData} from '../../services/rss';
+import { getPodcastByGenre } from '../../services/topPodcasts';
 import { subscriptionsChange } from '../../actions/subscriptions';
 import { hasInSubscriptionsSelector } from '../../selectors/subscriptions';
-import * as selectors from '../../selectors/podcast-page';
-import Loader from '../../components/ui/loader';
-import Blankslate from '../../components/common/blankslate';
 import PodcastHead from '../../components/podcast/podcast-head';
 import { EpisodeList, EpisodeListItem } from '../../components/episodes/episode-list';
 import EpisodeCard from '../../components/episodes/episode-card';
 
-const PodcastPage = () => {
-  const { query: { podcastId } } = useRouter();
-  const dispatch = useDispatch();
-  const loading = useSelector(selectors.podcastLoadingSelector);
-  const error = useSelector(selectors.podcastErrorSelector);
-  const podcastData = useSelector(selectors.podcastDataSelector);
-  const subscribed = useSelector(hasInSubscriptionsSelector);
+const PodcastPage = ({ podcastData }) => {
   const { id, coverUrl600, title, author, summary, episodes, link } = podcastData;
-
-  useEffect(() => {
-    if (podcastId !== id) {
-      dispatch(getPodcastPageData(podcastId));
-    }
-  }, [dispatch, podcastId, id]);
+  const dispatch = useDispatch();
+  const subscribed = useSelector(hasInSubscriptionsSelector);
 
   const onSubscribe = () => {
-    dispatch(subscriptionsChange(podcastId, subscribed));
+    dispatch(subscriptionsChange(id, subscribed));
   };
-
-  if (error) {
-    return (
-      <>
-        <Head>
-          <title>Error!</title>
-        </Head>
-        <Blankslate
-          title="Oops... something went wrong"
-          text="There was a problem loading the podcasts."
-        />
-      </>
-    );
-  }
-
-  if (loading) {
-    return (
-      <>
-        <Head>
-          <title>Loading...</title>
-        </Head>
-        <Loader />
-      </>
-    );
-  }
 
   return (
     <>
@@ -80,7 +42,7 @@ const PodcastPage = () => {
                   noPodcastLink
                   episodeData={{
                     episodeId: episode.id,
-                    podcastId,
+                    podcastId: id,
                     coverUrl600,
                     podcastTitle: title,
                     ...episode
@@ -94,5 +56,29 @@ const PodcastPage = () => {
     </>
   );
 };
+
+export async function getStaticPaths() {
+  const top100Podcasts = await getPodcastByGenre('all', 100);
+
+  const paths = top100Podcasts.map((podcast) => ({
+    params: { podcastId: podcast.id }
+  }));
+
+  return {
+    paths,
+    fallback: 'blocking'
+  }
+}
+
+export async function getStaticProps({ params }) {
+  const podcastData = await fetchPodcastPageData(params.podcastId);
+
+  return {
+    props: {
+      podcastData
+    },
+    revalidate: 60
+  };
+}
 
 export default PodcastPage;
