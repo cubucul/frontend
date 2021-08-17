@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
-import { ReactTitle } from 'react-meta-tags';
+import Head from 'next/head';
 import { getDiscoverPageData } from '../../../actions/discover-page';
 import { getGenreTitle } from '../../../utils/genres';
 import * as selectors from '../../../selectors/discover-page';
@@ -19,7 +19,7 @@ const GenrePage = () => {
   const podcasts = useSelector(selectors.discoverPodcastsSelector);
 
   const genreTitle = getGenreTitle(genreId);
-  const pageTitle = <ReactTitle title={`Top Podcasts in ${genreTitle}`} />;
+  const pageTitle = <Head><title>Top Podcasts in {genreTitle}</title></Head>;
 
   useEffect(() => {
     dispatch(getDiscoverPageData(genreId, 100));

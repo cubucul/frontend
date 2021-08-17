@@ -1,6 +1,6 @@
 import React from 'react';
+import Head from 'next/head';
 import { useSelector } from 'react-redux';
-import { ReactTitle } from 'react-meta-tags';
 import { subscriptionsSelector } from '../selectors/subscriptions';
 import Blankslate from '../components/common/blankslate';
 import PodcastsGrid from '../components/common/podcasts-grid';
@@ -8,7 +8,7 @@ import PodcastsGrid from '../components/common/podcasts-grid';
 const HomePage = () => {
   const subscriptions = useSelector(subscriptionsSelector);
 
-  const pageTitle = <ReactTitle title="My Podcasts" />;
+  const pageTitle = <Head><title>My Podcasts</title></Head>;
 
   if (subscriptions.length === 0) {
     return (

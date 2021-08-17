@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { ReactTitle } from 'react-meta-tags';
+import Head from 'next/head';
 import { getPodcastPageData } from '../../actions/podcast-page';
 import { subscriptionsChange } from '../../actions/subscriptions';
 import { hasInSubscriptionsSelector } from '../../selectors/subscriptions';
@@ -34,7 +34,9 @@ const PodcastPage = () => {
   if (error) {
     return (
       <>
-        <ReactTitle title="Error!" />
+        <Head>
+          <title>Error!</title>
+        </Head>
         <Blankslate
           title="Oops... something went wrong"
           text="There was a problem loading the podcasts."
@@ -46,7 +48,9 @@ const PodcastPage = () => {
   if (loading) {
     return (
       <>
-        <ReactTitle title="Loading..." />
+        <Head>
+          <title>Loading...</title>
+        </Head>
         <Loader />
       </>
     );
@@ -54,7 +58,9 @@ const PodcastPage = () => {
 
   return (
     <>
-      <ReactTitle title={title} />
+      <Head>
+        <title>{title}</title>
+      </Head>
       <PodcastHead
         coverUrl600={coverUrl600}
         title={title}

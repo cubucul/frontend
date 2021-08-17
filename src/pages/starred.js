@@ -1,9 +1,9 @@
 import React from 'react';
-import { ReactTitle } from 'react-meta-tags';
+import Head from 'next/head';
 import Blankslate from '../components/common/blankslate';
 
 const StarredPage = () => {
-  const pageTitle = <ReactTitle title="Starred" />;
+  const pageTitle = <Head><title>Starred</title></Head>;
 
   return (
     <>

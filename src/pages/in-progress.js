@@ -1,9 +1,9 @@
 import React from 'react';
-import { ReactTitle } from 'react-meta-tags';
+import Head from 'next/head';
 import Blankslate from '../components/common/blankslate';
 
 const InProgressPage = () => {
-  const pageTitle = <ReactTitle title="In Progress" />;
+  const pageTitle = <Head><title>In Progress</title></Head>;
 
   return (
     <>

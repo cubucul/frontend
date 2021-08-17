@@ -1,6 +1,6 @@
 import React from 'react';
+import Head from 'next/head';
 import { useSelector } from 'react-redux';
-import { ReactTitle } from 'react-meta-tags';
 import { historySelector } from '../selectors/history';
 import Subhead from '../components/ui/subhead';
 import Heading from '../components/ui/heading';
@@ -11,7 +11,7 @@ import EpisodeCard from '../components/episodes/episode-card';
 const ListeningHistoryPage = () => {
   const history = useSelector(historySelector);
 
-  const pageTitle = <ReactTitle title="Listening History" />;
+  const pageTitle = <Head><title>Listening History</title></Head>;
 
   if (history.length === 0) {
     return (

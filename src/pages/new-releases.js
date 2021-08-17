@@ -1,9 +1,9 @@
 import React from 'react';
-import { ReactTitle } from 'react-meta-tags';
+import Head from 'next/head';
 import Blankslate from '../components/common/blankslate';
 
 const NewReleasesPage = () => {
-  const pageTitle = <ReactTitle title="New Releases" />;
+  const pageTitle = <Head><title>New Releases</title></Head>;
 
   return (
     <>

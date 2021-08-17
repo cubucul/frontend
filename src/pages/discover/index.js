@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
+import Head from 'next/head';
 import { useSelector, useDispatch } from 'react-redux';
-import { ReactTitle } from 'react-meta-tags';
 import { getDiscoverPageData } from '../../actions/discover-page';
 import * as selectors from '../../selectors/discover-page';
 import Subhead from '../../components/ui/subhead';
@@ -16,7 +16,7 @@ const DiscoverPage = () => {
   const error = useSelector(selectors.discoverErrorSelector);
   const podcasts = useSelector(selectors.discoverPodcastsSelector);
 
-  const pageTitle = <ReactTitle title="Discover" />;
+  const pageTitle = <Head><title>Discover</title></Head>;
 
   useEffect(() => {
     dispatch(getDiscoverPageData('all', 36));
