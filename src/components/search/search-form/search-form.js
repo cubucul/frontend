@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { ReactComponent as SearchIcon } from './search.svg';
 import { ReactComponent as SpinnerIcon } from './spinner.svg';
@@ -7,6 +8,10 @@ import styles from './search-form.module.css';
 
 const SearchForm = React.forwardRef(({
   term, loading, onSubmit, onChange, onFocus, onClear, onKeyDown }, ref) => {
+  const iconSeachClass = classNames(styles.icon, styles.iconSearch);
+  const iconSpinnerClass = classNames(styles.icon, styles.iconSpinner);
+  const iconCloseClass = classNames(styles.icon, styles.iconClose);
+
   return (
     <form ref={ref} onSubmit={onSubmit}>
       <div className={styles.field}>
@@ -23,7 +28,7 @@ const SearchForm = React.forwardRef(({
         />
         { !loading &&
           <SearchIcon
-            className={styles.iconSearch}
+            className={iconSeachClass}
             width="18"
             height="18"
             aria-hidden="true"
@@ -31,7 +36,7 @@ const SearchForm = React.forwardRef(({
         }
         { loading &&
           <SpinnerIcon
-            className={styles.iconSpinner}
+            className={iconSpinnerClass}
             width="18"
             height="18"
             aria-hidden="true"
@@ -45,7 +50,7 @@ const SearchForm = React.forwardRef(({
             onClick={onClear}
           >
             <CloseIcon
-              className={styles.iconClose}
+              className={iconCloseClass}
               width="18"
               height="18"
               aria-hidden="true"
