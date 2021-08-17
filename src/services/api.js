@@ -1,4 +1,4 @@
-const baseURL = process.env.REACT_APP_URL_API;
+const baseURL = process.env.NEXT_PUBLIC_URL_API;
 
 export const fetchData = async (url, options) => {
   const response = await fetch(baseURL + url, options);
