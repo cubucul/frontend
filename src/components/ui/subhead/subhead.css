@@ -1,5 +1,11 @@
-/* Subhead */
+/* Bottom Space */
 
-.subhead {
+.subhead--bottom-space {
   padding-bottom: 24px;
+}
+
+/* Top Space */
+
+.subhead--top-space {
+  padding-top: 48px;
 }
