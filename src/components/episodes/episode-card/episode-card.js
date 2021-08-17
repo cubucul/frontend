@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Link from 'next/link';
+import Image from 'next/image';
 import { secondsToString } from '../../../utils/time';
 import PlayControl from '../../common/play-control';
 import styles from './episode-card.module.css';
@@ -51,13 +52,14 @@ const EpisodeCard = ({ episodeData, noImage, noPodcastLink }) => {
   return (
     <div className={episodeCardClass}>
       { !noImage &&
-        <img
-          className={styles.image}
-          src={coverUrl600}
-          width="60"
-          height="60"
-          alt={title}
-        />
+        <div className={styles.cover}>
+          <Image
+            src={coverUrl600}
+            width="60"
+            height="60"
+            alt={title}
+          />
+        </div>
       }
       { noImage && episodeIndex &&
         <span className={styles.index}>{episodeIndex}</span>

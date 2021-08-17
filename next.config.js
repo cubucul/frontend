@@ -8,7 +8,7 @@ module.exports = {
       'is5-ssl.mzstatic.com'
     ],
     deviceSizes: [],
-    imageSizes: [131, 210, 262, 420]
+    imageSizes: [60, 120, 131, 210, 262, 420]
   },
   webpack: (config) => {
     config.module.rules.push({
