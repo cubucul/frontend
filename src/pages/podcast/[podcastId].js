@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
 import { fetchPodcastPageData} from '../../services/rss';
 import { getPodcastByGenre } from '../../services/topPodcasts';
 import { subscriptionsChange } from '../../actions/subscriptions';
+import { podcastPageSuccess } from '../../actions/podcast-page';
 import { hasInSubscriptionsSelector } from '../../selectors/subscriptions';
 import PodcastHead from '../../components/podcast/podcast-head';
 import { EpisodeList, EpisodeListItem } from '../../components/episodes/episode-list';
@@ -17,6 +18,10 @@ const PodcastPage = ({ podcastData }) => {
   const onSubscribe = () => {
     dispatch(subscriptionsChange(id, subscribed));
   };
+
+  useEffect(() => {
+    dispatch(podcastPageSuccess(podcastData));
+  }, [dispatch, id]);
 
   return (
     <>

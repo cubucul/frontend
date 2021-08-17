@@ -10,7 +10,7 @@ const podcastPageError = (error) => ({
   error
 });
 
-const podcastPageSuccess = (data) => ({
+export const podcastPageSuccess = (data) => ({
   type: types.FETCH_PODCAST_PAGE_SUCCESS,
   data
 });
