@@ -52,7 +52,7 @@ const DiscoverPage = () => {
         </Heading>
       </Subhead>
       <PodcastsGrid podcasts={podcasts} showCounter />
-      <Subhead>
+      <Subhead topSpace>
         <Heading as="h2" size="h4">
           Browse By Category
         </Heading>
