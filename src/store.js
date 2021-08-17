@@ -5,15 +5,16 @@ import rootReducer from './reducers'
 
 let store;
 
-// const localStorageKey = 'react-podcasts';
-// const persistedState = localStorage.getItem(localStorageKey);
-// let preloadedState;
+const localStorageKey = 'react-podcasts';
+const persistedStateFromLocalStorage =
+  typeof window !== 'undefined' && localStorage.getItem(localStorageKey);
+let preloadedStateFromLocalStorage;
 
-// if (persistedState) {
-//   preloadedState = {
-//     ...JSON.parse(persistedState)
-//   };
-// }
+if (persistedStateFromLocalStorage) {
+  preloadedStateFromLocalStorage = {
+    ...JSON.parse(persistedStateFromLocalStorage)
+  };
+}
 
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -47,13 +48,15 @@ export const initializeStore = (preloadedState) => {
   return _store;
 };
 
-// store.subscribe(() => {
-//   const { subscriptions, history } = store.getState();
-//   localStorage.setItem(localStorageKey, JSON.stringify({
-//     subscriptions,
-//     history
-//   }));
-// });
+const initialStore = initializeStore(preloadedStateFromLocalStorage);
+
+initialStore.subscribe(() => {
+  const { subscriptions, history } = initialStore.getState();
+  typeof window !== 'undefined' && localStorage.setItem(localStorageKey, JSON.stringify({
+    subscriptions,
+    history
+  }));
+});
 
 export const useStore = (initialState) => {
   const store = useMemo(() => initializeStore(initialState), [initialState]);
