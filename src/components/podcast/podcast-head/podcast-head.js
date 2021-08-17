@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Image from 'next/image';
 import classNames from 'classnames';
 import Heading from '../../ui/heading';
 import SubscribeButton from '../subscribe-button';
@@ -13,13 +14,14 @@ const PodcastHead = (props) => {
 
   return (
     <div className={styles.head}>
-      <img
-        className={styles.image}
-        src={coverUrl600}
-        width="210"
-        height="210"
-        alt={title}
-      />
+      <div className={styles.cover}>
+        <Image
+          src={coverUrl600}
+          width="210"
+          height="210"
+          alt={title}
+        />
+      </div>
       <SubscribeButton
         className={styles.button}
         subscribed={subscribed}
