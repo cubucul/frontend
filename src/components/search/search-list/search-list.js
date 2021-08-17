@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link } from 'next/link';
 import styles from './search-list.module.css';
 
 const SearchList = ({ results, focusedId, onItemClick }) => {
@@ -19,16 +19,17 @@ const SearchList = ({ results, focusedId, onItemClick }) => {
           return (
             <li key={id} className={styles.item}>
               <Link
-                className={styles.link}
-                to={`/podcast/${id}`}
+                href={`/podcast/${id}`}
                 onClick={onItemClick}
                 ref={index === focusedId ? focusedRef : null}
               >
-                <img className={styles.cover} src={coverUrl60} alt={title}/>
-                <div>
-                  <h4 className={styles.title}>{title}</h4>
-                  <p className={styles.author}>{author}</p>
-                </div>
+                <a className={styles.link}>
+                  <img className={styles.cover} src={coverUrl60} alt={title}/>
+                  <div>
+                    <h4 className={styles.title}>{title}</h4>
+                    <p className={styles.author}>{author}</p>
+                  </div>
+                </a>
               </Link>
             </li>
           );

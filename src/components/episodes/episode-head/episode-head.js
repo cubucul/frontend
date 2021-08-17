@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link } from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 import { playerPlayControl } from '../../../actions/player';
 import { playerPlayingSelector, playerEpisodeIdSelector } from '../../../selectors/player';
@@ -40,10 +40,9 @@ const EpisodeHead = (props) => {
         onClick={handleClick}
       >{buttonText}</Button>
       <div className={styles.content}>
-        <Link
-          className={styles.author}
-          to={`/podcast/${podcastId}`}
-        >{podcastTitle}</Link>
+        <Link href={`/podcast/${podcastId}`}>
+          <a className={styles.author}>{podcastTitle}</a>
+        </Link>
         <Heading
           className={styles.title}
           size="h5"

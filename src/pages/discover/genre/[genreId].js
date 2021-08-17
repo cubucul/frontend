@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { ReactTitle } from 'react-meta-tags';
-import { getDiscoverPageData } from '../actions/discover-page';
-import { getGenreTitle } from '../utils/genres';
-import * as selectors from '../selectors/discover-page';
-import Subhead from '../components/ui/subhead';
-import Heading from '../components/ui/heading';
-import Loader from '../components/ui/loader';
-import Blankslate from '../components/common/blankslate';
-import PodcastsGrid from '../components/common/podcasts-grid';
+import { getDiscoverPageData } from '../../../actions/discover-page';
+import { getGenreTitle } from '../../../utils/genres';
+import * as selectors from '../../../selectors/discover-page';
+import Subhead from '../../../components/ui/subhead';
+import Heading from '../../../components/ui/heading';
+import Loader from '../../../components/ui/loader';
+import Blankslate from '../../../components/common/blankslate';
+import PodcastsGrid from '../../../components/common/podcasts-grid';
 
 const GenrePage = () => {
   const dispatch = useDispatch();
-  const { genreId } = useParams();
+  const { query: { genreId } } = useRouter();
   const loading = useSelector(selectors.discoverLoadingSelector);
   const error = useSelector(selectors.discoverErrorSelector);
   const podcasts = useSelector(selectors.discoverPodcastsSelector);

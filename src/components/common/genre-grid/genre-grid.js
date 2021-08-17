@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'next/link';
 import Heading from '../../ui/heading';
 import { genres } from '../../../utils/genres';
 import styles from './genre-grid.module.css';
@@ -13,9 +13,10 @@ const GenreGrid = () => {
             <li key={id}>
               <Heading as="h3" size="h6">
                 <Link
-                  className={styles.link}
-                  to={`/discover/genre/${id}`}
-                >{label}</Link>
+                  href={`/discover/genre/${id}`}
+                >
+                  <a className={styles.link}>{label}</a>
+                </Link>
               </Heading>
             </li>
           );

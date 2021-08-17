@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'next/link';
 import styles from './navigation.module.css';
 
 const Navigation = ({ links }) => {
@@ -12,12 +12,9 @@ const Navigation = ({ links }) => {
             links.map(({ label, path }) => {
               return (
                 <li key={path}>
-                  <NavLink
-                    className={styles.link}
-                    activeClassName={styles.active}
-                    to={path}
-                    exact
-                  >{label}</NavLink>
+                  <Link href={path}>
+                    <a className={styles.link}>{label}</a>
+                  </Link>
                 </li>
               );
             })

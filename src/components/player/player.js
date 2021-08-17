@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link } from 'next/link';
 import classNames from 'classnames';
 import * as actions from '../../actions/player';
 import * as selectors from '../../selectors/player';
@@ -165,17 +165,15 @@ const Player = () => {
               <div className={styles.info}>
                 <h3 className={styles.title}>
                   <Link
-                    className={styles.titleLink}
-                    to={`/podcast/${podcastId}/${episodeId}`}
+                    href={`/podcast/${podcastId}/${episodeId}`}
                   >
-                    {title}
+                    <a className={styles.titleLink}>{title}</a>
                   </Link>
                 </h3>
                 <Link
-                  className={styles.author}
-                  to={`/podcast/${podcastId}`}
+                  href={`/podcast/${podcastId}`}
                 >
-                  {podcastTitle}
+                  <a className={styles.author}>{podcastTitle}</a>
                 </Link>
               </div>
               <ProgressControl ref={audio} />

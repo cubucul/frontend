@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReactTitle } from 'react-meta-tags';
-import { getPodcastPageData } from '../actions/podcast-page';
-import * as selectors from '../selectors/podcast-page';
-import Loader from '../components/ui/loader';
-import Blankslate from '../components/common/blankslate';
-import EpisodeHead from '../components/episodes/episode-head';
-import EpisodeNotes from '../components/episodes/episode-notes';
+import { getPodcastPageData } from '../../actions/podcast-page';
+import * as selectors from '../../selectors/podcast-page';
+import Loader from '../../components/ui/loader';
+import Blankslate from '../../components/common/blankslate';
+import EpisodeHead from '../../components/episodes/episode-head';
+import EpisodeNotes from '../../components/episodes/episode-notes';
 
 const EpisodePage = () => {
-  const { podcastId, episodeId } = useParams();
+  const { query: { podcastId, episodeId } } = useRouter();
   const dispatch = useDispatch();
   const loading = useSelector(selectors.podcastLoadingSelector);
   const error = useSelector(selectors.podcastErrorSelector);

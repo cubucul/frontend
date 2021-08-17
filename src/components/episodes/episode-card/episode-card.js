@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { Link } from 'next/link';
 import { secondsToString } from '../../../utils/time';
 import PlayControl from '../../common/play-control';
 import styles from './episode-card.module.css';
@@ -64,10 +64,9 @@ const EpisodeCard = ({ episodeData, noImage, noPodcastLink }) => {
       }
       <div className={styles.heading}>
         <h3 className={titleClass}>
-          <Link
-            className={styles.link}
-            to={`/podcast/${podcastId}/${episodeId}`}
-          >{title}</Link>
+          <Link href={`/podcast/${podcastId}/${episodeId}`}>
+            <a className={styles.link}>{title}</a>
+          </Link>
         </h3>
       </div>
       <p className={styles.published}>{published}</p>
