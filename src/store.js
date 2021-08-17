@@ -1,28 +1,61 @@
+import { useMemo } from 'react';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers'
 
-const localStorageKey = 'react-podcasts';
-const persistedState = localStorage.getItem(localStorageKey);
-let preloadedState;
+let store;
 
-if (persistedState) {
-  preloadedState = {
-    ...JSON.parse(persistedState)
-  };
-}
+// const localStorageKey = 'react-podcasts';
+// const persistedState = localStorage.getItem(localStorageKey);
+// let preloadedState;
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, preloadedState, composeEnhancers(
-  applyMiddleware(thunk)
-));
+// if (persistedState) {
+//   preloadedState = {
+//     ...JSON.parse(persistedState)
+//   };
+// }
 
-store.subscribe(() => {
-  const { subscriptions, history } = store.getState();
-  localStorage.setItem(localStorageKey, JSON.stringify({
-    subscriptions,
-    history
-  }));
-});
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export default store;
+const initStore = (preloadedState) => {
+  return createStore(
+    rootReducer,
+    preloadedState,
+    applyMiddleware(thunk)
+  );
+};
+
+export const initializeStore = (preloadedState) => {
+  let _store = store ?? initStore(preloadedState);
+
+  if (preloadedState && store) {
+    _store = initStore({
+      ...store.getState(),
+      ...preloadedState
+    });
+    store = undefined;
+  }
+
+  if (typeof window === 'undefined') {
+    return _store;
+  }
+
+  if (!store) {
+    store = _store;
+  }
+
+  return _store;
+};
+
+// store.subscribe(() => {
+//   const { subscriptions, history } = store.getState();
+//   localStorage.setItem(localStorageKey, JSON.stringify({
+//     subscriptions,
+//     history
+//   }));
+// });
+
+export const useStore = (initialState) => {
+  const store = useMemo(() => initializeStore(initialState), [initialState]);
+  return store;
+};
