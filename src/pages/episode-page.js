@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReactTitle } from 'react-meta-tags';
-import { getPodcastPageData } from '../actions/podcast-page';
+import { getEpisodePageData } from '../actions/podcast-page';
 import * as selectors from '../selectors/podcast-page';
 import Loader from '../components/ui/loader';
 import Blankslate from '../components/common/blankslate';
@@ -15,15 +15,15 @@ const EpisodePage = () => {
   const loading = useSelector(selectors.podcastLoadingSelector);
   const error = useSelector(selectors.podcastErrorSelector);
   const podcastData = useSelector(selectors.podcastDataSelector);
-  const { id, title: podcastTitle, coverUrl600, author, episodes } = podcastData;
-  const episode = episodes.find(i => i.id === episodeId) || episodes[0];
+  const { title: podcastTitle, coverUrl600, author, episodes } = podcastData;
+  const episode = episodes[0];
   const { title, published, description, url, duration } = episode;
 
   useEffect(() => {
-    if (podcastId !== id) {
-      dispatch(getPodcastPageData(podcastId));
+    if (podcastId && episodeId) {
+      dispatch(getEpisodePageData(podcastId, episodeId));
     }
-  }, [dispatch, podcastId, id]);
+  }, [dispatch, podcastId, episodeId]);
 
   if (error) {
     return (
