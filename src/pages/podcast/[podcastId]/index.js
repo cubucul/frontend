@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
-import { fetchPodcastPageData} from '../../services/rss';
-import { getPodcastByGenre } from '../../services/topPodcasts';
-import { subscriptionsChange } from '../../actions/subscriptions';
-import { podcastPageSuccess } from '../../actions/podcast-page';
-import { hasInSubscriptionsSelector } from '../../selectors/subscriptions';
-import PodcastHead from '../../components/podcast/podcast-head';
-import { EpisodeList, EpisodeListItem } from '../../components/episodes/episode-list';
-import EpisodeCard from '../../components/episodes/episode-card';
+import { fetchPodcastPageData} from '../../../services/rss';
+import { getPodcastByGenre } from '../../../services/topPodcasts';
+import { subscriptionsChange } from '../../../actions/subscriptions';
+import { podcastPageSuccess } from '../../../actions/podcast-page';
+import { hasInSubscriptionsSelector } from '../../../selectors/subscriptions';
+import PodcastHead from '../../../components/podcast/podcast-head';
+import { EpisodeList, EpisodeListItem } from '../../../components/episodes/episode-list';
+import EpisodeCard from '../../../components/episodes/episode-card';
 
 const PodcastPage = ({ podcastData }) => {
   const { id, coverUrl600, title, author, summary, episodes, link } = podcastData;
