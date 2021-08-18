@@ -20,10 +20,10 @@ const EpisodePage = () => {
   const { title, published, description, url, duration } = episode;
 
   useEffect(() => {
-    if (podcastId !== id) {
-      dispatch(getPodcastPageData(podcastId));
+    if (podcastId && episodeId) {
+      dispatch(getPodcastPageData(podcastId, episodeId));
     }
-  }, [dispatch, podcastId, id]);
+  }, [dispatch, podcastId, episodeId]);
 
   if (error) {
     return (
