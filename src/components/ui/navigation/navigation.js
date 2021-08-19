@@ -1,40 +1,50 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { ReactComponent as HomeIcon } from './home.svg';
+import { ReactComponent as SearchIcon } from './search.svg';
+import { ReactComponent as UserIcon } from './user.svg';
 import './navigation.css';
 
-const Navigation = ({ links }) => {
+const Navigation = () => {
+  const links = [
+    { label: 'Home', path: '/', icon: HomeIcon },
+    { label: 'Discover', path: '/discover', icon: SearchIcon },
+    // { label: 'New Releases', path: '/new-releases' },
+    // { label: 'In Progress', path: '/in-progress' },
+    // { label: 'Starred', path: '/starred' },
+    { label: 'Listening History', path: '/listening-history', icon: UserIcon }
+  ];
+
   return (
     <nav className="navigation">
-      <div className="navigation__limiter">
-        <ul className="navigation__list">
-          {
-            links.map(({ label, path }) => {
-              return (
-                <li key={path}>
-                  <NavLink
-                    className="navigation__link"
-                    activeClassName="navigation__link--active"
-                    to={path}
-                    exact
-                  >{label}</NavLink>
-                </li>
-              );
-            })
-          }
-        </ul>
-      </div>
+      <ul className="navigation__list">
+        {
+          links.map(({ label, path, icon }) => {
+            const Icon = icon;
+
+            return (
+              <li key={path}>
+                <NavLink
+                  className="navigation__link"
+                  activeClassName="navigation__link--active"
+                  to={path}
+                  exact
+                >
+                  <Icon
+                    className="navigation__icon"
+                    width="32"
+                    height="32"
+                    aria-hidden="true"
+                  />
+                  <span className="navigation__text">{label}</span>
+                </NavLink>
+              </li>
+            );
+          })
+        }
+      </ul>
     </nav>
   );
-};
-
-Navigation.propTypes = {
-  links: PropTypes.arrayOf(
-    PropTypes.exact({
-      label: PropTypes.string.isRequired,
-      path: PropTypes.string.isRequired
-    })
-  ).isRequired
 };
 
 export default Navigation;
