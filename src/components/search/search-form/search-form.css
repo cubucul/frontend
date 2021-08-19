@@ -9,6 +9,7 @@
 .search-form__input {
   width: 100%;
   margin: 0;
+  margin-bottom: 1px;
   padding: 8px 22px;
   border: none;
   border-bottom: 1px solid var(--gray-700);
@@ -29,6 +30,8 @@
 /* Focus */
 
 .search-form__input:focus {
+  margin-bottom: 0;
+  border-bottom: 2px solid var(--primary);
   outline: none;
 }
 
