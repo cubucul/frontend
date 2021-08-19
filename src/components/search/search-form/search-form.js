@@ -24,16 +24,16 @@ const SearchForm = React.forwardRef(({
         { !loading &&
           <SearchIcon
             className="search-form__icon search-form__icon-search"
-            width="18"
-            height="18"
+            width="24"
+            height="24"
             aria-hidden="true"
           />
         }
         { loading &&
           <SpinnerIcon
             className="search-form__icon search-form__icon-spinner"
-            width="18"
-            height="18"
+            width="24"
+            height="24"
             aria-hidden="true"
           />
         }

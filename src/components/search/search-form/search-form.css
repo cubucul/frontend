@@ -2,18 +2,26 @@
 
 .search-form__field {
   position: relative;
+  border: 1px solid var(--gray-300);
+  border-radius: 12px;
+  height: 48px;
+  background-color: var(--gray-300);
+}
+
+.search-form__field:focus-within {
+  border-color: var(--gray-400);
 }
 
 /* Input */
 
 .search-form__input {
+  position: absolute;
+  z-index: 5;
   width: 100%;
   margin: 0;
-  margin-bottom: 1px;
-  padding: 8px 22px;
   border: none;
-  border-bottom: 1px solid var(--gray-700);
   border-radius: 0;
+  padding: 12px 48px;
   background-color: transparent;
   font-family: inherit;
   font-size: 15px;
@@ -30,8 +38,6 @@
 /* Focus */
 
 .search-form__input:focus {
-  margin-bottom: 0;
-  border-bottom: 2px solid var(--primary);
   outline: none;
 }
 
@@ -47,8 +53,8 @@
 .search-form__icon-search {
   position: absolute;
   top: 12px;
-  left: 0;
-  z-index: -1;
+  left: 16px;
+  z-index: 1;
   stroke: var(--gray-800);
 }
 
@@ -60,8 +66,9 @@
 
 .search-form__clear {
   position: absolute;
-  top: 0;
-  right: -11px;
+  top: 4px;
+  z-index: 10;
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,7 +110,7 @@
 .search-form__icon-spinner {
   position: absolute;
   top: 12px;
-  left: 0;
+  left: 16px;
   stroke: var(--primary);
   stroke-width: 4px;
   animation: rotate 2s linear infinite;
