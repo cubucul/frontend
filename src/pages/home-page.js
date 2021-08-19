@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { ReactTitle } from 'react-meta-tags';
 import { subscriptionsSelector } from '../selectors/subscriptions';
+import Subhead from '../components/ui/subhead';
+import Heading from '../components/ui/heading';
 import Blankslate from '../components/common/blankslate';
 import PodcastsGrid from '../components/common/podcasts-grid';
 
@@ -25,6 +27,9 @@ const HomePage = () => {
   return (
     <>
       {pageTitle}
+      <Subhead>
+        <Heading size="h4">My Podcasts</Heading>
+      </Subhead>
       <PodcastsGrid
         podcasts={subscriptions}
         withoutInfo
