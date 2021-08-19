@@ -2,26 +2,25 @@
 
 .episode-head {
   display: grid;
-  grid-template-areas:
-    'image content'
-    'button content'
-  ;
-  grid-template-rows: min-content 1fr;
-  align-items: start;
-  row-gap: 16px;
 }
 
 @media (max-width: 953px) {
   .episode-head {
-    grid-template-columns: 120px 1fr;
-    column-gap: 16px;
+    row-gap: 16px;
     padding-bottom: 24px;
   }
 }
 
 @media (min-width: 954px) {
   .episode-head {
+    grid-template-areas:
+      'image content'
+      'button content'
+    ;
     grid-template-columns: 210px 1fr;
+    grid-template-rows: min-content 1fr;
+    align-items: start;
+    row-gap: 16px;
     column-gap: 32px;
     padding-bottom: 32px;
   }
@@ -30,24 +29,27 @@
 /* Image */
 
 .episode-head__image {
-  grid-area: image;
   display: block;
   border-radius: 4px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 953px) {
+@media (min-width: 954px) {
   .episode-head__image {
-    width: 120px;
-    height: auto;
+    grid-area: image;
+  }
+}
+
+/* Play Button */
+
+@media (max-width: 953px) {
+  .episode-head__play-button {
+    max-width: 210px;
+    order: 1;
   }
 }
 
 /* Content */
-
-.episode-head__content {
-  grid-area: content;
-}
 
 @media (max-width: 953px) {
   .episode-head__content {
@@ -58,6 +60,7 @@
 
 @media (min-width: 954px) {
   .episode-head__content {
+    grid-area: content;
     display: grid;
     row-gap: 16px;
   }

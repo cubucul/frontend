@@ -9,11 +9,13 @@ import Button from '../../ui/button';
 import './episode-head.css';
 
 const EpisodeHead = (props) => {
-  const { podcastId, episodeId, podcastTitle, episodeTitle, coverUrl600, published, url, duration } = props;
+  const {
+    podcastId, episodeId, podcastTitle, episodeTitle, coverUrl600, published, url, duration
+  } = props;
   const dispatch = useDispatch();
   const playing = useSelector(playerPlayingSelector);
   const playingEpisodeId = useSelector(playerEpisodeIdSelector);
-  const selectedEpisodeData={
+  const selectedEpisodeData = {
     episodeId,
     title: episodeTitle,
     duration,
