@@ -9,7 +9,8 @@
     z-index: 50;
     height: 64px;
     padding: 16px;
-    background-color: var(--gray-300);
+    border-top: 1px solid var(--gray-400);
+    background-color: var(--white);
   }
 }
 
