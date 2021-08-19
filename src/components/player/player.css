@@ -3,15 +3,15 @@
 .player {
   position: fixed;
   right: 0;
-  bottom: 0;
   left: 0;
-  z-index: 100;
+  z-index: 50;
   min-width: 320px;
   color: var(--white);
 }
 
 @media (max-width: 953px) {
   .player--mini {
+    bottom: 64px;
     height: 104px;
     padding: 16px;
     background-color: rgba(0, 0, 0, 0.9);
@@ -19,6 +19,7 @@
 
   .player--full {
     top: 0;
+    bottom: 64px;
     display: grid;
     align-content: end;
     background-color: rgba(0, 0, 0, 0.3);
@@ -27,6 +28,7 @@
 
 @media (min-width: 954px) {
   .player {
+    bottom: 0;
     height: 120px;
     padding: 24px;
     background-color: rgba(0, 0, 0, 0.9);
