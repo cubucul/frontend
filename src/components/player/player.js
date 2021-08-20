@@ -44,20 +44,11 @@ const Player = () => {
     audio.current.currentTime = value;
   };
 
-  const onPlay = () => {
-    dispatch(actions.playerPlay());
-  };
-
   const onCanPlay = () => {
     if (!canPlay) {
       setCurrentTime(currentTime);
     }
     dispatch(actions.playerCanPlay());
-    onPlay();
-  };
-
-  const onPause = () => {
-    dispatch(actions.playerPause());
   };
 
   const onTimeUpdate = () => {
@@ -131,8 +122,6 @@ const Player = () => {
         ref={audio}
         src={url}
         onCanPlay={onCanPlay}
-        onPlay={onPlay}
-        onPause={onPause}
         onTimeUpdate={onTimeUpdate}
         onVolumeChange={onVolumeChange}
         onRateChange={onRateChange}
