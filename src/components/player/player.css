@@ -11,7 +11,7 @@
 
 @media (max-width: 953px) {
   .player--mini {
-    bottom: 64px;
+    bottom: 48px;
     height: 104px;
     padding: 16px;
     background-color: rgba(0, 0, 0, 0.9);
@@ -19,7 +19,7 @@
 
   .player--full {
     top: 0;
-    bottom: 64px;
+    bottom: 48px;
     display: grid;
     align-content: end;
     background-color: rgba(0, 0, 0, 0.3);
