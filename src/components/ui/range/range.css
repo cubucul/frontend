@@ -4,7 +4,7 @@
   width: 100%;
   margin: 0;
   background-color: transparent;
-  appearance: none;
+  -webkit-appearance: none;
 }
 
 .range:focus {
@@ -16,7 +16,8 @@
 .range::-webkit-slider-thumb {
   width: 18px;
   height: 18px;
-  margin-top: -6px;
+  margin-top: -7px;
+  border: none;
   border-radius: 50%;
   background-color: var(--white);
   cursor: pointer;
