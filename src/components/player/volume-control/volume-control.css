@@ -22,7 +22,7 @@
 
 .volume-control__icon {
   fill: none;
-  stroke: var(--white);
+  stroke: var(--gray-800);
   stroke-width: 2px;
   stroke-linecap: round;
   stroke-linejoin: round;
