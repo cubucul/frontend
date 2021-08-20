@@ -1,6 +1,6 @@
 import React from 'react';
 import Search from '../../search';
-import Navigation from '../../ui/navigation';
+import Navigation from '../navigation';
 import './header.css';
 
 const Header = () => {
