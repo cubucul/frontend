@@ -166,6 +166,7 @@ const Player = () => {
                 <Link
                   className="player__title-link"
                   to={`/podcast/${podcastId}/${episodeId}`}
+                  onClick={togglePlayerView}
                 >
                   {title}
                 </Link>
@@ -173,6 +174,7 @@ const Player = () => {
               <Link
                 className="player__author"
                 to={`/podcast/${podcastId}`}
+                onClick={togglePlayerView}
               >
                 {podcastTitle}
               </Link>
