@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { secondsToString } from '../../../utils/time';
+import { getEpisodeIndex } from '../../../utils/helpers';
 import PlayControl from '../../common/play-control';
 import './episode-card.css';
 
@@ -24,25 +25,7 @@ const EpisodeCard = ({ episodeData, noImage, noPodcastLink }) => {
     'episode-card__title--regular': noPodcastLink
   });
 
-  const getEpisodeIndex = () => {
-    let index = '';
-
-    if (season) {
-      index += `S${season} `;
-    }
-
-    if (number) {
-      index += `E${number}`;
-    }
-
-    if (episodeType && episodeType !== 'full') {
-      index = episodeType.toUpperCase();
-    }
-
-    return index;
-  };
-
-  const episodeIndex = getEpisodeIndex();
+  const episodeIndex = getEpisodeIndex(season, number, episodeType);
   const episodeCardClass = classNames('episode-card', {
     'episode-card--noindex': noImage && !episodeIndex,
     'episode-cart--with-image': !noImage
