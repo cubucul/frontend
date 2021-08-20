@@ -62,32 +62,29 @@ const EpisodeCard = ({ episodeData, noImage, noPodcastLink }) => {
       { noImage && episodeIndex &&
         <span className="episode-card__index">{episodeIndex}</span>
       }
-      <div className="episode-card__heading">
-        <h3 className={titleClass}>
-          <Link
-            className="episode-card__link"
-            to={`/podcast/${podcastId}/${episodeId}`}
-          >{title}</Link>
-        </h3>
-      </div>
+      <h3 className={titleClass}>
+        <Link
+          className="episode-card__link"
+          to={`/podcast/${podcastId}/${episodeId}`}
+        >{title}</Link>
+      </h3>
       <p className="episode-card__published">{published}</p>
       <span className="episode-card__duration">
         {secondsToString(duration)}
       </span>
-      <div className="episode-card__control">
-        <PlayControl
-          selectedEpisodeData={{
-            episodeId,
-            title,
-            duration,
-            published,
-            url,
-            podcastId,
-            podcastTitle,
-            coverUrl600
-          }}
-        />
-      </div>
+      <PlayControl
+        className="episode-card__control"
+        selectedEpisodeData={{
+          episodeId,
+          title,
+          duration,
+          published,
+          url,
+          podcastId,
+          podcastTitle,
+          coverUrl600
+        }}
+      />
     </div>
   );
 };

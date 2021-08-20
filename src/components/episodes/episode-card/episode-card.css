@@ -74,14 +74,6 @@
   }
 }
 
-/* Heading */
-
-@media (max-width: 953px) {
-  .episode-card__heading {
-    grid-area: heading;
-  }
-}
-
 /* Title */
 
 .episode-card__title {
@@ -94,6 +86,12 @@
 
 .episode-card__title--regular {
   font-weight: 400;
+}
+
+@media (max-width: 953px) {
+  .episode-card__title {
+    grid-area: heading;
+  }
 }
 
 /* Link */
