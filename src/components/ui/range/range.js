@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import './range.css';
 
 const Range = ({ min, max, step, value, onChange, className }) => {
+  const rangeRef = useRef();
   const rangeClass = classNames('range', className);
+
+  const setProgress = (min, max, value) => {
+    rangeRef.current.style.backgroundSize = (value - min) * 100 / (max - min) + '% 100%';
+  };
+
+  useEffect(() => {
+    setProgress(min, max, value);
+  }, [min, max, value]);
 
   return (
     <input
+      ref={rangeRef}
       className={rangeClass}
       type="range"
       min={min}
