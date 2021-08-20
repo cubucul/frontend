@@ -6,23 +6,28 @@
   left: 0;
   z-index: 50;
   min-width: 320px;
-  color: var(--white);
 }
 
 @media (max-width: 953px) {
   .player--mini {
     bottom: 48px;
-    height: 104px;
+    height: 92px;
     padding: 16px;
-    background-color: rgba(0, 0, 0, 0.9);
+    border-top: 1px solid var(--gray-300);
+    background-color: var(--white);
+    color: var(--black);
   }
 
   .player--full {
     top: 0;
     bottom: 48px;
     display: grid;
-    align-content: end;
-    background-color: rgba(0, 0, 0, 0.3);
+    row-gap: 24px;
+    justify-items: center;
+    padding: 16px;
+    background-color: var(--white);
+    color: var(--black);
+    overflow-y: auto;
   }
 }
 
@@ -32,26 +37,7 @@
     height: 120px;
     padding: 24px;
     background-color: rgba(0, 0, 0, 0.9);
-  }
-}
-
-/* Widget */
-
-@media (max-width: 953px) {
-  .player--mini .player__widget {
-    position: relative;
-    height: 100%;
-  }
-
-  .player--full .player__widget {
-    display: grid;
-    row-gap: 24px;
-    justify-items: center;
-    border-top-right-radius: 16px;
-    border-top-left-radius: 16px;
-    padding: 16px;
-    background-color: var(--black);
-    overflow-y: auto;
+    color: var(--white);
   }
 }
 
@@ -70,10 +56,10 @@
 
   .player--mini .player__popover {
     position: absolute;
-    top: -40px;
+    top: -17px;
     left: 50%;
     margin-left: -27px;
-    padding: 8px;
+    padding: 0 8px;
   }
 }
 
@@ -91,6 +77,7 @@
   stroke-width: 5px;
   stroke-linecap: round;
   stroke-linejoin: round;
+  fill: none;
 }
 
 /* Spinner */
@@ -139,8 +126,8 @@
 
 @media (max-width: 953px) {
   .player--mini .player__image {
-    width: 72px;
-    height: 72px;
+    width: 60px;
+    height: 60px;
   }
 
   .player--full .player__image {
@@ -157,6 +144,11 @@
 }
 
 @media (max-width: 953px) {
+  .player__info {
+    display: grid;
+    row-gap: 8px;
+  }
+
   .player--mini .player__info {
     display: none;
   }
@@ -188,8 +180,19 @@
 /* Title Link */
 
 .player__title-link {
-  color: var(--white);
   text-decoration: none;
+}
+
+@media (max-width: 953px) {
+  .player__title-link {
+    color: var(--black);
+  }
+}
+
+@media (min-width: 954px) {
+  .player__title-link {
+    color: var(--white);
+  }
 }
 
 /* Author */
@@ -224,12 +227,21 @@
   display: grid;
   grid-template-columns: min-content min-content min-content;
   justify-content: center;
+  align-items: center;
   column-gap: 24px;
 }
 
 @media (max-width: 953px) {
   .player--full .player__play-controls {
     order: 1;
+  }
+}
+
+/* Skip Control */
+
+@media (max-width: 953px) {
+  .player--mini .player__skip-control {
+    color: var(--black);
   }
 }
 

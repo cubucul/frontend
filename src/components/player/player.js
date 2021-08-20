@@ -38,7 +38,6 @@ const Player = () => {
     'player--mini': !expanded
   });
 
-
   const togglePlayerView = () => setExpanded(v => !v);
 
   const setCurrentTime = (value) => {
@@ -110,85 +109,84 @@ const Player = () => {
 
   return (
     <div className={playerClass}>
-      <div className="player__widget">
-        {
-          canPlay &&
-            <button
-              className="player__popover"
-              type="button"
-              onClick={togglePlayerView}
-              aria-label={popoverLabelText}
-            >
-              <PopoverIcon
-                className="player__popover-icon"
-                width="38"
-                height="17"
-                aria-hidden="true"
-              />
-            </button>
-        }
-        <audio
-          ref={audio}
-          src={url}
-          onCanPlay={onCanPlay}
-          onPlay={onPlay}
-          onPause={onPause}
-          onTimeUpdate={onTimeUpdate}
-          onVolumeChange={onVolumeChange}
-          onRateChange={onRateChange}
-          onEnded={onEnded}
-          preload="metadata"
-          autoPlay={false}
-        />
-        { loading ?
-          <p className="player__spinner">Loading...</p>
-          :
-          <div className="player__inner">
-            <img
-              className="player__image"
-              src={coverUrl600}
-              width="72"
-              height="72"
-              alt={`Podcast ${podcastTitle} cover`}
+      {
+        canPlay &&
+          <button
+            className="player__popover"
+            type="button"
+            onClick={togglePlayerView}
+            aria-label={popoverLabelText}
+          >
+            <PopoverIcon
+              className="player__popover-icon"
+              width="38"
+              height="17"
+              aria-hidden="true"
             />
-            <div className="player__play-controls">
-              <SkipControl ref={audio} value={-15} />
-              <PlayControl
-                theme="fill"
-                selectedEpisodeData={{
-                  episodeId
-                }}
-              />
-              <SkipControl ref={audio} value={30} />
-            </div>
-            <div className="player__controls">
-              <div className="player__info">
-                <h3 className="player__title">
-                  <Link
-                    className="player__title-link"
-                    to={`/podcast/${podcastId}/${episodeId}`}
-                  >
-                    {title}
-                  </Link>
-                </h3>
-                <Link
-                  className="player__author"
-                  to={`/podcast/${podcastId}`}
-                >
-                  {podcastTitle}
-                </Link>
-              </div>
-              <ProgressControl ref={audio} />
-            </div>
-            <div className="player__speed">
-              <SpeedControl ref={audio} />
-            </div>
-            <div className="player__volume">
-              <VolumeControl ref={audio} />
-            </div>
+          </button>
+      }
+      <audio
+        ref={audio}
+        src={url}
+        onCanPlay={onCanPlay}
+        onPlay={onPlay}
+        onPause={onPause}
+        onTimeUpdate={onTimeUpdate}
+        onVolumeChange={onVolumeChange}
+        onRateChange={onRateChange}
+        onEnded={onEnded}
+        preload="metadata"
+        autoPlay={false}
+      />
+      { loading ?
+        <p className="player__spinner">Loading...</p>
+        :
+        <div className="player__inner">
+          <img
+            className="player__image"
+            src={coverUrl600}
+            width="72"
+            height="72"
+            alt={`Podcast ${podcastTitle} cover`}
+          />
+          <div className="player__play-controls">
+            <SkipControl ref={audio} value={-15} />
+            <PlayControl
+              theme="player"
+              size="big"
+              selectedEpisodeData={{
+                episodeId
+              }}
+            />
+            <SkipControl ref={audio} value={30} />
           </div>
-        }
-      </div>
+          <div className="player__controls">
+            <div className="player__info">
+              <h3 className="player__title">
+                <Link
+                  className="player__title-link"
+                  to={`/podcast/${podcastId}/${episodeId}`}
+                >
+                  {title}
+                </Link>
+              </h3>
+              <Link
+                className="player__author"
+                to={`/podcast/${podcastId}`}
+              >
+                {podcastTitle}
+              </Link>
+            </div>
+            <ProgressControl ref={audio} />
+          </div>
+          <div className="player__speed">
+            <SpeedControl ref={audio} />
+          </div>
+          <div className="player__volume">
+            <VolumeControl ref={audio} />
+          </div>
+        </div>
+      }
     </div>
   );
 };
