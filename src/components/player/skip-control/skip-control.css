@@ -21,16 +21,5 @@
   stroke-width: 2px;
   stroke-linecap: round;
   stroke-linejoin: round;
-}
-
-@media (max-width: 953px) {
-  .skip-control__icon {
-    stroke: var(--black);
-  }
-}
-
-@media (min-width: 954px) {
-  .skip-control__icon {
-    stroke: var(--white);
-  }
+  stroke: var(--black);
 }
