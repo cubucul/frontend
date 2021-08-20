@@ -19,8 +19,10 @@ const DiscoverPage = () => {
   const pageTitle = <ReactTitle title="Discover" />;
 
   useEffect(() => {
-    dispatch(getDiscoverPageData('all', 36));
-  }, [dispatch]);
+    if (podcasts.length === 0) {
+      dispatch(getDiscoverPageData('all', 36));
+    }
+  }, [podcasts.length, dispatch]);
 
   if (error) {
     return (
