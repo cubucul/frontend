@@ -1,0 +1,48 @@
+/* Link */
+
+.search-item__link {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  column-gap: 16px;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.search-item__link:focus {
+  outline: none;
+}
+
+.search-item__link:hover,
+.search-item__link:focus {
+  background-color: var(--gray-400);
+}
+
+/* Cover */
+
+.search-item__cover {
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Title */
+
+.search-item__title {
+  margin: 0;
+  margin-top: -3px;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--black);
+}
+
+/* Author */
+
+.search-item__author {
+  margin: 0;
+  margin-top: -3px;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--gray-800);
+}

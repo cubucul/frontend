@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import SearchItem from '../search-item';
 import './search-list.css';
 
 const SearchList = ({ results, focusedId, onItemClick }) => {
@@ -15,21 +15,16 @@ const SearchList = ({ results, focusedId, onItemClick }) => {
   return (
     <ul className="search-list">
       {
-        results.map(({ id, title, author, coverUrl60 }, index) => {
+        results.map((podcast, index) => {
           return (
-            <li key={id} className="search-list__item">
-              <Link
-                className="search-list__link"
-                to={`/podcast/${id}`}
-                onClick={onItemClick}
-                ref={index === focusedId ? focusedRef : null}
-              >
-                <img className="search-list__cover" src={coverUrl60} alt={title}/>
-                <div>
-                  <h4 className="search-list__title">{title}</h4>
-                  <p className="search-list__author">{author}</p>
-                </div>
-              </Link>
+            <li key={podcast.id} className="search-list__item">
+              <SearchItem
+                ref={focusedRef}
+                podcast={podcast}
+                index={index}
+                onItemClick={onItemClick}
+                focusedId={focusedId}
+              />
             </li>
           );
         })
@@ -39,15 +34,8 @@ const SearchList = ({ results, focusedId, onItemClick }) => {
 };
 
 SearchList.propTypes = {
-  results: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      author: PropTypes.string.isRequired,
-      coverUrl60: PropTypes.string.isRequired
-    })
-  ).isRequired,
-  focusedId: PropTypes.number,
+  results: PropTypes.array.isRequired,
+  focusedId: PropTypes.number.isRequired,
   onItemClick: PropTypes.func.isRequired
 };
 
