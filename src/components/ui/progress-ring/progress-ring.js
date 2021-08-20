@@ -1,17 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import './progress-ring.css';
 
-const ProgressRing = ({ percent }) => {
+const ProgressRing = ({ percent, className }) => {
   const radius = 16;
   const stroke = 2;
   const normalizedRadius = radius - stroke / 2;
   const circumference = Math.round(normalizedRadius * stroke * Math.PI);
   const offset = Math.round(circumference - percent / 100 * circumference);
 
+  const progressRingClass = classNames('progress-ring', className);
+
   return (
     <svg
-      className="progress-ring"
+      className={progressRingClass}
       width={radius * 2}
       height={radius * 2}
       aria-hidden="true"
@@ -30,7 +33,8 @@ const ProgressRing = ({ percent }) => {
 };
 
 ProgressRing.propTypes = {
-  percent: PropTypes.number.isRequired
+  percent: PropTypes.number.isRequired,
+  className: PropTypes.string
 };
 
 export default ProgressRing;
