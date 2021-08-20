@@ -63,7 +63,9 @@ const Player = () => {
   const onTimeUpdate = () => {
     if (canPlay) {
       const time = Math.round(audio.current.currentTime);
-      dispatch(actions.playerUpdateTime(episodeId, time));
+      if (time !== currentTime) {
+        dispatch(actions.playerUpdateTime(episodeId, time));
+      }
     }
   };
 
