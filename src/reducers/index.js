@@ -4,6 +4,7 @@ import { podcastPage } from './podcast-page';
 import { player } from './player';
 import { subscriptions } from './subscriptions';
 import { discoverPage } from './discover-page';
+import { genrePage } from './genre-page';
 import { history } from './history';
 
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   subscriptions,
   player,
   discoverPage,
+  genrePage,
   history
 });
 
