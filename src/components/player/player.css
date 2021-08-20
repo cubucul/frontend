@@ -200,14 +200,21 @@
 
 /* Controls */
 
-.player__controls {
-  display: grid;
-  row-gap: 8px;
-}
-
 @media (max-width: 953px) {
   .player--mini .player__controls {
     display: none;
+  }
+
+  .player--full .player__controls {
+    display: grid;
+    row-gap: 24px;
+  }
+}
+
+@media (min-width: 954px) {
+  .player__controls {
+    display: grid;
+    row-gap: 8px;
   }
 }
 
