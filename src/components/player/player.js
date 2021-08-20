@@ -47,8 +47,8 @@ const Player = () => {
   const onCanPlay = () => {
     if (!canPlay) {
       setCurrentTime(currentTime);
+      dispatch(actions.playerCanPlay());
     }
-    dispatch(actions.playerCanPlay());
   };
 
   const onTimeUpdate = () => {
