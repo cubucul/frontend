@@ -40,9 +40,10 @@ const PlayControl = ({ selectedEpisodeData, theme, size }) => {
       onClick={handleClick}
       aria-label={label}
     >
-      <span className="play-control__progress">
-        <ProgressRing percent={percent} />
-      </span>
+      <ProgressRing
+        className="play-control__progress"
+        percent={percent}
+      />
       <Icon
         className={playControlIconClass}
         width="14"
