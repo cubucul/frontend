@@ -72,36 +72,20 @@
 
 /* Theme Player */
 
+.play-control--theme--player,
+.play-control--theme--player:hover {
+  border-color: var(--black);
+  background-color: var(--black);
+}
+
+.play-control--theme--player .play-control__icon,
+.play-control--theme--player:hover .play-control__icon {
+  fill: var(--white);
+  stroke: var(--white);
+}
+
 .play-control--theme--player .play-control__progress {
   display: none;
-}
-
-@media (max-width: 953px) {
-  .play-control--theme--player,
-  .play-control--theme--player:hover {
-    border-color: var(--black);
-    background-color: var(--black);
-  }
-
-  .play-control--theme--player .play-control__icon,
-  .play-control--theme--player:hover .play-control__icon {
-    fill: var(--white);
-    stroke: var(--white);
-  }
-}
-
-@media (min-width: 954px) {
-  .play-control--theme--player,
-  .play-control--theme--player:hover {
-    border-color: var(--white);
-    background-color: var(--white);
-  }
-
-  .play-control--theme--player .play-control__icon,
-  .play-control--theme--player:hover .play-control__icon {
-    fill: var(--black);
-    stroke: var(--black);
-  }
 }
 
 /* Size Big */
