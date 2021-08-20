@@ -53,7 +53,7 @@ const PodcastPage = () => {
   }
 
   return (
-    <>
+    <article>
       <ReactTitle title={title} />
       <PodcastHead
         coverUrl600={coverUrl600}
@@ -64,28 +64,31 @@ const PodcastPage = () => {
         subscribed={subscribed}
         onSubscribe={onSubscribe}
       />
-      <EpisodeList>
-        {
-          episodes.map((episode) => {
-            return (
-              <EpisodeListItem key={episode.id}>
-                <EpisodeCard
-                  noImage
-                  noPodcastLink
-                  episodeData={{
-                    episodeId: episode.id,
-                    podcastId,
-                    coverUrl600,
-                    podcastTitle: title,
-                    ...episode
-                  }}
-                />
-              </EpisodeListItem>
-            );
-          })
-        }
-      </EpisodeList>
-    </>
+      <section>
+        <h2 className="visually-hidden">Episodes</h2>
+        <EpisodeList>
+          {
+            episodes.map((episode) => {
+              return (
+                <EpisodeListItem key={episode.id}>
+                  <EpisodeCard
+                    noImage
+                    noPodcastLink
+                    episodeData={{
+                      episodeId: episode.id,
+                      podcastId,
+                      coverUrl600,
+                      podcastTitle: title,
+                      ...episode
+                    }}
+                  />
+                </EpisodeListItem>
+              );
+            })
+          }
+        </EpisodeList>
+      </section>
+    </article>
   );
 };
 
