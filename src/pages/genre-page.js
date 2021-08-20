@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { ReactTitle } from 'react-meta-tags';
-import { getDiscoverPageData } from '../actions/discover-page';
+import { getGenrePageData } from '../actions/genre-page';
 import { getGenreTitle } from '../utils/genres';
-import * as selectors from '../selectors/discover-page';
+import * as selectors from '../selectors/genre-page';
 import Subhead from '../components/ui/subhead';
 import Heading from '../components/ui/heading';
 import Loader from '../components/ui/loader';
@@ -14,16 +14,22 @@ import PodcastsGrid from '../components/common/podcasts-grid';
 const GenrePage = () => {
   const dispatch = useDispatch();
   const { genreId } = useParams();
-  const loading = useSelector(selectors.discoverLoadingSelector);
-  const error = useSelector(selectors.discoverErrorSelector);
-  const podcasts = useSelector(selectors.discoverPodcastsSelector);
+  const loading = useSelector(selectors.genreLoadingSelector);
+  const error = useSelector(selectors.genreErrorSelector);
+  const podcasts = useSelector(selectors.genrePodcastsSelector);
+  const genre = useSelector(selectors.genreGenreIdSelector);
 
   const genreTitle = getGenreTitle(genreId);
   const pageTitle = <ReactTitle title={`Top Podcasts in ${genreTitle}`} />;
 
   useEffect(() => {
-    dispatch(getDiscoverPageData(genreId, 100));
-  }, [dispatch, genreId]);
+    if (
+      (podcasts.length === 0 && !genre) ||
+      (podcasts.length !== 0 && genre && genreId !== genre)
+    ) {
+      dispatch(getGenrePageData(genreId, 100));
+    }
+  }, [dispatch, podcasts.length, genreId, genre]);
 
   if (error) {
     return (
