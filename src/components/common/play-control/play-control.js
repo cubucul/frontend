@@ -10,7 +10,7 @@ import { ReactComponent as PlayIcon } from './play.svg';
 import { ReactComponent as PauseIcon } from './pause.svg';
 import './play-control.css';
 
-const PlayControl = ({ selectedEpisodeData, theme, size }) => {
+const PlayControl = ({ selectedEpisodeData, theme, size, className }) => {
   const dispatch = useDispatch();
   const playing = useSelector(playerPlayingSelector);
   const episodeId = useSelector(playerEpisodeIdSelector);
@@ -26,7 +26,7 @@ const PlayControl = ({ selectedEpisodeData, theme, size }) => {
     'play-control--theme--fill': theme === 'fill',
     'play-control--theme--player': theme === 'player',
     'play-control--size--big': size === 'big'
-  });
+  }, className);
   const playControlIconClass = classNames('play-control__icon', {
     'play-control__icon--play': type === 'play'
   });
@@ -55,8 +55,6 @@ const PlayControl = ({ selectedEpisodeData, theme, size }) => {
 };
 
 PlayControl.propTypes = {
-  theme: PropTypes.string,
-  size: PropTypes.string,
   selectedEpisodeData: PropTypes.exact({
     podcastId: PropTypes.string,
     episodeId: PropTypes.string,
@@ -66,7 +64,10 @@ PlayControl.propTypes = {
     published: PropTypes.string,
     url: PropTypes.string,
     coverUrl600: PropTypes.string
-  })
+  }),
+  theme: PropTypes.string,
+  size: PropTypes.string,
+  className: PropTypes.string
 };
 
 export default PlayControl;
