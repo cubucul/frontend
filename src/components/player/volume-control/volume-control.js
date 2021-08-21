@@ -49,6 +49,7 @@ const VolumeControl = React.memo(React.forwardRef(({ className }, audio) => {
         step={0.1}
         value={volume}
         onChange={onVolumeChange}
+        disabled={muted}
       />
     </div>
   );
