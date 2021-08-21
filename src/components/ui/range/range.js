@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import './range.css';
 
-const Range = ({ min, max, step, value, onChange, className }) => {
+const Range = ({ min, max, step, value, onChange, className, disabled }) => {
   const rangeRef = useRef();
   const rangeClass = classNames('range', className);
 
@@ -25,6 +25,7 @@ const Range = ({ min, max, step, value, onChange, className }) => {
       step={step}
       value={value}
       onChange={onChange}
+      disabled={disabled}
     />
   );
 };
@@ -35,6 +36,7 @@ Range.propTypes = {
   step: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   onChange: PropTypes.func.isRequired
 };
 
