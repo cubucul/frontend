@@ -8,7 +8,7 @@ import { ReactComponent as MinusIcon } from './minus.svg';
 import { ReactComponent as XIcon } from './x.svg';
 import './speed-control.css';
 
-const SpeedControl = React.forwardRef(({ className }, audio) => {
+const SpeedControl = React.memo(React.forwardRef(({ className }, audio) => {
   const playbackRate = useSelector(playerPlaybackRateSelector);
 
   const speedControlClass = classNames('speed-control', className);
@@ -80,7 +80,7 @@ const SpeedControl = React.forwardRef(({ className }, audio) => {
       </button>
     </div>
   );
-});
+}));
 
 SpeedControl.propTypes = {
   className: PropTypes.string

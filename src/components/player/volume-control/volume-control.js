@@ -10,7 +10,7 @@ import { ReactComponent as VolumeIcon } from './volume.svg';
 import { ReactComponent as VolumeXIcon } from './volume-x.svg';
 import './volume-control.css';
 
-const VolumeControl = React.forwardRef(({ className }, audio) => {
+const VolumeControl = React.memo(React.forwardRef(({ className }, audio) => {
   const volume = useSelector(playerVolumeSelector);
   const muted = useSelector(playerMutedSelector);
   const Icon = muted ? VolumeXIcon : volume > 0.6 ?
@@ -52,7 +52,7 @@ const VolumeControl = React.forwardRef(({ className }, audio) => {
       />
     </div>
   );
-});
+}));
 
 VolumeControl.propTypes = {
   className: PropTypes.string
