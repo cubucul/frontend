@@ -9,10 +9,10 @@ export const selectEpisodeById = createSelector(
 );
 
 export const selectCurrentTimeById = createSelector(
-  historySelector,
+  (state) => state,
   (_, episodeId) => episodeId,
   (history, episodeId) => {
-    const episode = history.find((episode) => episode.episodeId === episodeId);
+    const episode = selectEpisodeById(history, episodeId)
     return episode ? episode.currentTime : 0;
   }
 );
