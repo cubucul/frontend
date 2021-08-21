@@ -12,7 +12,7 @@ const ProgressRing = ({ percent, className }) => {
 
   const progressRingClass = classNames('progress-ring', className);
 
-  if (percent === 0) {
+  if (percent === 0 || percent === 100) {
     return null;
   }
 
