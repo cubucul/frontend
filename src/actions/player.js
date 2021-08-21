@@ -1,5 +1,7 @@
 import * as types from '../types/player';
 import { addEpisodeToHistory, updateEpisodeTimeInHistory } from './history';
+import { selectEpisodeById, selectCurrentTimeById } from '../selectors/history';
+import { playerPlayingSelector, playerEpisodeIdSelector } from '../selectors/player';
 
 const loadEpisodeData = (data) => ({
   type: types.PLAYER_LOAD_EPISODE_DATA,
@@ -46,26 +48,24 @@ export const playerEpisodeEnded = () => ({
 
 export const playerPlayControl = (selectedEpisodeData) => (dispatch, getState) => {
   const { episodeId: selectedEpisodeId } = selectedEpisodeData;
-  const { player, history } = getState();
-  const { playing, episodeId: playingEpisodeId } = player;
-  const episodeDataFromHistory = history.find(e => e.episodeId === selectedEpisodeId);
-  const currentTime = episodeDataFromHistory ? episodeDataFromHistory.currentTime : 0;
+  const state = getState();
+
+  const playing = playerPlayingSelector(state);
+  const playingEpisodeId = playerEpisodeIdSelector(state);
+  const episode = selectEpisodeById(state, selectedEpisodeId);
+  const currentTime = selectCurrentTimeById(state, selectedEpisodeId);
+
+  const episodeData = { ...selectedEpisodeData, currentTime };
 
   if (playing && playingEpisodeId === selectedEpisodeId) {
     dispatch(playerPause());
-  } else if (!playing && selectedEpisodeId === playingEpisodeId) {
+  } else if (!playing && playingEpisodeId === selectedEpisodeId) {
     dispatch(playerPlay());
   } else {
-    dispatch(loadEpisodeData({
-      ...selectedEpisodeData,
-      currentTime
-    }));
+    dispatch(loadEpisodeData(episodeData));
 
-    if (!episodeDataFromHistory) {
-      dispatch(addEpisodeToHistory({
-        ...selectedEpisodeData,
-        currentTime
-      }));
+    if (!episode) {
+      dispatch(addEpisodeToHistory(episodeData));
     }
   }
 };
