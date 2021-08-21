@@ -172,12 +172,8 @@ const Player = () => {
             </div>
             <ProgressControl ref={audio} />
           </div>
-          <div className="player__speed">
-            <SpeedControl ref={audio} />
-          </div>
-          <div className="player__volume">
-            <VolumeControl ref={audio} />
-          </div>
+          <SpeedControl ref={audio} className="player__speed" />
+          <VolumeControl ref={audio} className="player__volume" />
         </div>
       }
     </div>
