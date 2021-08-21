@@ -40,6 +40,23 @@
   margin-left: 2px;
 }
 
+/* Chech Icon */
+
+.play-control__icon--check {
+  width: 18px;
+  height: 18px;
+  margin-left: 0;
+  margin-top: 2px;
+  stroke: var(--gray-700);
+  stroke-width: 3;
+  fill: none;
+}
+
+.play-control:hover .play-control__icon--check {
+  stroke: var(--gray-700);
+  fill: none;
+}
+
 /* Progress */
 
 .play-control__progress {
@@ -98,4 +115,15 @@
 .play-control--size--big .play-control__icon {
   width: 20px;
   height: 20px;
+}
+
+/* Archived */
+
+.play-control--archived {
+  border-color: var(--gray-700);
+}
+
+.play-control--archived:hover {
+  border-color: var(--gray-700);
+  background-color: transparent;
 }

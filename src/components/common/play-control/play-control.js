@@ -8,9 +8,10 @@ import { selectCurrentTimeById } from '../../../selectors/history';
 import ProgressRing from '../../ui/progress-ring';
 import { ReactComponent as PlayIcon } from './play.svg';
 import { ReactComponent as PauseIcon } from './pause.svg';
+import { ReactComponent as CheckIcon } from './check.svg';
 import './play-control.css';
 
-const PlayControl = ({ selectedEpisodeData, theme, size, className }) => {
+const PlayControl = ({ selectedEpisodeData, theme, size, isArchived, className }) => {
   const { episodeId: selectedEpisodeId, duration } = selectedEpisodeData;
 
   const dispatch = useDispatch();
@@ -21,16 +22,18 @@ const PlayControl = ({ selectedEpisodeData, theme, size, className }) => {
   const percent = currentTime / duration * 100 || 0;
 
   const type = playing && episodeId === selectedEpisodeId ? 'pause' : 'play';
-  const Icon = type === 'play' ? PlayIcon : PauseIcon;
+  const Icon = isArchived ? CheckIcon : (type === 'play' ? PlayIcon : PauseIcon);
   const label = `${type === 'play' ? 'Play' : 'Pause'} episode`;
 
   const playControlClass = classNames('play-control', {
     'play-control--theme--fill': theme === 'fill',
     'play-control--theme--player': theme === 'player',
-    'play-control--size--big': size === 'big'
+    'play-control--size--big': size === 'big',
+    'play-control--archived': isArchived
   }, className);
   const playControlIconClass = classNames('play-control__icon', {
-    'play-control__icon--play': type === 'play'
+    'play-control__icon--play': type === 'play',
+    'play-control__icon--check': isArchived
   });
 
   const handleClick = () => dispatch(playerPlayControl(selectedEpisodeData));
@@ -69,6 +72,7 @@ PlayControl.propTypes = {
   }),
   theme: PropTypes.string,
   size: PropTypes.string,
+  isArchived: PropTypes.bool,
   className: PropTypes.string
 };
 
