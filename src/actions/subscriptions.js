@@ -1,4 +1,5 @@
 import * as types from '../types/subscriptions';
+import { podcastDataSelector } from '../selectors/podcast-page';
 
 const subscriptionsAddPodcast = (podcastData) => ({
   type: types.SUBSCRIPTIONS_ADD_PODCAST,
@@ -11,8 +12,8 @@ const subscriptionsRemovePodcast = (podcastId) => ({
 });
 
 export const subscriptionsChange = (podcastId, subscribed) => (dispatch, getState) => {
-  const { podcastPage } = getState();
-  const { title, author, coverUrl600 } = podcastPage.data;
+  const store = getState();
+  const { title, author, coverUrl600 } = podcastDataSelector(store);
 
   if (subscribed) {
     dispatch(subscriptionsRemovePodcast(podcastId));
