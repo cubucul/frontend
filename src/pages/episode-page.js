@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReactTitle } from 'react-meta-tags';
-import { getEpisodePageData } from '../actions/podcast-page';
-import * as selectors from '../selectors/podcast-page';
+import { getEpisodePageData } from '../actions/episode-page';
+import * as selectors from '../selectors/episode-page';
 import Loader from '../components/ui/loader';
 import Blankslate from '../components/common/blankslate';
 import EpisodeHead from '../components/episodes/episode-head';
@@ -12,18 +12,18 @@ import EpisodeNotes from '../components/episodes/episode-notes';
 const EpisodePage = () => {
   const { podcastId, episodeId } = useParams();
   const dispatch = useDispatch();
-  const loading = useSelector(selectors.podcastLoadingSelector);
-  const error = useSelector(selectors.podcastErrorSelector);
-  const podcastData = useSelector(selectors.podcastDataSelector);
-  const { title: podcastTitle, coverUrl600, author, episodes } = podcastData;
+  const loading = useSelector(selectors.episodeLoadingSelector);
+  const error = useSelector(selectors.episodeErrorSelector);
+  const podcast = useSelector(selectors.episodeDataSelector);
+  const { title: podcastTitle, coverUrl600, author, episodes } = podcast;
   const episode = episodes[0];
-  const { title, published, description, url, duration } = episode;
+  const { id, title, published, description, url, duration } = episode;
 
   useEffect(() => {
-    if (podcastId && episodeId) {
+    if (podcastId && episodeId && episodeId !== id) {
       dispatch(getEpisodePageData(podcastId, episodeId));
     }
-  }, [dispatch, podcastId, episodeId]);
+  }, [dispatch, podcastId, episodeId, id]);
 
   if (error) {
     return (

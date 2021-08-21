@@ -1,4 +1,4 @@
-import { fetchPodcastPageData, fetchEpisodePageData } from '../services/rss';
+import { fetchPodcastPageData } from '../services/rss';
 import * as types from '../types/podcast-page';
 
 const podcastPageRequested = () => ({
@@ -18,13 +18,6 @@ const podcastPageSuccess = (data) => ({
 export const getPodcastPageData = (podcastId) => (dispatch) => {
   dispatch(podcastPageRequested());
   fetchPodcastPageData(podcastId)
-    .then((data) => dispatch(podcastPageSuccess(data)))
-    .catch((error) => dispatch(podcastPageError(error)));
-};
-
-export const getEpisodePageData = (podcastId, episodeId) => (dispatch) => {
-  dispatch(podcastPageRequested());
-  fetchEpisodePageData(podcastId, episodeId)
     .then((data) => dispatch(podcastPageSuccess(data)))
     .catch((error) => dispatch(podcastPageError(error)));
 };
