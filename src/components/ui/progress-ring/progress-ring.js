@@ -12,6 +12,10 @@ const ProgressRing = ({ percent, className }) => {
 
   const progressRingClass = classNames('progress-ring', className);
 
+  if (percent === 0) {
+    return null;
+  }
+
   return (
     <svg
       className={progressRingClass}
