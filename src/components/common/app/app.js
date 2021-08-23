@@ -1,5 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import classNames from 'classnames';
+import { playerShowSelector } from '../../../selectors/player';
 import Header from '../header';
 import Player from '../../player';
 import HomePage from '../../../pages/home-page';
@@ -14,8 +17,13 @@ import ListeningHistoryPage from '../../../pages/listening-history-page';
 import './app.css';
 
 const App = () => {
+  const show = useSelector(playerShowSelector);
+  const appClass = classNames('app', {
+    'app--with-player': show
+  });
+
   return (
-    <div className="app">
+    <div className={appClass}>
       <Header />
       <main>
         <Switch>
