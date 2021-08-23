@@ -1,0 +1,6 @@
+/* Episode Counter */
+
+.episode-counter {
+  padding: 16px 0;
+  color: var(--gray-800);
+}
