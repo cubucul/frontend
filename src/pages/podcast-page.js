@@ -11,6 +11,7 @@ import Blankslate from '../components/common/blankslate';
 import PodcastHead from '../components/podcast/podcast-head';
 import { EpisodeList, EpisodeListItem } from '../components/episodes/episode-list';
 import EpisodeCard from '../components/episodes/episode-card';
+import EpisodeCounter from '../components/episodes/episode-counter';
 
 const PodcastPage = () => {
   const { podcastId } = useParams();
@@ -66,6 +67,7 @@ const PodcastPage = () => {
       />
       <section>
         <h2 className="visually-hidden">Episodes</h2>
+        <EpisodeCounter count={episodes.length} />
         <EpisodeList>
           {
             episodes.map((episode) => {
