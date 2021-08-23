@@ -47,7 +47,7 @@ const EpisodePage = () => {
   }
 
   return (
-    <>
+    <article>
       <ReactTitle title={title} />
       <EpisodeHead
         podcastId={podcastId}
@@ -60,8 +60,11 @@ const EpisodePage = () => {
         url={url}
         author={author}
       />
-      <EpisodeNotes description={description} />
-    </>
+      <section>
+        <h2 className="visually-hidden">Description</h2>
+        <EpisodeNotes description={description} />
+      </section>
+    </article>
   );
 };
 
