@@ -13,3 +13,10 @@
 .episode-notes * {
   margin: 0;
 }
+
+/* Links */
+
+.episode-notes a {
+  color: var(--primary);
+  text-decoration: none;
+}
