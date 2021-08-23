@@ -2,11 +2,13 @@
 
 .episode-head {
   display: grid;
+  border-bottom: 1px solid var(--gray-400);
 }
 
 @media (max-width: 953px) {
   .episode-head {
     row-gap: 16px;
+    margin-bottom: 24px;
     padding-bottom: 24px;
   }
 }
@@ -22,6 +24,7 @@
     align-items: start;
     row-gap: 16px;
     column-gap: 32px;
+    margin-bottom: 32px;
     padding-bottom: 32px;
   }
 }
