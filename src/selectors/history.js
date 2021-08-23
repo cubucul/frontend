@@ -25,3 +25,6 @@ export const isEpisodeArchived = createSelector(
     return episode ? episode.duration === episode.currentTime : false;
   }
 );
+
+export const selectActiveEpisodes = (state) =>
+  state.history.filter((episode) => episode.duration !== episode.currentTime);
