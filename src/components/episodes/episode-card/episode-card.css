@@ -87,13 +87,15 @@
   line-height: 24px;
 }
 
-.episode-card__title--regular {
-  font-weight: 400;
-}
-
 @media (max-width: 953px) {
   .episode-card__title {
     grid-area: heading;
+  }
+}
+
+@media (min-width: 954px) {
+  .episode-card__title--regular {
+    font-weight: 400;
   }
 }
 
