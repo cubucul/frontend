@@ -8,7 +8,7 @@ export const playerTitleSelector = (state) => state.player.title;
 export const playerPodcastTitleSelector = (state) => state.player.podcastTitle;
 export const playerCoverUrl600Selector = (state) => state.player.coverUrl600;
 export const playerCurrentTimeSelector = (state) => state.player.currentTime;
-export const playerMutedSelector = (state) => state.player.muted;
+export const playerIsMutedSelector = (state) => state.player.isMuted;
 export const playerDurationSelector = (state) => state.player.duration;
 export const playerPlaybackRateSelector = (state) => state.player.playbackRate;
 export const playerVolumeSelector = (state) => state.player.volume;

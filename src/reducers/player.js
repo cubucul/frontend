@@ -6,7 +6,7 @@ const initialState = {
   canPlay: false,
   isPlaying: false,
   url: '',
-  muted: false,
+  isMuted: false,
   duration: 0,
   currentTime: 0,
   playbackRate: 1,
@@ -60,7 +60,7 @@ export const player = (state = initialState, action) => {
     case types.PLAYER_TOGGLE_MUTE:
       return {
         ...state,
-        muted: !state.muted
+        isMuted: !state.isMuted
       };
     case types.PLAYER_CHANGE_PLAYBACK_RATE:
       return {

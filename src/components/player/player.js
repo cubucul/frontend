@@ -24,7 +24,7 @@ const Player = () => {
   const title = useSelector(selectors.playerTitleSelector);
   const coverUrl600 = useSelector(selectors.playerCoverUrl600Selector);
   const currentTime = useSelector(selectors.playerCurrentTimeSelector);
-  const muted = useSelector(selectors.playerMutedSelector);
+  const isMuted = useSelector(selectors.playerIsMutedSelector);
   const podcastId = useSelector(selectors.playerPodcastIdSelector);
   const podcastTitle = useSelector(selectors.playerPodcastTitleSelector);
   const episodeId = useSelector(selectors.playerEpisodeIdSelector);
@@ -63,7 +63,7 @@ const Player = () => {
   const onVolumeChange = () => {
     const { volume, muted: audioMuted } = audio.current;
 
-    if (audioMuted !== muted) {
+    if (audioMuted !== isMuted) {
       dispatch(actions.playerToggleMute());
     } else {
       dispatch(actions.playerChangeVolume(volume));
