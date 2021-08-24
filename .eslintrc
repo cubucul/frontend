@@ -6,6 +6,7 @@
   "rules": {
     "semi": ["error", "always"],
     "comma-dangle": ["error", "never"],
-    "arrow-parens": ["error", "always"]
+    "arrow-parens": ["error", "always"],
+    "quotes": ["error", "single"]
   }
 }
