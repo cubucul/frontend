@@ -1,4 +1,4 @@
-export const playerPlayingSelector = (state) => state.player.playing;
+export const playerIsPlayingSelector = (state) => state.player.isPlaying;
 export const playerEpisodeIdSelector = (state) => state.player.episodeId;
 export const playerPodcastIdSelector = (state) => state.player.podcastId;
 export const playerIsShowingSelector = (state) => state.player.isShowing;

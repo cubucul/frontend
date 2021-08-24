@@ -4,7 +4,7 @@ const initialState = {
   isShowing: false,
   isLoading: false,
   canPlay: false,
-  playing: false,
+  isPlaying: false,
   url: '',
   muted: false,
   duration: 0,
@@ -27,7 +27,7 @@ export const player = (state = initialState, action) => {
         isShowing: true,
         isLoading: true,
         canPlay: false,
-        playing: false,
+        isPlaying: false,
         ...action.data
       };
     case types.PLAYER_CAN_PLAY:
@@ -35,17 +35,17 @@ export const player = (state = initialState, action) => {
         ...state,
         isLoading: false,
         canPlay: true,
-        playing: true
+        isPlaying: true
       };
     case types.PLAYER_PLAY:
       return {
         ...state,
-        playing: true
+        isPlaying: true
       };
     case types.PLAYER_PAUSE:
       return {
         ...state,
-        playing: false
+        isPlaying: false
       };
     case types.PLAYER_UPDATE_TIME:
       return {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import classNames from 'classnames';
 import { playerPlayControl } from '../../../actions/player';
-import { playerPlayingSelector, playerEpisodeIdSelector } from '../../../selectors/player';
+import { playerIsPlayingSelector, playerEpisodeIdSelector } from '../../../selectors/player';
 import { selectCurrentTimeById } from '../../../selectors/history';
 import ProgressRing from '../../ui/progress-ring';
 import { ReactComponent as PlayIcon } from './play.svg';
@@ -15,13 +15,13 @@ const PlayControl = ({ selectedEpisodeData, theme, size, isArchived, className }
   const { episodeId: selectedEpisodeId, duration } = selectedEpisodeData;
 
   const dispatch = useDispatch();
-  const playing = useSelector(playerPlayingSelector);
+  const isPlaying = useSelector(playerIsPlayingSelector);
   const episodeId = useSelector(playerEpisodeIdSelector);
   const currentTime = useSelector((state) => selectCurrentTimeById(state, selectedEpisodeId));
 
   const percent = currentTime / duration * 100 || 0;
 
-  const type = playing && episodeId === selectedEpisodeId ? 'pause' : 'play';
+  const type = isPlaying && episodeId === selectedEpisodeId ? 'pause' : 'play';
   const Icon = isArchived ? CheckIcon : (type === 'play' ? PlayIcon : PauseIcon);
   const label = `${type === 'play' ? 'Play' : 'Pause'} episode`;
 

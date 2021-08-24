@@ -19,7 +19,7 @@ const Player = () => {
   const dispatch = useDispatch();
   const isShowing = useSelector(selectors.playerIsShowingSelector);
   const isLoading = useSelector(selectors.playerIsLoadingSelector);
-  const playing = useSelector(selectors.playerPlayingSelector);
+  const isPlaying = useSelector(selectors.playerIsPlayingSelector);
   const url = useSelector(selectors.playerUrlSelector);
   const title = useSelector(selectors.playerTitleSelector);
   const coverUrl600 = useSelector(selectors.playerCoverUrl600Selector);
@@ -81,13 +81,13 @@ const Player = () => {
 
   useEffect(() => {
     if (isShowing && canPlay) {
-      if (playing) {
+      if (isPlaying) {
         audio.current.play();
       } else {
         audio.current.pause();
       }
     }
-  }, [isShowing, canPlay, playing]);
+  }, [isShowing, canPlay, isPlaying]);
 
   useEffect(() => {
     if (url) {
