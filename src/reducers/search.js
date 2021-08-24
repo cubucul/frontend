@@ -35,7 +35,7 @@ export const search = (state = initialState, action) => {
         ...state,
         term: action.term
       };
-    case types.CLEAR_SEARCH_TERM:
+    case types.RESET_SEARCH:
       return initialState;
     default:
       return state;

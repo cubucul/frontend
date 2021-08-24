@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { findPodcasts, changeSearchTerm, clearSearchTerm } from '../../actions/search';
+import { findPodcasts, changeSearchTerm, resetSearch } from '../../actions/search';
 import * as selectors from '../../selectors/search';
 import SearchForm from './search-form';
 import SearchList from './search-list';
@@ -35,7 +35,7 @@ const Search = () => {
   };
 
   const handleClear = () => {
-    dispatch(clearSearchTerm());
+    dispatch(resetSearch());
     setFocusedId(-1);
   };
 

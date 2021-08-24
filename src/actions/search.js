@@ -20,8 +20,8 @@ export const changeSearchTerm = (term) => ({
   term
 });
 
-export const clearSearchTerm = () => ({
-  type: types.CLEAR_SEARCH_TERM
+export const resetSearch = () => ({
+  type: types.RESET_SEARCH
 });
 
 export const findPodcasts = (term, options) => (dispatch) => {
