@@ -6,5 +6,5 @@ const podcastIdSelector = (state) => state.podcastPage.data.id;
 export const hasInSubscriptionsSelector = createSelector(
   subscriptionsSelector,
   podcastIdSelector,
-  (subscriptions, podcastId) => subscriptions.findIndex(s => s.id === podcastId) !== -1
+  (subscriptions, podcastId) => subscriptions.findIndex((s) => s.id === podcastId) !== -1
 );

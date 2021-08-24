@@ -18,6 +18,6 @@ const discoverPageSuccess = (data) => ({
 export const getDiscoverPageData = (genre, count) => (dispatch) => {
   dispatch(discoverPageRequested());
   getPodcastByGenre(genre, count)
-    .then(data => dispatch(discoverPageSuccess(data)))
-    .catch(error => dispatch(discovertPageError(error)));
+    .then((data) => dispatch(discoverPageSuccess(data)))
+    .catch((error) => dispatch(discovertPageError(error)));
 };

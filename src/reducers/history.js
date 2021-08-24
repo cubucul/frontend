@@ -11,7 +11,7 @@ export const history = (state = initialState, action) => {
       ];
     case types.HISTORY_UPDATE_EPISODE_TIME: {
       const { episodeId, currentTime } = action;
-      const episodeIndex = state.findIndex(e => e.episodeId === episodeId);
+      const episodeIndex = state.findIndex((e) => e.episodeId === episodeId);
 
       const newState = [...state];
       newState[episodeIndex].currentTime = currentTime;

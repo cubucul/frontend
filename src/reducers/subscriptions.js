@@ -10,7 +10,7 @@ export const subscriptions = (state = initialState, action) => {
         action.podcastData
       ];
     case types.SUBSCRIPTIONS_REMOVE_PODCAST: {
-      const index = state.findIndex(i => i.id === action.podcastId);
+      const index = state.findIndex((i) => i.id === action.podcastId);
 
       return [
         ...state.splice(0, index),

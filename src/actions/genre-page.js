@@ -19,6 +19,6 @@ const genrePageSuccess = (data) => ({
 export const getGenrePageData = (genre, count) => (dispatch) => {
   dispatch(genrePageRequested(genre));
   getPodcastByGenre(genre, count)
-    .then(data => dispatch(genrePageSuccess(data)))
-    .catch(error => dispatch(genrePageError(error)));
+    .then((data) => dispatch(genrePageSuccess(data)))
+    .catch((error) => dispatch(genrePageError(error)));
 };

@@ -38,7 +38,7 @@ const Player = () => {
     'player--mini': !expanded
   });
 
-  const togglePlayerView = () => setExpanded(v => !v);
+  const togglePlayerView = () => setExpanded((v) => !v);
 
   const setCurrentTime = (value) => {
     audio.current.currentTime = value;

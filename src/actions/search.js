@@ -27,8 +27,8 @@ export const clearSearchTerm = () => ({
 export const findPodcasts = (term, options) => (dispatch) => {
   dispatch(searchRequested());
   fetchPodcasts(term, options)
-    .then(data => dispatch(searchLoaded(data)))
-    .catch(error => {
+    .then((data) => dispatch(searchLoaded(data)))
+    .catch((error) => {
       if (error.message !== 'Fetch is aborted') {
         dispatch(searchError(error));
       }
