@@ -7,6 +7,9 @@
     "semi": ["error", "always"],
     "comma-dangle": ["error", "never"],
     "arrow-parens": ["error", "always"],
-    "quotes": ["error", "single"]
+    "quotes": ["error", "single"],
+    "indent": ["error", 2, {
+      "SwitchCase": 1
+    }]
   }
 }
