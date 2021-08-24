@@ -14,7 +14,7 @@ import PodcastsGrid from '../components/common/podcasts-grid';
 const GenrePage = () => {
   const dispatch = useDispatch();
   const { genreId } = useParams();
-  const loading = useSelector(selectors.genreLoadingSelector);
+  const isLoading = useSelector(selectors.genreIsLoadingSelector);
   const error = useSelector(selectors.genreErrorSelector);
   const podcasts = useSelector(selectors.genrePodcastsSelector);
   const genre = useSelector(selectors.genreGenreIdSelector);
@@ -43,7 +43,7 @@ const GenrePage = () => {
     );
   }
 
-  if (loading) {
+  if (isLoading) {
     return (
       <>
         {pageTitle}
