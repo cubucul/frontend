@@ -14,7 +14,7 @@ import { ReactComponent as PopoverExpandedIcon } from './popover-expanded.svg';
 import './player.css';
 
 const Player = () => {
-  const [expanded, setExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const audio = useRef();
   const dispatch = useDispatch();
   const isShowing = useSelector(selectors.playerIsShowingSelector);
@@ -30,15 +30,15 @@ const Player = () => {
   const episodeId = useSelector(selectors.playerEpisodeIdSelector);
   const canPlay = useSelector(selectors.playerCanPlaySelector);
 
-  const popoverLabelText = expanded ? 'Minify player' : 'Expand player';
-  const PopoverIcon = expanded ? PopoverExpandedIcon : PopoverClosedIcon;
+  const popoverLabelText = isExpanded ? 'Minify player' : 'Expand player';
+  const PopoverIcon = isExpanded ? PopoverExpandedIcon : PopoverClosedIcon;
 
   const playerClass = classNames('player', {
-    'player--full': expanded,
-    'player--mini': !expanded
+    'player--full': isExpanded,
+    'player--mini': !isExpanded
   });
 
-  const togglePlayerView = () => setExpanded((v) => !v);
+  const togglePlayerView = () => setIsExpanded((v) => !v);
 
   const setCurrentTime = (value) => {
     audio.current.currentTime = value;
