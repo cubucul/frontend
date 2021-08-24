@@ -1,5 +1,5 @@
 import * as types from '../types/player';
-import { addEpisodeToHistory, updateEpisodeTimeInHistory } from './history';
+import { addEpisodeToHistory, updateEpisodeTimeInHistory, setIsArchived } from './history';
 import { selectEpisodeById, selectCurrentTimeById, isEpisodeArchived } from '../selectors/history';
 import { playerIsPlayingSelector, playerEpisodeIdSelector } from '../selectors/player';
 
@@ -42,9 +42,12 @@ export const playerChangePlaybackRate = (value) => ({
   value
 });
 
-export const playerEpisodeEnded = () => ({
-  type: types.PLAYER_EPISODE_ENDED
-});
+export const playerEpisodeEnded = (episodeId) => (dispatch) => {
+  dispatch({
+    type: types.PLAYER_EPISODE_ENDED
+  });
+  dispatch(setIsArchived(episodeId, true));
+};
 
 export const playerPlayControl = (selectedEpisodeData) => (dispatch, getState) => {
   const { episodeId: selectedEpisodeId } = selectedEpisodeData;
@@ -66,6 +69,7 @@ export const playerPlayControl = (selectedEpisodeData) => (dispatch, getState) =
     if (isArchived) {
       dispatch(updateEpisodeTimeInHistory(selectedEpisodeId, 0));
       dispatch(loadEpisodeData({ ...selectedEpisodeData, currentTime: 0 }));
+      dispatch(setIsArchived(selectedEpisodeId, false));
     } else {
       dispatch(loadEpisodeData(episodeData));
     }

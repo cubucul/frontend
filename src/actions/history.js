@@ -10,3 +10,9 @@ export const updateEpisodeTimeInHistory = (episodeId, currentTime) => ({
   episodeId,
   currentTime
 });
+
+export const setIsArchived = (episodeId, isArchived) => ({
+  type: types.HISTORY_SET_IS_ARCHIVED,
+  episodeId,
+  isArchived
+});

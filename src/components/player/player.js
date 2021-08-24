@@ -76,7 +76,7 @@ const Player = () => {
   };
 
   const onEnded = () => {
-    dispatch(actions.playerEpisodeEnded());
+    dispatch(actions.playerEpisodeEnded(episodeId));
   };
 
   useEffect(() => {
