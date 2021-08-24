@@ -2,7 +2,7 @@ import * as types from '../types/player';
 
 const initialState = {
   show: false,
-  loading: false,
+  isLoading: false,
   canPlay: false,
   playing: false,
   url: '',
@@ -25,7 +25,7 @@ export const player = (state = initialState, action) => {
       return {
         ...state,
         show: true,
-        loading: true,
+        isLoading: true,
         canPlay: false,
         playing: false,
         ...action.data
@@ -33,7 +33,7 @@ export const player = (state = initialState, action) => {
     case types.PLAYER_CAN_PLAY:
       return {
         ...state,
-        loading: false,
+        isLoading: false,
         canPlay: true,
         playing: true
       };

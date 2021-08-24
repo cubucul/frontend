@@ -18,7 +18,7 @@ const Player = () => {
   const audio = useRef();
   const dispatch = useDispatch();
   const show = useSelector(selectors.playerShowSelector);
-  const loading = useSelector(selectors.playerLoadingSelector);
+  const isLoading = useSelector(selectors.playerIsLoadingSelector);
   const playing = useSelector(selectors.playerPlayingSelector);
   const url = useSelector(selectors.playerUrlSelector);
   const title = useSelector(selectors.playerTitleSelector);
@@ -129,7 +129,7 @@ const Player = () => {
         preload="metadata"
         autoPlay={false}
       />
-      { loading ?
+      { isLoading ?
         <p className="player__spinner">Loading...</p>
         :
         <div className="player__inner">
