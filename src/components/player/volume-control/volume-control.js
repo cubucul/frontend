@@ -15,7 +15,7 @@ const VolumeControl = React.memo(React.forwardRef(({ className }, audio) => {
   const muted = useSelector(playerMutedSelector);
   const Icon = muted ? VolumeXIcon : volume > 0.6 ?
     Volume2Icon : volume > 0.3 ?
-    Volume1Icon : volume === 0 ? VolumeXIcon : VolumeIcon;
+      Volume1Icon : volume === 0 ? VolumeXIcon : VolumeIcon;
 
   const volumeControlClass = classNames('volume-control', className);
 

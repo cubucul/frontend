@@ -18,7 +18,7 @@ const PodcastsGrid = ({ podcasts, withoutInfo, showCounter }) => {
               {
                 showCounter &&
                   <span className="podcasts-grid__counter">{index + 1}</span>
-                }
+              }
               <PodcastCard {...podcast} withoutInfo={withoutInfo} />
             </li>
           );
