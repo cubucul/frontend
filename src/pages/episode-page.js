@@ -12,7 +12,7 @@ import EpisodeNotes from '../components/episodes/episode-notes';
 const EpisodePage = () => {
   const { podcastId, episodeId } = useParams();
   const dispatch = useDispatch();
-  const loading = useSelector(selectors.episodeLoadingSelector);
+  const isLoading = useSelector(selectors.episodeIsLoadingSelector);
   const error = useSelector(selectors.episodeErrorSelector);
   const podcast = useSelector(selectors.episodeDataSelector);
   const { title: podcastTitle, coverUrl600, author, episodes } = podcast;
@@ -37,7 +37,7 @@ const EpisodePage = () => {
     );
   }
 
-  if (loading) {
+  if (isLoading) {
     return (
       <>
         <ReactTitle title="Loading..." />
