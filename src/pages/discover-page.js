@@ -12,7 +12,7 @@ import GenreGrid from '../components/common/genre-grid';
 
 const DiscoverPage = () => {
   const dispatch = useDispatch();
-  const loading = useSelector(selectors.discoverLoadingSelector);
+  const isLoading = useSelector(selectors.discoverIsLoadingSelector);
   const error = useSelector(selectors.discoverErrorSelector);
   const podcasts = useSelector(selectors.discoverPodcastsSelector);
 
@@ -36,7 +36,7 @@ const DiscoverPage = () => {
     );
   }
 
-  if (loading) {
+  if (isLoading) {
     return (
       <>
         {pageTitle}

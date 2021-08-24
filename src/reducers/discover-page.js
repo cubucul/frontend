@@ -1,7 +1,7 @@
 import * as types from '../types/discover-page';
 
 const initialState = {
-  loading: false,
+  isLoading: false,
   error: null,
   podcasts: []
 };
@@ -10,19 +10,19 @@ export const discoverPage = (state = initialState, action) => {
   switch (action.type) {
     case types.FETCH_DISCOVER_PAGE_REQUEST:
       return {
-        loading: true,
+        isLoading: true,
         error: null,
         podcasts: []
       };
     case types.FETCH_DISCOVER_PAGE_FAILURE:
       return {
-        loading: false,
+        isLoading: false,
         error: action.error,
         podcasts: []
       };
     case types.FETCH_DISCOVER_PAGE_SUCCESS:
       return {
-        loading: false,
+        isLoading: false,
         error: null,
         podcasts: action.data
       };
