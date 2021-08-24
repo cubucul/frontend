@@ -1,7 +1,7 @@
 import * as types from '../types/player';
 
 const initialState = {
-  show: false,
+  isShowing: false,
   isLoading: false,
   canPlay: false,
   playing: false,
@@ -24,7 +24,7 @@ export const player = (state = initialState, action) => {
     case types.PLAYER_LOAD_EPISODE_DATA:
       return {
         ...state,
-        show: true,
+        isShowing: true,
         isLoading: true,
         canPlay: false,
         playing: false,

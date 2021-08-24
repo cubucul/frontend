@@ -17,7 +17,7 @@ const Player = () => {
   const [expanded, setExpanded] = useState(false);
   const audio = useRef();
   const dispatch = useDispatch();
-  const show = useSelector(selectors.playerShowSelector);
+  const isShowing = useSelector(selectors.playerIsShowingSelector);
   const isLoading = useSelector(selectors.playerIsLoadingSelector);
   const playing = useSelector(selectors.playerPlayingSelector);
   const url = useSelector(selectors.playerUrlSelector);
@@ -80,14 +80,14 @@ const Player = () => {
   };
 
   useEffect(() => {
-    if (show && canPlay) {
+    if (isShowing && canPlay) {
       if (playing) {
         audio.current.play();
       } else {
         audio.current.pause();
       }
     }
-  }, [show, canPlay, playing]);
+  }, [isShowing, canPlay, playing]);
 
   useEffect(() => {
     if (url) {
@@ -96,7 +96,7 @@ const Player = () => {
     }
   }, [url]);
 
-  if (!show) {
+  if (!isShowing) {
     return null;
   }
 

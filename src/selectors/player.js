@@ -1,7 +1,7 @@
 export const playerPlayingSelector = (state) => state.player.playing;
 export const playerEpisodeIdSelector = (state) => state.player.episodeId;
 export const playerPodcastIdSelector = (state) => state.player.podcastId;
-export const playerShowSelector = (state) => state.player.show;
+export const playerIsShowingSelector = (state) => state.player.isShowing;
 export const playerIsLoadingSelector = (state) => state.player.isLoading;
 export const playerUrlSelector = (state) => state.player.url;
 export const playerTitleSelector = (state) => state.player.title;
