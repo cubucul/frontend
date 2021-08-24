@@ -1,7 +1,7 @@
 import * as types from '../types/podcast-page';
 
 const initialState = {
-  loading: false,
+  isLoading: false,
   error: null,
   data: {
     id: '',
@@ -28,19 +28,19 @@ export const podcastPage = (state = initialState, action) => {
     case types.FETCH_PODCAST_PAGE_REQUEST:
       return {
         ...state,
-        loading: true,
+        isLoading: true,
         error: null
       };
     case types.FETCH_PODCAST_PAGE_FAILURE:
       return {
         ...state,
-        loading: false,
+        isLoading: false,
         error: action.error
       };
     case types.FETCH_PODCAST_PAGE_SUCCESS:
       return {
         ...state,
-        loading: false,
+        isLoading: false,
         error: null,
         data: action.data
       };

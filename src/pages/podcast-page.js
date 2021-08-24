@@ -16,7 +16,7 @@ import EpisodeCounter from '../components/episodes/episode-counter';
 const PodcastPage = () => {
   const { podcastId } = useParams();
   const dispatch = useDispatch();
-  const loading = useSelector(selectors.podcastLoadingSelector);
+  const isLoading = useSelector(selectors.podcastIsLoadingSelector);
   const error = useSelector(selectors.podcastErrorSelector);
   const podcastData = useSelector(selectors.podcastDataSelector);
   const subscribed = useSelector(hasInSubscriptionsSelector);
@@ -44,7 +44,7 @@ const PodcastPage = () => {
     );
   }
 
-  if (loading) {
+  if (isLoading) {
     return (
       <>
         <ReactTitle title="Loading..." />
