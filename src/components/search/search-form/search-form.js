@@ -6,7 +6,7 @@ import { ReactComponent as CloseIcon } from './close.svg';
 import './search-form.css';
 
 const SearchForm = React.forwardRef(({
-  term, loading, onSubmit, onChange, onFocus, onClear, onKeyDown }, ref) => {
+  term, isLoading, onSubmit, onChange, onFocus, onClear, onKeyDown }, ref) => {
   return (
     <form ref={ref} className="search-form" onSubmit={onSubmit}>
       <div className="search-form__field">
@@ -21,7 +21,7 @@ const SearchForm = React.forwardRef(({
           onKeyDown={onKeyDown}
           placeholder="Find podcasts"
         />
-        { !loading &&
+        { !isLoading &&
           <SearchIcon
             className="search-form__icon search-form__icon-search"
             width="24"
@@ -29,7 +29,7 @@ const SearchForm = React.forwardRef(({
             aria-hidden="true"
           />
         }
-        { loading &&
+        { isLoading &&
           <SpinnerIcon
             className="search-form__icon search-form__icon-spinner"
             width="24"
@@ -59,7 +59,7 @@ const SearchForm = React.forwardRef(({
 
 SearchForm.propTypes = {
   term: PropTypes.string.isRequired,
-  loading: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   onFocus: PropTypes.func.isRequired,

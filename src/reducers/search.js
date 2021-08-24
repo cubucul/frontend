@@ -1,7 +1,7 @@
 import * as types from '../types/search';
 
 const initialState = {
-  loading: false,
+  isLoading: false,
   error: null,
   term: '',
   results: []
@@ -12,21 +12,21 @@ export const search = (state = initialState, action) => {
     case types.FETCH_SEARCH_REQUEST:
       return {
         ...state,
-        loading: true,
+        isLoading: true,
         error: null,
         results: []
       };
     case types.FETCH_SEARCH_FAILURE:
       return {
         ...state,
-        loading: false,
+        isLoading: false,
         error: action.error,
         results: []
       };
     case types.FETCH_SEARCH_SUCCESS:
       return {
         ...state,
-        loading: false,
+        isLoading: false,
         error: null,
         results: action.data
       };

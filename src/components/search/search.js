@@ -11,7 +11,7 @@ const Search = () => {
   const [showResults, setShowResults] = useState(false);
   const [focusedId, setFocusedId] = useState(-1);
   const term = useSelector(selectors.searchTermSelector);
-  const loading = useSelector(selectors.searchLoadingSelector);
+  const isLoading = useSelector(selectors.searchIsLoadingSelector);
   const error = useSelector(selectors.searchErrorSelector);
   const results = useSelector(selectors.searchResultsSelector);
   const dispatch = useDispatch();
@@ -94,7 +94,7 @@ const Search = () => {
       <SearchForm
         ref={form}
         term={term}
-        loading={loading}
+        isLoading={isLoading}
         onSubmit={handleSubmit}
         onChange={handleChange}
         onClear={handleClear}
