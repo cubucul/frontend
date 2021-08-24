@@ -86,7 +86,7 @@ const Search = () => {
 
     return () => {
       document.removeEventListener('mousedown', handleClose);
-    }
+    };
   }, []);
 
   return (

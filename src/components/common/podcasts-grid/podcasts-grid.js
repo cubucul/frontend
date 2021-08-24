@@ -26,7 +26,7 @@ const PodcastsGrid = ({ podcasts, withoutInfo, showCounter }) => {
       }
     </ul>
   );
-}
+};
 
 PodcastsGrid.propTypes = {
   podcasts: PropTypes.arrayOf(

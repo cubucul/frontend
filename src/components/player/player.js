@@ -9,8 +9,8 @@ import SpeedControl from './speed-control';
 import VolumeControl from './volume-control';
 import ProgressControl from './progress-control';
 import PlayControl from '../common/play-control';
-import { ReactComponent as PopoverClosedIcon } from './popover.svg'
-import { ReactComponent as PopoverExpandedIcon } from './popover-expanded.svg'
+import { ReactComponent as PopoverClosedIcon } from './popover.svg';
+import { ReactComponent as PopoverExpandedIcon } from './popover-expanded.svg';
 import './player.css';
 
 const Player = () => {

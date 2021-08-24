@@ -65,7 +65,7 @@ export const playerPlayControl = (selectedEpisodeData) => (dispatch, getState) =
   } else {
     if (isArchived) {
       dispatch(updateEpisodeTimeInHistory(selectedEpisodeId, 0));
-      dispatch(loadEpisodeData({ ...selectedEpisodeData, currentTime: 0 }))
+      dispatch(loadEpisodeData({ ...selectedEpisodeData, currentTime: 0 }));
     } else {
       dispatch(loadEpisodeData(episodeData));
     }
