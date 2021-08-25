@@ -7,6 +7,7 @@ import { subscriptions } from './subscriptions';
 import { discoverPage } from './discover-page';
 import { genrePage } from './genre-page';
 import { history } from './history';
+import { favourites } from './favourites';
 
 const rootReducer = combineReducers({
   search,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   player,
   discoverPage,
   genrePage,
-  history
+  history,
+  favourites
 });
 
 export default rootReducer;
