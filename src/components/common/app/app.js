@@ -12,7 +12,7 @@ import DiscoverPage from '../../../pages/discover-page';
 import GenrePage from '../../../pages/genre-page';
 import NewReleasesPage from '../../../pages/new-releases-page';
 import InProgressPage from '../../../pages/in-progress-page';
-import StarredPage from '../../../pages/starred-page';
+import FavouritesPage from '../../../pages/favourites-page';
 import ListeningHistoryPage from '../../../pages/listening-history-page';
 import './app.css';
 
@@ -35,7 +35,7 @@ const App = () => {
           <Route path="/discover/genre/:genreId" component={GenrePage} />
           <Route path="/new-releases" component={NewReleasesPage} />
           <Route path="/in-progress" component={InProgressPage} />
-          <Route path="/starred" component={StarredPage} />
+          <Route path="/favourites" component={FavouritesPage} />
           <Route path="/listening-history" component={ListeningHistoryPage} />
         </Switch>
       </main>

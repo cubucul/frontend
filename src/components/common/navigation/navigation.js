@@ -11,7 +11,7 @@ const Navigation = () => {
     { label: 'Discover', path: '/discover', icon: SearchIcon },
     // { label: 'New Releases', path: '/new-releases' },
     // { label: 'In Progress', path: '/in-progress' },
-    // { label: 'Starred', path: '/starred' },
+    // { label: 'Favourites', path: '/favourites' },
     { label: 'Listening History', path: '/listening-history', icon: UserIcon }
   ];
 
