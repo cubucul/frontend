@@ -8,3 +8,5 @@ export const hasEpisodeInFavourites = createSelector(
     return episodeIndex !== -1;
   }
 );
+
+export const favouritesSelector = (state) => state.favourites;
