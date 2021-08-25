@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './progress-ring.css';
 
-const ProgressRing = ({ percent, className }) => {
+const ProgressRing = ({ percent, isArchived, className }) => {
   const radius = 16;
   const stroke = 2;
   const normalizedRadius = radius - stroke / 2;
@@ -12,7 +12,7 @@ const ProgressRing = ({ percent, className }) => {
 
   const progressRingClass = classNames('progress-ring', className);
 
-  if (percent === 0 || percent === 100) {
+  if (percent === 0 || isArchived) {
     return null;
   }
 
@@ -38,6 +38,7 @@ const ProgressRing = ({ percent, className }) => {
 
 ProgressRing.propTypes = {
   percent: PropTypes.number.isRequired,
+  isArchived: PropTypes.bool,
   className: PropTypes.string
 };
 

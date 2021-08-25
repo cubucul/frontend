@@ -48,6 +48,7 @@ const PlayControl = ({ selectedEpisodeData, theme, size, isArchived, className }
       <ProgressRing
         className="play-control__progress"
         percent={percent}
+        isArchived={isArchived}
       />
       <Icon
         className={playControlIconClass}
