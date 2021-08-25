@@ -6,6 +6,13 @@ const getEpisodeIndex = (state, episodeId) => {
   return state.findIndex((e) => e.episodeId === episodeId);
 };
 
+const setValueInEpisode = (state, episodeId, property, value) => {
+  const episodeIndex = getEpisodeIndex(state, episodeId);
+  const newState = [...state];
+  newState[episodeIndex][property] = value;
+  return newState;
+};
+
 export const history = (state = initialState, action) => {
   switch (action.type) {
     case types.HISTORY_ADD_EPISODE: {
@@ -21,21 +28,11 @@ export const history = (state = initialState, action) => {
     }
     case types.HISTORY_UPDATE_EPISODE_TIME: {
       const { episodeId, currentTime } = action;
-      const episodeIndex = getEpisodeIndex(state, episodeId);
-
-      const newState = [...state];
-      newState[episodeIndex].currentTime = currentTime;
-
-      return newState;
+      return setValueInEpisode(state, episodeId, 'currentTime', currentTime);
     }
     case types.HISTORY_SET_IS_ARCHIVED: {
       const { episodeId, isArchived } = action;
-      const episodeIndex = getEpisodeIndex(state, episodeId);
-
-      const newState = [...state];
-      newState[episodeIndex].isArchived = isArchived;
-
-      return newState;
+      return setValueInEpisode(state, episodeId, 'isArchived', isArchived);
     }
     default:
       return state;
