@@ -20,7 +20,7 @@
     ;
   }
 
-  .episode-cart--with-image {
+  .episode-card--with-image {
     grid-template-areas:
       'image published published control'
       'image heading heading control'

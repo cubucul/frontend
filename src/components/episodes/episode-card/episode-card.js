@@ -44,7 +44,7 @@ const EpisodeCard = ({ episodeData, noImage, noPodcastLink }) => {
 
   const episodeCardClass = classNames('episode-card', {
     'episode-card--noindex': noImage && !episodeIndex,
-    'episode-cart--with-image': !noImage,
+    'episode-card--with-image': !noImage,
     'episode-card--archived': isArchived
   });
 
