@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { isEpisodeArchived } from '../../../selectors/history';
+import { hasEpisodeInFavourites } from '../../../selectors/favourites';
+import { addToFavourites, removeFromFavourites } from '../../../actions/favourites';
 import { secondsToString } from '../../../utils/time';
 import { getEpisodeIndex } from '../../../utils/helpers';
 import PlayControl from '../../common/play-control';
+import { ReactComponent as StarIcon } from './star.svg';
 import './episode-card.css';
 
 const EpisodeCard = ({ episodeData, noImage, noPodcastLink }) => {
@@ -23,18 +26,43 @@ const EpisodeCard = ({ episodeData, noImage, noPodcastLink }) => {
     number,
     episodeType
   } = episodeData;
+  const dispatch = useDispatch();
   const isArchived = useSelector((state) => isEpisodeArchived(state, episodeId));
-
-  const titleClass = classNames('episode-card__title', {
-    'episode-card__title--regular': noPodcastLink
-  });
-
+  const isFavourite = useSelector((state) => hasEpisodeInFavourites(state, episodeId));
   const episodeIndex = getEpisodeIndex(season, number, episodeType);
+
+  const selectedEpisodeData = {
+    episodeId,
+    title,
+    duration,
+    published,
+    url,
+    podcastId,
+    podcastTitle,
+    coverUrl600
+  };
+
   const episodeCardClass = classNames('episode-card', {
     'episode-card--noindex': noImage && !episodeIndex,
     'episode-cart--with-image': !noImage,
     'episode-card--archived': isArchived
   });
+
+  const titleClass = classNames('episode-card__title', {
+    'episode-card__title--regular': noPodcastLink
+  });
+
+  const favouriteIconClass = classNames('episode-card__favourite-icon', {
+    'episode-card__favourite-icon--active': isFavourite
+  });
+
+  const handleClick = () => {
+    if (isFavourite) {
+      dispatch(removeFromFavourites(episodeId));
+    } else {
+      dispatch(addToFavourites(selectedEpisodeData));
+    }
+  };
 
   return (
     <div className={episodeCardClass}>
@@ -50,12 +78,27 @@ const EpisodeCard = ({ episodeData, noImage, noPodcastLink }) => {
       { noImage && episodeIndex &&
         <span className="episode-card__index">{episodeIndex}</span>
       }
-      <h3 className={titleClass}>
-        <Link
-          className="episode-card__link"
-          to={`/podcast/${podcastId}/${episodeId}`}
-        >{title}</Link>
-      </h3>
+      <div className="episode-card__heading">
+        <h3 className={titleClass}>
+          <Link
+            className="episode-card__link"
+            to={`/podcast/${podcastId}/${episodeId}`}
+          >{title}</Link>
+        </h3>
+        <button
+          className="episode-card__favourite"
+          type="button"
+          onClick={handleClick}
+          aria-label={isFavourite ? 'Remove from favourites' : 'Add to favourites'}
+        >
+          <StarIcon
+            className={favouriteIconClass}
+            width="24"
+            height="24"
+            aria-hidden="true"
+          />
+        </button>
+      </div>
       <p className="episode-card__published">{published}</p>
       <span className="episode-card__duration">
         {secondsToString(duration)}
@@ -63,16 +106,7 @@ const EpisodeCard = ({ episodeData, noImage, noPodcastLink }) => {
       <PlayControl
         isArchived={isArchived}
         className="episode-card__control"
-        selectedEpisodeData={{
-          episodeId,
-          title,
-          duration,
-          published,
-          url,
-          podcastId,
-          podcastTitle,
-          coverUrl600
-        }}
+        selectedEpisodeData={selectedEpisodeData}
       />
     </div>
   );

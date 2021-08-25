@@ -78,6 +78,21 @@
   }
 }
 
+/* Heading */
+
+@media (max-width: 953px) {
+  .episode-card__heading {
+    grid-area: heading;
+  }
+}
+
+@media (min-width: 954px) {
+  .episode-card__heading {
+    display: flex;
+    align-items: center;
+  }
+}
+
 /* Title */
 
 .episode-card__title {
@@ -87,13 +102,15 @@
   line-height: 24px;
 }
 
-@media (max-width: 953px) {
-  .episode-card__title {
-    grid-area: heading;
-  }
-}
-
 @media (min-width: 954px) {
+  .episode-card__title {
+    margin-right: 32px;
+  }
+
+  .episode-card:hover .episode-card__title {
+    margin-right: 8px;
+  }
+
   .episode-card__title--regular {
     font-weight: 400;
   }
@@ -116,6 +133,50 @@
 
 .episode-card--archived .episode-card__link:hover {
   color: var(--black);
+}
+
+/* Favourite */
+
+@media (max-width: 953px) {
+  .episode-card__favourite {
+    display: none;
+  }
+}
+
+@media (min-width: 954px) {
+  .episode-card__favourite {
+    flex-shrink: 0;
+    display: none;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .episode-card:hover .episode-card__favourite {
+    display: block;
+  }
+}
+
+/* Favourite Icon */
+
+@media (min-width: 954px) {
+  .episode-card__favourite-icon {
+    fill: var(--gray-500);
+    stroke: var(--gray-500);
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .episode-card__favourite-icon--active {
+    fill: #ffd700;
+    stroke: #ffd700;
+  }
 }
 
 /* Published */
