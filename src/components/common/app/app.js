@@ -14,6 +14,7 @@ import NewReleasesPage from '../../../pages/new-releases-page';
 import InProgressPage from '../../../pages/in-progress-page';
 import FavouritesPage from '../../../pages/favourites-page';
 import ListeningHistoryPage from '../../../pages/listening-history-page';
+import NotFoundPage from '../../../pages/not-found-page';
 import './app.css';
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/in-progress" component={InProgressPage} />
           <Route path="/favourites" component={FavouritesPage} />
           <Route path="/listening-history" component={ListeningHistoryPage} />
+          <Route path="*" component={NotFoundPage} />
         </Switch>
       </main>
       <Player />
