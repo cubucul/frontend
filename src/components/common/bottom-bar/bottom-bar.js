@@ -89,8 +89,8 @@ const BottomBar = () => {
                     >
                       <Icon
                         className="bottom-bar__popup-icon"
-                        width="28"
-                        height="28"
+                        width="26"
+                        height="26"
                         aria-hidden="true"
                       />
                       <span className="bottom-bar__title">{label}</span>
