@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { ReactTitle } from 'react-meta-tags';
 import { getPodcastPageData } from '../actions/podcast-page';
 import { subscriptionsChange } from '../actions/subscriptions';
-import { hasInSubscriptionsSelector } from '../selectors/subscriptions';
+import { hasPodcastInSubscriptions } from '../selectors/subscriptions';
 import * as selectors from '../selectors/podcast-page';
 import Loader from '../components/ui/loader';
 import Blankslate from '../components/common/blankslate';
@@ -19,7 +19,7 @@ const PodcastPage = () => {
   const isLoading = useSelector(selectors.podcastIsLoadingSelector);
   const error = useSelector(selectors.podcastErrorSelector);
   const podcastData = useSelector(selectors.podcastDataSelector);
-  const subscribed = useSelector(hasInSubscriptionsSelector);
+  const isSubscribed = useSelector((state) => hasPodcastInSubscriptions(state, podcastId));
   const { id, coverUrl600, title, author, summary, episodes, link } = podcastData;
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const PodcastPage = () => {
   }, [dispatch, podcastId, id]);
 
   const onSubscribe = () => {
-    dispatch(subscriptionsChange(podcastId, subscribed));
+    dispatch(subscriptionsChange(podcastId, isSubscribed));
   };
 
   if (error) {
@@ -62,7 +62,7 @@ const PodcastPage = () => {
         summary={summary}
         link={link}
         author={author}
-        subscribed={subscribed}
+        subscribed={isSubscribed}
         onSubscribe={onSubscribe}
       />
       <section>
