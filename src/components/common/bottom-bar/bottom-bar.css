@@ -59,8 +59,15 @@
 /* Active Icon */
 
 @media (max-width: 953px) {
-  .bottom-bar__icon--active,
   .bottom-bar__link--active .bottom-bar__icon {
+    fill: var(--primary);
+  }
+
+  .bottom-bar--expanded .bottom-bar__icon {
+    fill: var(--black);
+  }
+
+  .bottom-bar--expanded .bottom-bar__icon--active {
     fill: var(--primary);
   }
 }

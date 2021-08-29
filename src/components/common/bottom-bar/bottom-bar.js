@@ -27,14 +27,19 @@ const BottomBar = () => {
     'bottom-bar__popup--expanded': isExpanded
   });
 
+  const bottomBarClass = classNames('bottom-bar', {
+    'bottom-bar--expanded': isExpanded
+  });
+
   const userIconClass = classNames('bottom-bar__icon', {
     'bottom-bar__icon--active': isExpanded
   });
 
-  const handleClick = () => setIsExpanded((s) => !s);
+  const toggleIsExpanded = () => setIsExpanded((s) => !s);
+  const closePopup = () => setIsExpanded(false);
 
   return (
-    <nav className="bottom-bar">
+    <nav className={bottomBarClass}>
       <ul className="bottom-bar__list">
         {
           link.map(({ label, path, icon }) => {
@@ -46,6 +51,7 @@ const BottomBar = () => {
                   className="bottom-bar__link"
                   activeClassName="bottom-bar__link--active"
                   to={path}
+                  onClick={closePopup}
                   exact
                 >
                   <Icon
@@ -64,7 +70,7 @@ const BottomBar = () => {
           <button
             className="bottom-bar__button"
             type="button"
-            onClick={handleClick}
+            onClick={toggleIsExpanded}
             aria-label="Show more options"
           >
             <UserIcon
@@ -85,7 +91,7 @@ const BottomBar = () => {
                     <Link
                       className="bottom-bar__popup-link"
                       to={path}
-                      onClick={handleClick}
+                      onClick={toggleIsExpanded}
                     >
                       <Icon
                         className="bottom-bar__popup-icon"
