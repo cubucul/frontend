@@ -10,7 +10,6 @@ import EpisodeCard from '../components/episodes/episode-card';
 
 const InProgressPage = () => {
   const episodes = useSelector(selectActiveEpisodes);
-  console.log(episodes);
 
   const pageTitle = <ReactTitle title="In Progress" />;
 
