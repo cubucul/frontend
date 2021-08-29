@@ -5,6 +5,10 @@ export const secondsToString = (secondsString) => {
   const minutes = Math.floor(totalSeconds / 60);
 
   if (hours) {
+    if (minutes === 0) {
+      return `${hours} hr`;
+    }
+
     return `${hours}h ${minutes}m`;
   }
 
